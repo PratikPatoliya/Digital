@@ -13,10 +13,10 @@ const Stack = createNativeStackNavigator();
 
 function Auth() {
   return (
-    <Stack.Navigator>
-        <Stack.Screen name="Splash" component={Splash} options={{headerShown: false}} />
-        <Stack.Screen name="login" component={Login} options={{headerShown: false}} />
-        <Stack.Screen name="verify" component={Verify} options={{headerShown: false}} />
+    <Stack.Navigator screenOptions={{headerShown: false}}>
+        <Stack.Screen name="Splash" component={Splash}  />
+        <Stack.Screen name="login" component={Login}  />
+        <Stack.Screen name="verify" component={Verify}  />
     </Stack.Navigator>
   );
 }

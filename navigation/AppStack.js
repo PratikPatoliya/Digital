@@ -16,6 +16,8 @@ import Frame from '../screen/Frame';
 import Viewall from '../components/Viewall';
 import styles from '../styles/AppStack';
 import EditProfile from '../screen/EditProfile';
+import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
+
 
 
 
@@ -67,10 +69,8 @@ function AccountStackScreen() {
 const Tab = createBottomTabNavigator();
 const AppStack = () => {
     return (
-        <Tab.Navigator initialRouteName="Home"
-            //     screenOptions={{
-            //     tabBarStyle: { height: 65 },
-            // }}
+        <Tab.Navigator
+         initialRouteName="Home"
             screenOptions={({ route }) => ({
                 tabBarLabel: ({ focused, color }) => {
                     let label;
@@ -89,6 +89,7 @@ const AppStack = () => {
                     return label;
                 },
                 tabBarStyle: { height: Platform.OS === 'ios' ? 100 : 65},
+                headerShown: false,
             })}
 
             tabBarOptions={{
@@ -100,13 +101,32 @@ const AppStack = () => {
                 keyboardHidesTabBar: true,
             }}
         >
-            <Tab.Screen name="Home" component={HomeStackScreen} options={{ headerShown: false,  tabBarVisible: true, tabBarIcon: (({ color, focused }) => focused ? <Icon name="home-outline" size={23} style={{ color: color }} /> : <Icon name="home-outline" size={20} style={{ color: color }} />) }} />
+            <Tab.Screen name="Home" component={HomeStackScreen}
+                 options={({route}) => ({
+                tabBarStyle: {
+                  display: getTabBarVisibility(route),
+                  height: Platform.OS === 'ios' ? 100 : 65,
+                },
+                headerShown: false,
+                tabBarVisible: true,
+                tabBarIcon: (({ color, focused }) => focused ? <Icon name="home-outline" size={23} style={{ color: color }} /> : <Icon name="home-outline" size={20} style={{ color: color }} />),
+              })} />
             <Tab.Screen name="Greetings" component={GreetingsStackScreen} options={{ headerShown: false, tabBarIcon: (({ color, focused }) => focused ? <Icon name="layers-outline" size={23} style={{ color: color }} /> : <Icon name="layers-outline" size={20} style={{ color: color }} />) }} />
             <Tab.Screen name="Downlods" component={DownlodsStackScreen} options={{ headerShown: false, tabBarIcon: (({ color, focused }) => focused ? <Icon name="download-outline" size={23} style={{ color: color }} /> : <Icon name="download-outline" size={20} style={{ color: color }} />) }} />
             <Tab.Screen name="Business" component={BusinessStackScreen} options={{ headerShown: false, tabBarIcon: (({ color, focused }) => focused ? <Icon name="briefcase-outline" size={23} style={{ color: color }} /> : <Icon name="briefcase-outline" size={20} style={{ color: color }} />) }} />
-            <Tab.Screen name="Account" component={AccountStackScreen} screenOptions={{tabBarHideOnKeyboard: true}} options={{ headerShown: false, tabBarIcon: (({ color, focused }) => focused ? <Icon name="person-outline" size={23} style={{ color: color }} /> : <Icon name="person-outline" size={20} style={{ color: color }} />) }} />
+            <Tab.Screen name="Account" component={AccountStackScreen} options={{ headerShown: false, tabBarIcon: (({ color, focused }) => focused ? <Icon name="person-outline" size={23} style={{ color: color }} /> : <Icon name="person-outline" size={20} style={{ color: color }} />) }} />
         </Tab.Navigator>
     );
+};
+
+const getTabBarVisibility = route => {
+    const routeName = getFocusedRouteNameFromRoute(route) ?? 'Home';
+    if (routeName == 'Frame' ) {
+      return 'none';
+    } else if (routeName == 'Viewall') {
+      return 'none';
+    }
+    return 'flex';
 };
 
 export default AppStack;
