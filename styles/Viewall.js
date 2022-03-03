@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { StyleSheet,Dimensions } from "react-native";
+import { StyleSheet,Dimensions } from 'react-native';
 import colors from '../utils/colors';
 const height1 = Dimensions.get('window').height;
 const { width } = Dimensions.get('window');
@@ -13,7 +13,6 @@ const styles = StyleSheet.create({
         flex: 1,
         margin: 2,
         marginBottom: 12,
-        // alignItems: 'center',
     },
     tinyLogo: {
         width: width * 0.40,

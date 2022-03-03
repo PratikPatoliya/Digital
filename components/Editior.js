@@ -2,14 +2,14 @@
 /* eslint-disable no-shadow */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react-native/no-inline-styles */
-import React, { useEffect, useState } from 'react';
-import { Dimensions, StyleSheet, Text, TouchableOpacity, View, Alert, Image, Modal, SafeAreaView, FlatList, ScrollView } from 'react-native';
+import React, { useState } from 'react';
+import { Dimensions, StyleSheet, Text, TouchableOpacity, View,  Modal, SafeAreaView, FlatList, ScrollView } from 'react-native';
 import colors from '../utils/colors';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import ImagePicker from 'react-native-image-crop-picker';
 import Slider from '@react-native-community/slider';
 import { BitMapColorPicker as ColorPicker } from 'react-native-bitmap-color-picker';
-import { Item } from 'react-native-paper/lib/typescript/components/List/List';
+
 
 
 const { width } = Dimensions.get('window');
@@ -74,8 +74,6 @@ const Editior = (props) => {
             includeBase64: true,
             mediaType: 'photo',
         }).then(image => {
-            // console.log(image);
-            // console.warn(image.path);
             setImageSource(image.path);
         });
         setModel(false);
@@ -90,8 +88,6 @@ const Editior = (props) => {
             freeStyleCropEnabled: true,
             includeBase64: true,
         }).then(image => {
-            // console.log(image);
-            // console.warn(image.path);
             setImageSource(image.path);
         });
         setModel(false);

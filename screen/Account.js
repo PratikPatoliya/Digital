@@ -1,8 +1,7 @@
 /* eslint-disable prettier/prettier */
-/* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable react-native/no-inline-styles */
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Dimensions, TouchableOpacity, Image, ScrollView, Modal } from 'react-native';
+import { StyleSheet, Text, View, Dimensions, TouchableOpacity, Image, ScrollView, Modal,Platform } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import colors from '../utils/colors';
 import ImagePicker from 'react-native-image-crop-picker';
@@ -127,13 +126,12 @@ const styles = StyleSheet.create({
         alignItems: 'flex-end',
         justifyContent: 'center',
         backgroundColor: colors.black,
-        paddingEnd: 18,
-        paddingTop: 10,
+        paddingEnd: Platform.OS === 'ios' ? 36 : 18,
+        paddingTop: Platform.OS === 'ios' ? 50 : 10,
     },
     titlefont: {
         fontSize: 16,
         fontWeight: '800',
         color: colors.yellow,
-        // top:10
     },
 });

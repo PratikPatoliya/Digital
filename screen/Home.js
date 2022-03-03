@@ -11,31 +11,30 @@ import { img } from '../utils/Imgdata';
 
 
 const Home = (props) => {
-  // console.warn('props',img);
   const openWhatsApp = () => {
     let msg = 'demo';
     let mobile = 6352432738;
     if (mobile) {
       if (msg) {
         let url =
-          "whatsapp://send?text=" +
+          'whatsapp://send?text=' +
           'demo' +
-          "&phone=91" +
+          '&phone=91' +
           6352432738;
         Linking.openURL(url)
           .then(data => {
-            console.log("WhatsApp Opened successfully " + data);
+            console.log('WhatsApp Opened successfully ' + data);
           })
           .catch(() => {
-            alert("Make sure WhatsApp installed on your device");
+            alert('Make sure WhatsApp installed on your device');
           });
       } else {
-        alert("Please enter message to send");
+        alert('Please enter message to send');
       }
     } else {
-      alert("Please enter mobile no");
+      alert('Please enter mobile no');
     }
-  }
+  };
 
   return (
     <View style={styles.homeBackground}>

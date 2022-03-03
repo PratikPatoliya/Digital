@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
         marginTop: 5,
     },
     textnumber: {
-        color: "#06a10e",
+        color: '#06a10e',
         fontWeight: '600',
     },
 });

@@ -9,7 +9,6 @@ const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
 
 const Contactus = (props) => {
-    console.warn(props);
     return (
         <View>
             <Header inamel="chevron-back-outline" title="Contact Us" isBack={() =>  props.navigation.goBack()} />

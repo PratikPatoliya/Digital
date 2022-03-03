@@ -5,7 +5,6 @@ import styles from '../styles/Viewall';
 import Header from './Header';
 
 const Viewall = ({ route ,navigation }) => {
-    // console.warn("Viewallroute",route);
     const viewAllData = route.params.itemdata;
     const renderItem = ({ item }) => {
         return (

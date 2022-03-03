@@ -5,7 +5,6 @@ const Lable = {
     Downlodes:'Downlodes',
     Business:'Business',
     Account:'Account',
-
 };
 
 export default Lable;

@@ -1,7 +1,6 @@
 /* eslint-disable prettier/prettier */
 import React, { useState } from 'react';
 import { Modal, StyleSheet, Text, TouchableOpacity, View, Dimensions, Image } from 'react-native';
-import { Icon } from 'react-native-vector-icons/Ionicons';
 import colors from '../utils/colors';
 
 const { width } = Dimensions.get('window');
@@ -52,4 +51,3 @@ const Model = (props) => {
 
 export default Model;
 
-const styles = StyleSheet.create({});

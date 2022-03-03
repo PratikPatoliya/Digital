@@ -1,12 +1,11 @@
 /* eslint-disable prettier/prettier */
 import React from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View, Platform } from 'react-native';
 import colors from '../utils/colors';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 const Header = (props) => {
     const { inamel, title, inamer1, inamer2,preasename2,rightname, isBack } = props;
-    // console.warn("Header",props);
     return (
         <View style={styles.views}>
 
@@ -29,7 +28,7 @@ const Header = (props) => {
                             <Text style={{color:colors.yellow,fontSize:20}}>{rightname}</Text>
                         </TouchableOpacity>
                         <TouchableOpacity onPress={preasename2}>
-                            <Icon name={inamer2} size={23} style={{ color: colors.white }} />
+                            <Icon name={inamer2} size={23} style={styles.iconstyle2} />
                         </TouchableOpacity>
                     </View>
                 </View>
@@ -42,7 +41,7 @@ export default Header;
 
 const styles = StyleSheet.create({
     views:{
-        height: 50,
+        height: Platform.OS === 'ios' ? 100 : 50,
         backgroundColor: colors.black,
     },
     flexrow: {
@@ -52,14 +51,14 @@ const styles = StyleSheet.create({
     flexend: {
         flex: 0.5,
         alignItems: 'flex-end',
-        top: 15,
-        right: 20,
+        top: Platform.OS === 'ios' ? 30 : 15,
+        right: Platform.OS === 'ios' ? 40 : 20,
     },
     flexstart: {
         flex: 0.5,
         alignItems: 'flex-start',
-        top: 15,
-        left: 10,
+        top: Platform.OS === 'ios' ? 35 : 15,
+        left: Platform.OS === 'ios' ? 20 : 10,
     },
     title: {
         flex: 1.5,
@@ -67,12 +66,18 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     titlefont: {
-        fontSize: 20,
-        fontWeight: '800',
+        fontSize: 18,
+        fontWeight: 'normal',
         color: colors.white,
     },
     iconstyle:{
         color: colors.white,
-        right: 15,
+        right: Platform.OS === 'ios' ? 10 : 15,
+        top : Platform.OS === 'ios' ? 10 : 0,
+    },
+    iconstyle2:{
+        color: colors.white,
+        top : Platform.OS === 'ios' ? 10 : 0,
+        left: Platform.OS === 'ios' ? 20 : 15,
     },
 });

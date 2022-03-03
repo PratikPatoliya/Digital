@@ -2,23 +2,18 @@
 import React, { useState } from 'react';
 import { Image, View, Text,Dimensions, ScrollView, FlatList} from 'react-native';
 import Header from '../components/Header';
-import colors from '../utils/colors';
 import Eflatlist from '../components/Eflatlist';
 import Editior from '../components/Editior';
 import Share from 'react-native-share';
 import styles from '../styles/Frame';
 
 const { width } = Dimensions.get('window');
-const height = width * 0.50;
 
 const Frame = ({ route , navigation}) => {
     const [imageSource, setImageSource] = useState(null);
     const categoryImage = route.params.img;
-    // console.warn("itemssssss",categoryImage);
-
 
     const renderItem = ({ item }) => {
-        // console.warn(item);
         return (
             <View>
                 <Image source={{ uri: item.img }} style={styles.image} />
@@ -32,7 +27,7 @@ const Frame = ({ route , navigation}) => {
 
     const myCustomerShare = async () => {
         const shareOption = {
-            message: "Hello",
+            message: 'Hello',
         };
         try {
             const ShareResponse = await Share.open(shareOption);

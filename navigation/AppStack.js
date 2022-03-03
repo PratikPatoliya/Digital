@@ -1,7 +1,6 @@
 /* eslint-disable prettier/prettier */
-/* eslint-disable react-hooks/exhaustive-deps */
-import React,{useEffect} from 'react';
-import { Text} from 'react-native';
+import React from 'react';
+import { Text, Platform} from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/Ionicons';
 import colors from '../utils/colors';
@@ -89,7 +88,7 @@ const AppStack = () => {
                     }
                     return label;
                 },
-                tabBarStyle: { height: 65 },
+                tabBarStyle: { height: Platform.OS === 'ios' ? 100 : 65},
             })}
 
             tabBarOptions={{
@@ -97,7 +96,8 @@ const AppStack = () => {
                 inactiveBackgroundColor: colors.black,
                 activeTintColor: colors.yellow,
                 inactiveTintColor: colors.white,
-                iconStyle: { top: 5 },
+                iconStyle: { top:  Platform.OS === 'ios' ? 10 : 5 },
+                keyboardHidesTabBar: true,
             }}
         >
             <Tab.Screen name="Home" component={HomeStackScreen} options={{ headerShown: false,  tabBarVisible: true, tabBarIcon: (({ color, focused }) => focused ? <Icon name="home-outline" size={23} style={{ color: color }} /> : <Icon name="home-outline" size={20} style={{ color: color }} />) }} />
