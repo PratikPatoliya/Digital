@@ -12,6 +12,8 @@ target 'Digital' do
     :hermes_enabled => false
   )
 
+  pod 'RNImageCropPicker', :path => '../node_modules/react-native-image-crop-picker'
+
   target 'DigitalTests' do
     inherit! :complete
     # Pods for testing
