@@ -6,7 +6,7 @@ const image = {
     businessImage :'https://us.123rf.com/450wm/maudis60/maudis601602/maudis60160200082/51858565-vector-sign-up-arrow-letter-a.jpg?ver=6',
     contactUs :'https://www.reson8.ae/assets/images/common/contact-us-banner-image.png',
     mobile : require('../utils/img/mobile.png'),
-    otp :require('../../utils/img/otp.png'),
+    otp :require('../utils/img/otp.png'),
     userImage:'https://www.clipartmax.com/png/middle/349-3496330_download-person-icon-orange-clipart-computer-icons-user-icon-orange-png.png',
 };
 

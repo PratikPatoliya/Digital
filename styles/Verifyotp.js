@@ -31,5 +31,10 @@ const styles = StyleSheet.create({
         color: '#06a10e',
         fontWeight: '600',
     },
+    textinputview: {
+        flex: 1,
+        flexDirection: 'row',
+        marginTop: height / 15,
+    },
 });
 export default styles;

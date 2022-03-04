@@ -19,7 +19,7 @@ const Verify = ({ navigation }) => {
             <Image source={image.otp} style={styles.img} />
             <Text style={styles.textheader}>Verification Code</Text>
             <Text style={styles.texttitle}>Please enter code sent  {"\n"}        to <Text style={styles.textnumber}>1234567890</Text></Text>
-            <View style={{ flex: 1, flexDirection: 'row', marginTop: height / 15 }}>
+            <View style={styles.textinputview}>
                 <TextInput keyboardType='number-pad' ref={firstInput} onChangeText={(text) => { setOtp({...otp ,1:text}); text && secondInput.current.focus() }} maxLength={1} style={{ flex: 0.1, fontSize: 15, borderWidth: 1, alignSelf: 'center', paddingTop: 10, height: 40, paddingLeft: 15, marginRight: 8 }} />
                 <TextInput keyboardType='number-pad' ref={secondInput} onChangeText={(text) => { setOtp({...otp ,2:text}); text ? thirdInput.current.focus() : firstInput.current.focus() }} maxLength={1} style={{ flex: 0.1, fontSize: 15, borderWidth: 1, alignSelf: 'center', marginLeft: 8, paddingTop: 10, height: 40, paddingLeft: 15, marginRight: 8 }} />
                 <TextInput keyboardType='number-pad' ref={thirdInput} onChangeText={(text) => { setOtp({...otp ,3:text}); text ? fourInput.current.focus() : secondInput.current.focus() }} maxLength={1} style={{ flex: 0.1, fontSize: 15, borderWidth: 1, alignSelf: 'center', marginLeft: 8, paddingTop: 10, height: 40, paddingLeft: 15, marginRight: 8 }} />

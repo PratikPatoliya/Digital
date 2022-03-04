@@ -1,24 +1,25 @@
 /* eslint-disable prettier/prettier */
+/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import { Button, Text, TextInput, View, Dimensions, Image  } from 'react-native';
+import { Button, Text, TextInput, View, Image } from 'react-native';
+import styles from '../../styles/Login';
 import image from '../../utils/image';
-const width = Dimensions.get('window').width;
-const height = Dimensions.get('window').height;
 
-const Login = ({navigation}) => {
+
+const Login = ({ navigation }) => {
     return (
-        <View style={{ paddingTop: 70, paddingLeft:20,paddingRight:20,backgroundColor: '#fff', width, height, alignItems: 'center' ,justifyContent:'center' }}>
-            <View style={{}}>
-                <Image source={image.mobile} style={{ width: 200, height: 160 }} />
+        <View style={styles.topview}>
+            <View>
+                <Image source={image.mobile} style={styles.imghei_wid} />
             </View>
-            <Text style={{ fontSize: 25, fontWeight: '700', marginTop: height / 15 ,color:'#4e6dcc' }}>Verify Your Number</Text>
-            <Text style={{ fontSize: 15, fontWeight: '100', marginTop: 5 }}>Please enter your country & {'\n'}      your phone number</Text>
-            <View style={{ flex: 1, flexDirection: 'row', marginTop: height / 15  }}>
-                <Text style={{ flex: 0.2, fontSize: 15, borderRadius:5,borderWidth:0.5,alignItems:'center',marginLeft:17,paddingTop:10,height:40,paddingLeft:15 ,backgroundColor:'#c9f2cb' ,marginRight:10 }}>+91</Text>
-                <TextInput dataDetectorTypes={'phoneNumber'} maxLength={10} keyboardType={'numeric'} backgroundColor="#c9f2cb" style={{ flex: 1 ,borderWidth: 0.5, borderRadius: 4, marginRight: 20,height:40}} />
+            <Text style={styles.verifytext}>Verify Your Number</Text>
+            <Text style={styles.numbertext}>Please enter your country & {'\n'}      your phone number</Text>
+            <View style={styles.inputview}>
+                <Text style={styles.viewtext}>+91</Text>
+                <TextInput dataDetectorTypes={'phoneNumber'} maxLength={10} keyboardType={'numeric'} backgroundColor="#c9f2cb" style={styles.textinput} />
             </View>
-            <View style={{marginBottom:height / 3,width:width / 1.24,marginTop:height / 12}}>
-                <Button title="Send" style={{borderRadius:10}} color={'#06a10e'} onPress={() => navigation.navigate('verify')}  />
+            <View style={styles.buttonview}>
+                <Button title="Send" style={{ borderRadius: 10 }} color={'#06a10e'} text={'#06a10e'} onPress={() => navigation.navigate('verify')} />
             </View>
         </View>
     );

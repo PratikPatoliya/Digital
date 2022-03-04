@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import React from 'react';
-import { Text, Platform} from 'react-native';
+import { Text, Platform } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/Ionicons';
 import colors from '../utils/colors';
@@ -26,8 +26,8 @@ const Stack = createNativeStackNavigator();
 function HomeStackScreen() {
     return (
         <Stack.Navigator>
-            <Stack.Screen name="Home" component={Home} options={{ headerShown: false}} />
-            <Stack.Screen name="Frame" component={Frame} options={{ headerShown: false}} />
+            <Stack.Screen name="Home" component={Home} options={{ headerShown: false }} />
+            <Stack.Screen name="Frame" component={Frame} options={{ headerShown: false }} />
             <Stack.Screen name="Viewall" component={Viewall} options={{ headerShown: false }} />
         </Stack.Navigator>
     );
@@ -70,7 +70,7 @@ const Tab = createBottomTabNavigator();
 const AppStack = () => {
     return (
         <Tab.Navigator
-         initialRouteName="Home"
+            initialRouteName="Home"
             screenOptions={({ route }) => ({
                 tabBarLabel: ({ focused, color }) => {
                     let label;
@@ -88,7 +88,7 @@ const AppStack = () => {
                     }
                     return label;
                 },
-                tabBarStyle: { height: Platform.OS === 'ios' ? 100 : 65},
+                tabBarStyle: { height: Platform.OS === 'ios' ? 100 : 65 },
                 headerShown: false,
             })}
 
@@ -97,34 +97,68 @@ const AppStack = () => {
                 inactiveBackgroundColor: colors.black,
                 activeTintColor: colors.yellow,
                 inactiveTintColor: colors.white,
-                iconStyle: { top:  Platform.OS === 'ios' ? 10 : 5 },
+                iconStyle: { top: Platform.OS === 'ios' ? 10 : 5 },
                 keyboardHidesTabBar: true,
             }}
         >
             <Tab.Screen name="Home" component={HomeStackScreen}
-                 options={({route}) => ({
-                tabBarStyle: {
-                  display: getTabBarVisibility(route),
-                  height: Platform.OS === 'ios' ? 100 : 65,
-                },
-                headerShown: false,
-                tabBarVisible: true,
-                tabBarIcon: (({ color, focused }) => focused ? <Icon name="home-outline" size={23} style={{ color: color }} /> : <Icon name="home-outline" size={20} style={{ color: color }} />),
-              })} />
-            <Tab.Screen name="Greetings" component={GreetingsStackScreen} options={{ headerShown: false, tabBarIcon: (({ color, focused }) => focused ? <Icon name="layers-outline" size={23} style={{ color: color }} /> : <Icon name="layers-outline" size={20} style={{ color: color }} />) }} />
+                options={({ route }) => ({
+                    tabBarStyle: {
+                        display: getTabBarVisibility(route),
+                        height: Platform.OS === 'ios' ? 100 : 65,
+                    },
+                    headerShown: false,
+                    tabBarVisible: true,
+                    tabBarIcon: (({ color, focused }) => focused ? <Icon name="home-outline" size={23} style={{ color: color }} /> : <Icon name="home-outline" size={20} style={{ color: color }} />),
+                })} />
+            <Tab.Screen name="Greetings" component={GreetingsStackScreen}
+                options={({ route }) => ({
+                    tabBarStyle: {
+                        display: getTabBarVisibilityGreeting(route),
+                        height: Platform.OS === 'ios' ? 100 : 65,
+                    },
+                    tabBarVisible: true,
+                    headerShown: false, tabBarIcon: (({ color, focused }) => focused ? <Icon name="layers-outline" size={23} style={{ color: color }} /> : <Icon name="layers-outline" size={20} style={{ color: color }} />),
+                })} />
             <Tab.Screen name="Downlods" component={DownlodsStackScreen} options={{ headerShown: false, tabBarIcon: (({ color, focused }) => focused ? <Icon name="download-outline" size={23} style={{ color: color }} /> : <Icon name="download-outline" size={20} style={{ color: color }} />) }} />
             <Tab.Screen name="Business" component={BusinessStackScreen} options={{ headerShown: false, tabBarIcon: (({ color, focused }) => focused ? <Icon name="briefcase-outline" size={23} style={{ color: color }} /> : <Icon name="briefcase-outline" size={20} style={{ color: color }} />) }} />
-            <Tab.Screen name="Account" component={AccountStackScreen} options={{ headerShown: false, tabBarIcon: (({ color, focused }) => focused ? <Icon name="person-outline" size={23} style={{ color: color }} /> : <Icon name="person-outline" size={20} style={{ color: color }} />) }} />
+            <Tab.Screen name="Account" component={AccountStackScreen}
+                options={({ route }) => ({
+                    tabBarStyle: {
+                        display: getTabBarVisibilityAccount(route),
+                        height: Platform.OS === 'ios' ? 100 : 65,
+                    },
+                    tabBarVisible: true,
+                    headerShown: false, tabBarIcon: (({ color, focused }) => focused ? <Icon name="person-outline" size={23} style={{ color: color }} /> : <Icon name="person-outline" size={20} style={{ color: color }} />)
+                })} />
         </Tab.Navigator>
     );
 };
 
 const getTabBarVisibility = route => {
     const routeName = getFocusedRouteNameFromRoute(route) ?? 'Home';
-    if (routeName == 'Frame' ) {
-      return 'none';
+    if (routeName == 'Frame') {
+        return 'none';
     } else if (routeName == 'Viewall') {
-      return 'none';
+        return 'none';
+    }
+    return 'flex';
+};
+const getTabBarVisibilityGreeting = route => {
+    const routeName = getFocusedRouteNameFromRoute(route) ?? 'Greetings';
+    if (routeName == 'Frame') {
+        return 'none';
+    } else if (routeName == 'Viewall') {
+        return 'none';
+    }
+    return 'flex';
+};
+const getTabBarVisibilityAccount = route => {
+    const routeName = getFocusedRouteNameFromRoute(route) ?? 'Account';
+    if (routeName == 'ContactUs') {
+        return 'none';
+    } else if (routeName == 'Editprofile') {
+        return 'none';
     }
     return 'flex';
 };
