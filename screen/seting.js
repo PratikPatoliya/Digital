@@ -89,7 +89,6 @@ const seting = () => {
         {processButtons()}
       </View>
       {ADDED_TEXTS}
-
     </View>
   );
 };

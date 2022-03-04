@@ -5,17 +5,13 @@ import { StyleSheet, Text, View, Dimensions, TouchableOpacity, Image, ScrollView
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import colors from '../utils/colors';
 import ImagePicker from 'react-native-image-crop-picker';
-
-
+import image from '../utils/image';
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
 
-
-
-
 const Account = ({ navigation }) => {
     const [model, setModel] = useState(false);
-    const [imageSource, setImageSource] = useState('https://www.clipartmax.com/png/middle/349-3496330_download-person-icon-orange-clipart-computer-icons-user-icon-orange-png.png');
+    const [imageSource, setImageSource] = useState(image.userImage);
 
 
     function selectImage() {

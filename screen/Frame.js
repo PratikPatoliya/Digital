@@ -1,18 +1,15 @@
 /* eslint-disable prettier/prettier */
 import React, { useState } from 'react';
-import { Image, View, Text,Dimensions, ScrollView, FlatList} from 'react-native';
+import { Image, View, Text, ScrollView, FlatList} from 'react-native';
 import Header from '../components/Header';
 import Eflatlist from '../components/Eflatlist';
 import Editior from '../components/Editior';
 import Share from 'react-native-share';
 import styles from '../styles/Frame';
 
-const { width } = Dimensions.get('window');
-
 const Frame = ({ route , navigation}) => {
     const [imageSource, setImageSource] = useState(null);
     const categoryImage = route.params.img;
-
     const renderItem = ({ item }) => {
         return (
             <View>

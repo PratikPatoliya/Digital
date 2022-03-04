@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
         backgroundColor: colors.black,
     },
     homeview: {
-        marginBottom: Platform.OS === 'ios' ? 100 : 50,
+        marginBottom: Platform.OS === 'ios' ? 120 : 50,
     },
     homefdb: {
         position: 'absolute',

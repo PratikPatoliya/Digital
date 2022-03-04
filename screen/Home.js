@@ -1,5 +1,4 @@
 /* eslint-disable prettier/prettier */
-/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import { ScrollView, View ,Linking} from 'react-native';
 import { FAB } from 'react-native-paper';

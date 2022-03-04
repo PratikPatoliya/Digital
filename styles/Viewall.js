@@ -25,5 +25,8 @@ const styles = StyleSheet.create({
         top: 20,
         marginBottom: 50,
     },
+    container : {
+        flex: 1,
+    },
 });
 export default styles;

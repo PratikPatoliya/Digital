@@ -1,16 +1,9 @@
 /* eslint-disable prettier/prettier */
 import React, { useEffect } from 'react';
-import { Image, ImageBackground, StyleSheet, Text, View ,Dimensions } from 'react-native';
-
-const {width} = Dimensions.get('window');
-const height = width * 0.50;
-
-const bg = require('./utils/img/backgroung.jpg');
-const logo = require('./utils/img/logo.png');
-
+import { Image, ImageBackground, StyleSheet, View } from 'react-native';
+import image from './utils/image';
 
 const Splash = ({navigation}) => {
-
     useEffect(() =>{
         setTimeout(() =>{
             navigation.navigate('login');
@@ -18,10 +11,9 @@ const Splash = ({navigation}) => {
     });
 
   return (
-    //source={bg}
     <ImageBackground style={styles.bg}>
         <View style={styles.viewcenter}>
-            <Image source={logo} style={styles.img}></Image>
+            <Image source={image.logo} style={styles.img} />
         </View>
     </ImageBackground>
   );

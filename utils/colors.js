@@ -4,6 +4,7 @@ const colors = {
     black : 'black',
     white : '#fff',
     green:'green',
+    txtcolor:'#c4bfbe',
 };
 
 

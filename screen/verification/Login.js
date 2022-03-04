@@ -1,17 +1,15 @@
 /* eslint-disable prettier/prettier */
 import React from 'react';
 import { Button, Text, TextInput, View, Dimensions, Image  } from 'react-native';
-
+import image from '../../utils/image';
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
-
-const mobile = require('../../utils/img/mobile.png');
 
 const Login = ({navigation}) => {
     return (
         <View style={{ paddingTop: 70, paddingLeft:20,paddingRight:20,backgroundColor: '#fff', width, height, alignItems: 'center' ,justifyContent:'center' }}>
             <View style={{}}>
-                <Image source={mobile} style={{ width: 200, height: 160 }} />
+                <Image source={image.mobile} style={{ width: 200, height: 160 }} />
             </View>
             <Text style={{ fontSize: 25, fontWeight: '700', marginTop: height / 15 ,color:'#4e6dcc' }}>Verify Your Number</Text>
             <Text style={{ fontSize: 15, fontWeight: '100', marginTop: 5 }}>Please enter your country & {'\n'}      your phone number</Text>

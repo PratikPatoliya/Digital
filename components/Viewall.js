@@ -8,7 +8,7 @@ const Viewall = ({ route ,navigation }) => {
     const viewAllData = route.params.itemdata;
     const renderItem = ({ item }) => {
         return (
-            <View style={{ flex: 1 }}>
+            <View style={styles.container}>
                 <View style={styles.Grig}>
                     <TouchableOpacity onPress={() => { }}>
                         <Image
@@ -25,7 +25,7 @@ const Viewall = ({ route ,navigation }) => {
     return (
         <View style={styles.backgroung}>
             <ScrollView>
-                <Header title={route.params.headername.header} isBack={() =>  navigation.goBack()} inamel='chevron-back-outline' />
+                <Header title={route.params.headername.header} isBack={() =>  navigation.goBack()} inamel="chevron-back-outline" />
                 <View style={styles.viewflate}>
                     <FlatList data={viewAllData} renderItem={renderItem} numColumns={2} />
                 </View>

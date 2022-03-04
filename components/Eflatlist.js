@@ -1,11 +1,7 @@
 /* eslint-disable prettier/prettier */
 import React from 'react';
-import { StyleSheet, View,TouchableOpacity,Image,FlatList,Dimensions } from 'react-native';
-
-
-const width = Dimensions.get('window').width;
-
-
+import { View,TouchableOpacity,Image,FlatList} from 'react-native';
+import styles from '../styles/Eflatlist';
 const Data = [
   { id: 1, img: 'https://i.pinimg.com/originals/fa/91/74/fa91748fd7a73ff50cf638d4761df282.jpg' },
   { id: 2, img: 'https://play-lh.googleusercontent.com/--JH3ql4DPM291um4zSOK-pdlkcbt5kVw-0L98sud-78O340annEDge6L0U7Nbz3070' },
@@ -27,8 +23,8 @@ const Eflatlist = () => {
 };
   return (
     <View>
-      <View style={{ backgroundColor: 'black', height: 130 ,marginBottom:20 }}>
-                <FlatList data={Data} renderItem={renderItem} horizontal showsHorizontalScrollIndicator={false} style={{ height: 100, marginLeft: 12, marginRight: 12, bottom: 0 }} />
+      <View style={styles.container}>
+                <FlatList data={Data} renderItem={renderItem} horizontal showsHorizontalScrollIndicator={false} style={styles.item} />
             </View>
     </View>
   );
@@ -36,16 +32,4 @@ const Eflatlist = () => {
 
 export default Eflatlist;
 
-const styles = StyleSheet.create({
-  Grig: {
-    borderWidth: 0.5,
-    alignItems: 'center',
-    margin: 5,
-    bottom: 5,
-},
-tinyLogo: {
-    borderRadius: 5,
-    width: width * 0.29,
-    height: 110,
-},
-});
+

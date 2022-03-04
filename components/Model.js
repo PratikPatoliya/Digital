@@ -1,12 +1,13 @@
 /* eslint-disable prettier/prettier */
 import React, { useState } from 'react';
-import { Modal, StyleSheet, Text, TouchableOpacity, View, Dimensions, Image } from 'react-native';
+import { Modal,Text, TouchableOpacity, View, Dimensions, Image } from 'react-native';
 import colors from '../utils/colors';
+import image from '../utils/image';
 
 const { width } = Dimensions.get('window');
 const height = width * 0.50;
 
-const Model = (props) => {
+const Model = () => {
     const [model, setModel] = useState(false);
     return (
         <View style={{justifyContent:'flex-end'}}>
@@ -16,7 +17,7 @@ const Model = (props) => {
                         <View style={{ width: width * 0.7, height: height, marginBottom: height * 0.1 ,alignItems:'center' }}>
                             <Image
                                 style={{ width: width * 0.50, height: 200 , resizeMode: 'stretch' }}
-                                source={{ uri: 'https://www.tp24.it/resizer/resize.php?url=https://www.tp24.it/immagini_articoli/23-09-2015/1442985893-0-ponte-radio-da-record-per-tim-147-km-lampedusa-pantelleria.jpg&size=300x250c10' }}
+                                source={{ uri: image.internetConnection }}
                             />
                         </View>
                         <View style={{ marginBottom: height * 0.04, alignItems: 'center' }}>

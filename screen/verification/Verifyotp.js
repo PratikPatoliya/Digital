@@ -2,11 +2,10 @@
 import React, { useRef, useState } from 'react';
 import { Button, Text, TextInput, View, Dimensions, Image, TouchableOpacity } from 'react-native';
 import styles from '../../styles/Verifyotp';
-
+import image from '../../utils/image';
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
 
-const mobile = require('../../utils/img/otp.png');
 
 const Verify = ({ navigation }) => {
     const firstInput = useRef();
@@ -17,7 +16,7 @@ const Verify = ({ navigation }) => {
 
     return (
         <View style={styles.view1}>
-            <Image source={mobile} style={styles.img} />
+            <Image source={image.otp} style={styles.img} />
             <Text style={styles.textheader}>Verification Code</Text>
             <Text style={styles.texttitle}>Please enter code sent  {"\n"}        to <Text style={styles.textnumber}>1234567890</Text></Text>
             <View style={{ flex: 1, flexDirection: 'row', marginTop: height / 15 }}>
