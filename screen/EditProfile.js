@@ -22,7 +22,7 @@ const EditProfile = ({ navigation }) => {
         <View style={{ top: 20 }}>
           <View style={styles.fieldSet}>
             <Text style={styles.legend}>  Enter Your Name  </Text>
-            <TextInput style={{ color: colors.white, width: width * 0.80, height : Platform.OS === 'ios' ? 45 : 0, borderRadius: 5, textAlign: 'center' ,fontSize:16 }} />
+            <TextInput style={{ color: colors.white, width: width * 0.80, height : Platform.OS === 'ios' ? 45 : 45, borderRadius: 5, textAlign: 'center' ,fontSize:16 }} />
           </View>
         </View>
       </View>
