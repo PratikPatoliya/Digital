@@ -4,7 +4,7 @@ import { StyleSheet, Platform } from "react-native";
 import colors from '../utils/colors';
 const styles = StyleSheet.create({
     views:{
-        height: Platform.OS === 'ios' ? 100 : 50,
+        height: Platform.OS === 'ios' ? 70 : 50,
         backgroundColor: colors.black,
     },
     flexrow: {

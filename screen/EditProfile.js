@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import React, { useState } from 'react';
-import { StyleSheet, View, TouchableOpacity, Image, Dimensions, TextInput, Text } from 'react-native';
+import { StyleSheet, View, TouchableOpacity, Image, Dimensions, TextInput, Text, Platform } from 'react-native';
 import colors from '../utils/colors';
 import Header2 from '../components/Header2';
 
@@ -22,7 +22,7 @@ const EditProfile = ({ navigation }) => {
         <View style={{ top: 20 }}>
           <View style={styles.fieldSet}>
             <Text style={styles.legend}>  Enter Your Name  </Text>
-            <TextInput style={{ color: colors.white, width: width * 0.80, borderRadius: 5, textAlign: 'center' ,fontSize:16 }} />
+            <TextInput style={{ color: colors.white, width: width * 0.80, height : Platform.OS === 'ios' ? 45 : 0, borderRadius: 5, textAlign: 'center' ,fontSize:16 }} />
           </View>
         </View>
       </View>

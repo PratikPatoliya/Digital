@@ -58,10 +58,10 @@ const styles = StyleSheet.create({
         height: 40,
     },
     buttonview: {
-        marginBottom:Platform.OS === 'ios' ? height / 4 : height / 3 ,
+        marginBottom:Platform.OS === 'ios' ? height / 2.8 : height / 3 ,
         width: width / 1.24,
         height: 40,
-        marginTop: Platform.OS === 'ios' ? height / 14 : height / 12,
+        marginTop: height / 12,
         borderRadius: 8,
         backgroundColor: "#06a10e",
         justifyContent: 'center',

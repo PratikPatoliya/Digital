@@ -3,7 +3,7 @@ import React from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
 import colors from '../utils/colors';
 import Icon from 'react-native-vector-icons/Ionicons';
-import styles from '../styles/Header';
+import styles from '../styles/Header2';
 
 const Header = (props) => {
     const { inamel, title, inamer1, inamer2, preasename2, rightname, isBack } = props;
