@@ -6,6 +6,7 @@ import styles from '../../styles/Login';
 import image from '../../utils/image';
 
 
+
 const Login = ({ navigation }) => {
     return (
         <View style={styles.topview}>
