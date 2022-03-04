@@ -36,5 +36,16 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         marginTop: height / 15,
     },
+    tochable:{height:35,
+        borderRadius:3,
+        backgroundColor:"#06a10e",
+        justifyContent:'center',
+    },
+    tochabletext :{
+        fontSize:15,
+        color:'#fff',
+        alignSelf:'center',
+        fontWeight:'600',
+    },
 });
 export default styles;

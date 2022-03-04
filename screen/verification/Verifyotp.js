@@ -26,7 +26,10 @@ const Verify = ({ navigation }) => {
                 <TextInput keyboardType='number-pad' ref={fourInput} onChangeText={(text) => { setOtp({...otp ,4:text}); !text && thirdInput.current.focus() }} maxLength={1} style={{ flex: 0.1, fontSize: 15, borderWidth: 1, alignSelf: 'center', marginLeft: 8, paddingTop: 10, height: 40, paddingLeft: 15, }} />
             </View>
             <View style={{ marginBottom: height / 3, width: width / 1.24, marginTop: height / 12 }}>
-                <Button title='Verify' style={{ borderRadius: 10 }} color={'#06a10e'} onPress={() => navigation.navigate('AppStack')} />
+                {/* <Button title='Verify' style={{ borderRadius: 10 }} color={'#06a10e'} onPress={() => navigation.navigate('AppStack')} /> */}
+                <TouchableOpacity style={styles.tochable} onPress={() => navigation.navigate('AppStack')}>
+                    <Text style={styles.tochabletext} >Verify</Text>
+                </TouchableOpacity>
                 <TouchableOpacity style={{ alignItems: 'center', marginTop: 20 }} onPress={() => console.warn('otp',otp)}>
                     <Text style={{ color: '#06a10e', fontWeight: '700' }}>Resend Code</Text>
                 </TouchableOpacity>
