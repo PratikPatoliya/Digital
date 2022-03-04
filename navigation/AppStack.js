@@ -28,7 +28,7 @@ const Stack = createNativeStackNavigator();
 function HomeStackScreen() {
     return (
         <Stack.Navigator>
-            <Stack.Screen name="Home" component={Home} options={{ headerShown: false }} />
+            <Stack.Screen name="Home1" component={Home} options={{ headerShown: false }} />
             <Stack.Screen name="Frame" component={Frame} options={{ headerShown: false }} />
             <Stack.Screen name="Viewall" component={Viewall} options={{ headerShown: false }} />
         </Stack.Navigator>
@@ -37,7 +37,7 @@ function HomeStackScreen() {
 function GreetingsStackScreen() {
     return (
         <Stack.Navigator>
-            <Stack.Screen name="Greetings" component={Greetings} options={{ headerShown: false }} />
+            <Stack.Screen name="Greetings1" component={Greetings} options={{ headerShown: false }} />
             <Stack.Screen name="Frame" component={Frame} options={{ headerShown: false }} />
             <Stack.Screen name="Viewall" component={Viewall} options={{ headerShown: false }} />
         </Stack.Navigator>
@@ -60,7 +60,7 @@ function BusinessStackScreen() {
 function AccountStackScreen() {
     return (
         <Stack.Navigator>
-            <Stack.Screen name="Account" component={Account} options={{ headerShown: false }} />
+            <Stack.Screen name="Account1" component={Account} options={{ headerShown: false }} />
             <Stack.Screen name="Termsconditions" component={Terms_conditions} options={{ headerShown: false }} />
             <Stack.Screen name="Privatepolicy" component={Privacy_Policy} options={{ headerShown: false }} />
             <Stack.Screen name="ContactUs" component={Contactus} options={{ headerShown: false }} />
@@ -140,7 +140,7 @@ const AppStack = () => {
 };
 
 const getTabBarVisibility = route => {
-    const routeName = getFocusedRouteNameFromRoute(route) ?? 'Home';
+    const routeName = getFocusedRouteNameFromRoute(route) ?? 'Home1';
     if (routeName == 'Frame') {
         return 'none';
     } else if (routeName == 'Viewall') {
@@ -149,7 +149,7 @@ const getTabBarVisibility = route => {
     return 'flex';
 };
 const getTabBarVisibilityGreeting = route => {
-    const routeName = getFocusedRouteNameFromRoute(route) ?? 'Greetings';
+    const routeName = getFocusedRouteNameFromRoute(route) ?? 'Greetings1';
     if (routeName == 'Frame') {
         return 'none';
     } else if (routeName == 'Viewall') {
@@ -158,7 +158,7 @@ const getTabBarVisibilityGreeting = route => {
     return 'flex';
 };
 const getTabBarVisibilityAccount = route => {
-    const routeName = getFocusedRouteNameFromRoute(route) ?? 'Account';
+    const routeName = getFocusedRouteNameFromRoute(route) ?? 'Account1';
     if (routeName == 'ContactUs') {
         return 'none';
     } else if (routeName == 'Privatepolicy') {
