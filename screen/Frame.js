@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import React, { useState } from 'react';
 import { Image, View, Text, ScrollView, FlatList} from 'react-native';
-import Header from '../components/Header';
+import Header2 from '../components/Header2';
 import Eflatlist from '../components/Eflatlist';
 import Editior from '../components/Editior';
 import Share from 'react-native-share';
@@ -37,7 +37,7 @@ const Frame = ({ route , navigation}) => {
 
     return (
         <View style={styles.fview}>
-            <Header inamel="chevron-back-outline" title="Edit Frame" isBack={() =>  navigation.goBack()} inamer1="arrow-down-outline" inamer2="arrow-redo-outline" preasename2={myCustomerShare} />
+            <Header2 inamel="chevron-back-outline" title="Edit Frame" isBack={() =>  navigation.goBack()} inamer1="arrow-down-outline" inamer2="arrow-redo-outline" preasename2={myCustomerShare} />
             <ScrollView >
                 <View style={styles.topmargin}>
                     <Eflatlist />

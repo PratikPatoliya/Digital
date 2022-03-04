@@ -10,13 +10,14 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     wrap: {
-        marginBottom:100,
+        marginBottom:150,
     },
     image: {
         height: 200, width: 150,
     },
     texttitle: {
         color: colors.white,
+        alignSelf:'center',
         top: -20,
     },
 });

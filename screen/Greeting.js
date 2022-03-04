@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import React from 'react';
 import { ScrollView, View } from 'react-native';
-import Header from '../components/Header';
+import Header2 from '../components/Header2';
 import Lable from '../components/Lable';
 import CatagoryImage from '../components/CategoryImage';
 import { gimg } from '../utils/GimgData';
@@ -11,7 +11,7 @@ import styles from '../styles/Greeting';
 const Greeting = (props) => {
     return (
         <View style={{ backgroundColor: colors.black }}>
-            <Header title="Greeting" />
+            <Header2 title="Greetings" />
             <ScrollView>
                 <View style={styles.container}>
                     {gimg && gimg.map((item) => {

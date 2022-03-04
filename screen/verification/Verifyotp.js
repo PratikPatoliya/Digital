@@ -25,7 +25,7 @@ const Verify = ({ navigation }) => {
                 <TextInput keyboardType='number-pad' ref={thirdInput} onChangeText={(text) => { setOtp({...otp ,3:text}); text ? fourInput.current.focus() : secondInput.current.focus() }} maxLength={1} style={{ flex: 0.1, fontSize: 15, borderWidth: 1, alignSelf: 'center', marginLeft: 8, paddingTop: 10, height: 40, paddingLeft: 15, marginRight: 8 }} />
                 <TextInput keyboardType='number-pad' ref={fourInput} onChangeText={(text) => { setOtp({...otp ,4:text}); !text && thirdInput.current.focus() }} maxLength={1} style={{ flex: 0.1, fontSize: 15, borderWidth: 1, alignSelf: 'center', marginLeft: 8, paddingTop: 10, height: 40, paddingLeft: 15, }} />
             </View>
-            <View style={{ marginBottom: height / 3, width: width / 1.24, marginTop: height / 12 }}>
+            <View style={{ marginBottom: height / 3, width: width / 1.7, marginTop: height / 12 }}>
                 {/* <Button title='Verify' style={{ borderRadius: 10 }} color={'#06a10e'} onPress={() => navigation.navigate('AppStack')} /> */}
                 <TouchableOpacity style={styles.tochable} onPress={() => navigation.navigate('AppStack')}>
                     <Text style={styles.tochabletext} >Verify</Text>

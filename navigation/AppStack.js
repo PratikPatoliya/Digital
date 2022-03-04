@@ -17,6 +17,8 @@ import Viewall from '../components/Viewall';
 import styles from '../styles/AppStack';
 import EditProfile from '../screen/EditProfile';
 import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
+import Privacy_Policy from '../screen/Privacy_Policy';
+import Terms_conditions from '../screen/Terms_conditions';
 
 
 
@@ -59,6 +61,8 @@ function AccountStackScreen() {
     return (
         <Stack.Navigator>
             <Stack.Screen name="Account" component={Account} options={{ headerShown: false }} />
+            <Stack.Screen name="Termsconditions" component={Terms_conditions} options={{ headerShown: false }} />
+            <Stack.Screen name="Privatepolicy" component={Privacy_Policy} options={{ headerShown: false }} />
             <Stack.Screen name="ContactUs" component={Contactus} options={{ headerShown: false }} />
             <Stack.Screen name="Editprofile" component={EditProfile} options={{ headerShown: false }} />
         </Stack.Navigator>
@@ -121,7 +125,7 @@ const AppStack = () => {
                     headerShown: false, tabBarIcon: (({ color, focused }) => focused ? <Icon name="layers-outline" size={23} style={{ color: color }} /> : <Icon name="layers-outline" size={20} style={{ color: color }} />),
                 })} />
             <Tab.Screen name="Downlods" component={DownlodsStackScreen} options={{ headerShown: false, tabBarIcon: (({ color, focused }) => focused ? <Icon name="download-outline" size={23} style={{ color: color }} /> : <Icon name="download-outline" size={20} style={{ color: color }} />) }} />
-            <Tab.Screen name="Business" component={BusinessStackScreen} options={{ headerShown: false, tabBarIcon: (({ color, focused }) => focused ? <Icon name="briefcase-outline" size={23} style={{ color: color }} /> : <Icon name="briefcase-outline" size={20} style={{ color: color }} />) }} />
+            {/* <Tab.Screen name="Business" component={BusinessStackScreen} options={{ headerShown: false, tabBarIcon: (({ color, focused }) => focused ? <Icon name="briefcase-outline" size={23} style={{ color: color }} /> : <Icon name="briefcase-outline" size={20} style={{ color: color }} />) }} /> */}
             <Tab.Screen name="Account" component={AccountStackScreen}
                 options={({ route }) => ({
                     tabBarStyle: {
@@ -156,6 +160,10 @@ const getTabBarVisibilityGreeting = route => {
 const getTabBarVisibilityAccount = route => {
     const routeName = getFocusedRouteNameFromRoute(route) ?? 'Account';
     if (routeName == 'ContactUs') {
+        return 'none';
+    } else if (routeName == 'Privatepolicy') {
+        return 'none';
+    } else if (routeName == 'Termsconditions') {
         return 'none';
     } else if (routeName == 'Editprofile') {
         return 'none';

@@ -15,13 +15,13 @@ const styles = StyleSheet.create({
         marginBottom: 12,
     },
     tinyLogo: {
-        width: width * 0.40,
-        height: height * 0.80,
+        width: width * 0.35,
+        height: height * 0.70,
         borderRadius: 10,
     },
     viewflate:{
-        marginLeft: width * 0.07,
-        marginRight: width * 0.05,
+        marginLeft: width * 0.12,
+        marginRight: width * 0.07,
         top: 20,
         marginBottom: 50,
     },

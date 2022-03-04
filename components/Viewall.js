@@ -2,7 +2,7 @@
 import React from 'react';
 import { View, FlatList, Image, ScrollView, TouchableOpacity } from 'react-native';
 import styles from '../styles/Viewall';
-import Header from './Header';
+import Header2 from './Header2';
 
 const Viewall = ({ route ,navigation }) => {
     const viewAllData = route.params.itemdata;
@@ -25,7 +25,8 @@ const Viewall = ({ route ,navigation }) => {
     return (
         <View style={styles.backgroung}>
             <ScrollView>
-                <Header title={route.params.headername.header} isBack={() =>  navigation.goBack()} inamel="chevron-back-outline" />
+                {/* <Header title={route.params.headername.header} isBack={() =>  navigation.goBack()} inamel="chevron-back-outline" /> */}
+                <Header2 title={route.params.headername.header} isBack={() =>  navigation.goBack()} inamel="chevron-back-outline" />
                 <View style={styles.viewflate}>
                     <FlatList data={viewAllData} renderItem={renderItem} numColumns={2} />
                 </View>

@@ -85,11 +85,11 @@ const Account = ({ navigation }) => {
                         <Text style={{ color: colors.white, fontSize: 15, marginTop: 0 }}>1234567890</Text>
                     </View>
                     <View style={{ margin: 10, marginTop: 30 }}>
-                        <TouchableOpacity style={{ margin: 7, marginLeft: 20, flexDirection: 'row' }}>
+                        <TouchableOpacity onPress={() => navigation.navigate('Termsconditions')} style={{ margin: 7, marginLeft: 20, flexDirection: 'row' }}>
                             <Icon name="notebook-outline" size={22} style={{ color: colors.white, marginRight: 6 }} />
                             <Text style={{ color: colors.white, fontSize:18 }}>Terms & Conditions</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={{ margin: 7, marginLeft: 20, flexDirection: 'row' }}>
+                        <TouchableOpacity onPress={() => navigation.navigate('Privatepolicy')} style={{ margin: 7, marginLeft: 20, flexDirection: 'row' }}>
                             <Icon name='lock' size={22} style={{ color: colors.white, marginRight: 6 }} />
                             <Text style={{ color: colors.white, fontSize:18 }}>Privacy Policy</Text>
                         </TouchableOpacity>

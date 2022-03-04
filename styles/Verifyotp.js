@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
         marginTop: height / 15,
     },
     tochable:{height:35,
-        borderRadius:3,
+        borderRadius:7,
         backgroundColor:"#06a10e",
         justifyContent:'center',
     },
