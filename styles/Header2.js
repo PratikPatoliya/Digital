@@ -40,7 +40,8 @@ const styles = StyleSheet.create({
     },
     righttxt : {
         color:colors.yellow,
-        fontSize:20,
+        fontSize:16,
+        top : Platform.OS === 'ios' ? 8 : 0,
     },
 });
 
