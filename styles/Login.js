@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable quotes */
 // eslint-disable-next-line eol-last
-import { StyleSheet, Dimensions } from "react-native";
+import { StyleSheet, Dimensions, Platform } from "react-native";
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
 import colors from '../utils/colors';
@@ -60,17 +60,17 @@ const styles = StyleSheet.create({
     buttonview: {
         marginBottom: height / 3,
         width: width / 1.24,
-        height:35,
-        marginTop: height / 12,
-        borderRadius:3,
-        backgroundColor:"#06a10e",
-        justifyContent:'center',
+        height: 35,
+        marginTop: Platform.OS === 'ios' ? height / 12 : height / 14,
+        borderRadius: 3,
+        backgroundColor: "#06a10e",
+        justifyContent: 'center',
     },
-    tochabletext:{
-        fontSize:15,
-        color:colors.white,
-        alignSelf:'center',
-        fontWeight:'600',
+    tochabletext: {
+        fontSize: 15,
+        color: colors.white,
+        alignSelf: 'center',
+        fontWeight: '600',
     },
 
 });
