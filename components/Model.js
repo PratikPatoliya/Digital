@@ -1,41 +1,39 @@
 /* eslint-disable prettier/prettier */
 import React, { useState } from 'react';
-import { Modal,Text, TouchableOpacity, View, Dimensions, Image } from 'react-native';
-import colors from '../utils/colors';
+import { Modal, Text, TouchableOpacity, View, Image } from 'react-native';
 import image from '../utils/image';
+import styles from '../styles/Model';
 
-const { width } = Dimensions.get('window');
-const height = width * 0.50;
 
 const Model = () => {
     const [model, setModel] = useState(false);
     return (
-        <View style={{justifyContent:'flex-end'}}>
+        <View style={styles.view1}>
             <Modal transparent={true} visible={!model}>
-                <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-                    <View style={{ backgroundColor: '#fff', padding: 20, width: width * 0.80, height: height * 2, borderRadius: 10 }}>
-                        <View style={{ width: width * 0.7, height: height, marginBottom: height * 0.1 ,alignItems:'center' }}>
+                <View style={styles.modalview}>
+                    <View style={styles.modalview2}>
+                        <View style={styles.modalview3}>
                             <Image
-                                style={{ width: width * 0.50, height: 200 , resizeMode: 'stretch' }}
+                                style={styles.modalimg}
                                 source={{ uri: image.internetConnection }}
                             />
                         </View>
-                        <View style={{ marginBottom: height * 0.04, alignItems: 'center' }}>
-                            <Text style={{ fontSize: 17, color:colors.black, fontWeight: '900' }}>NO INTERNET</Text>
+                        <View style={styles.modalheaderview}>
+                            <Text style={styles.modalheadertext}>NO INTERNET</Text>
                         </View>
-                        <View style={{ marginBottom: height * 0.06 }}>
-                            <Text style={{ fontSize: 14, textAlign: 'center', color: '#0f0f0f', fontWeight: '100' }}>Check your internet connection and try again.</Text>
+                        <View style={styles.modaltitleview}>
+                            <Text style={styles.modaltitletext}>Check your internet connection and try again.</Text>
                         </View>
-                        <View style={{ alignItems: 'center', marginBottom: height * 0.04 }}>
-                            <Text style={{ fontSize: 14, fontWeight: '700', color: 'black' }}>PLEASE TURN ON</Text>
+                        <View style={styles.modalwarningview}>
+                            <Text style={styles.modalwarningtext}>PLEASE TURN ON</Text>
                         </View>
-                        <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center' }}>
-                            <TouchableOpacity onPress={() => setModel(true)} style={{ backgroundColor: "#dbbc3d", alignItems: 'center', justifyContent: 'center', height: height * 0.18, borderRadius: 20, width: width * 0.18, }}>
+                        <View style={styles.modalbtnview}>
+                            <TouchableOpacity onPress={() => setModel(true)} style={styles.modalbuttouchable}>
                                 {/* <Icon name='wifi-outline' size={20}/> */}
-                                <Text style={{ alignItems: 'center', }}>Wifi</Text>
+                                <Text style={styles.modalbuttouchabletext}>Wifi</Text>
                             </TouchableOpacity>
-                            <TouchableOpacity onPress={() => setModel(true)} style={{ backgroundColor: "#dbbc3d", alignItems: 'center', justifyContent: 'center', height: height * 0.18, marginLeft: 20, borderRadius: 20, width: width * 0.28 }}>
-                                <Text style={{ alignItems: 'center', }}>Mobile data</Text>
+                            <TouchableOpacity onPress={() => setModel(true)} style={[styles.modalbuttouchable,styles.modalbuttouchablemobiledata]}>
+                                <Text style={styles.modalbuttouchabletext}>Mobile data</Text>
                             </TouchableOpacity>
                         </View>
                     </View>
@@ -43,7 +41,7 @@ const Model = () => {
             </Modal>
             <View>
                 <TouchableOpacity onPress={() => setModel(!model)}>
-                    <Text style={{color:colors.white}}>Show</Text>
+                    <Text style={styles.showbtm}>Show</Text>
                 </TouchableOpacity>
             </View>
         </View>

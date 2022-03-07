@@ -1,4 +1,7 @@
 /* eslint-disable prettier/prettier */
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-return-assign */
+/* eslint-disable eqeqeq */
 import React from 'react';
 import { Text, Platform } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -46,7 +49,7 @@ function GreetingsStackScreen() {
 function DownlodsStackScreen() {
     return (
         <Stack.Navigator>
-            <Stack.Screen name="Downlods" component={Downloads} options={{ headerShown: false }} />
+            <Stack.Screen name="Downlods1" component={Downloads} options={{ headerShown: false }} />
         </Stack.Navigator>
     );
 }
@@ -133,7 +136,7 @@ const AppStack = () => {
                         height: Platform.OS === 'ios' ? 100 : 65,
                     },
                     tabBarVisible: true,
-                    headerShown: false, tabBarIcon: (({ color, focused }) => focused ? <Icon name="person-outline" size={23} style={{ color: color }} /> : <Icon name="person-outline" size={20} style={{ color: color }} />)
+                    headerShown: false, tabBarIcon: (({ color, focused }) => focused ? <Icon name="person-outline" size={23} style={{ color: color }} /> : <Icon name="person-outline" size={20} style={{ color: color }} />),
                 })} />
         </Tab.Navigator>
     );

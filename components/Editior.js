@@ -3,17 +3,13 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react-native/no-inline-styles */
 import React, { useState } from 'react';
-import { Dimensions, StyleSheet, Text, TouchableOpacity, View,  Modal, SafeAreaView, FlatList, ScrollView } from 'react-native';
+import {Text, TouchableOpacity, View,  Modal, SafeAreaView, FlatList, ScrollView } from 'react-native';
 import colors from '../utils/colors';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import ImagePicker from 'react-native-image-crop-picker';
 import Slider from '@react-native-community/slider';
 import { BitMapColorPicker as ColorPicker } from 'react-native-bitmap-color-picker';
-
-
-
-const { width } = Dimensions.get('window');
-const height = width * 0.50;
+import styles from '../styles/Editior';
 
 const Data = [
     { id: 1, text: 'Avenir' },
@@ -32,20 +28,6 @@ const Data = [
     // { id: 14, text: 'DancingScript-Bold' },
     // { id: 15, text: 'DancingScript' },
     // { id: 16, text: 'Yanonekaffeesatz-ExtraLight' },
-    // { id: 17, text: '' },
-    // { id: 18, text: '' },
-    // { id: 19, text: '' },
-    // { id: 20, text: '' },
-    // { id: 21, text: '' },
-    // { id: 22, text: '' },
-    // { id: 23, text: '' },
-    // { id: 24, text: '' },
-    // { id: 25, text: '' },
-    // { id: 26, text: '' },
-    // { id: 27, text: '' },
-    // { id: 28, text: '' },
-    // { id: 29, text: '' },
-    // { id: 30, text: '' },
 ];
 
 const Editior = (props) => {
@@ -62,8 +44,6 @@ const Editior = (props) => {
 
     function selectImage() {
         ImagePicker.openPicker({
-            // width: 300,
-            // height: 400,
             compressImageMaxWidth: 300,
             compressImageMaxHeight: 400,
             compressImageQuality: 0.7,
@@ -96,8 +76,8 @@ const Editior = (props) => {
     const renderItem = ({ item }) => {
         return (
             <View>
-                <TouchableOpacity style={{borderWidth:1,borderColor:colors.white ,margin:4 ,borderRadius:4 }}>
-                    <Text style={{ color: colors.white ,fontFamily:`${item.text}`,padding:5,width:width * 0.275 ,height:height * 0.20 ,alignSelf:'center',justifyContent:'center'}}>Avenir</Text>
+                <TouchableOpacity style={styles.renderitem}>
+                    <Text style={[{fontFamily:`${item.text}`},styles.renderitemfont]}>Avenir</Text>
                 </TouchableOpacity>
             </View>
         );
@@ -107,17 +87,17 @@ const Editior = (props) => {
 
             {/* image  */}
             <Modal transparent={true} visible={model}>
-                <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-                    <View style={{ backgroundColor: '#fff', padding: 15, width: width * 0.80, height: height * 0.9, borderRadius: 4, justifyContent: 'space-between' }}>
-                        <Text style={{ fontSize: 17, color: colors.black }}>Select File from</Text>
-                        <TouchableOpacity onPress={selectImage} style={{ backgroundColor: colors.white, justifyContent: 'center' }}>
-                            <Text style={{ fontSize: 15, padding: 4 }}>Choose Image</Text>
+                <View style={styles.imageview1}>
+                    <View style={styles.imageview2}>
+                        <Text style={styles.imgtextheader}>Select File from</Text>
+                        <TouchableOpacity onPress={selectImage} style={styles.imgtouchable}>
+                            <Text style={styles.imgtext}>Choose Image</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity onPress={selectCamera} style={{ backgroundColor: colors.white, justifyContent: 'center' }}>
-                            <Text style={{ fontSize: 15, padding: 4 }}>Capture Image</Text>
+                        <TouchableOpacity onPress={selectCamera} style={styles.imgtouchable}>
+                            <Text style={styles.imgtext}>Capture Image</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity onPress={() => setModel(!model)} style={{ backgroundColor: colors.white, justifyContent: 'center' }}>
-                            <Text style={{ fontSize: 15, padding: 4 }}>Cancel</Text>
+                        <TouchableOpacity onPress={() => setModel(!model)} style={styles.imgtouchable}>
+                            <Text style={styles.imgtext}>Cancel</Text>
                         </TouchableOpacity>
                     </View>
                 </View>
@@ -126,17 +106,17 @@ const Editior = (props) => {
             {/* font Slider */}
 
             <Modal transparent={true} visible={slider}>
-                <View style={{ flex: 1, alignItems: 'center', justifyContent: 'flex-end' }}>
-                    <View style={{ backgroundColor: colors.black, padding: 15, width: width, height: 150, borderRadius: 4, justifyContent: 'space-between' }}>
-                        <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                            <Text style={{ fontSize: 17, color: colors.white }}>Change text size</Text>
-                            <TouchableOpacity onPress={() => setSlider(!slider)} style={{ backgroundColor: colors.black, justifyContent: 'center' }}>
+                <View style={styles.fontslidermainview}>
+                    <View style={styles.fontsliderview1}>
+                        <View style={styles.fontsliderview2}>
+                            <Text style={styles.fontsliderheader}>Change text size</Text>
+                            <TouchableOpacity onPress={() => setSlider(!slider)} style={styles.fontslidertouchable}>
                                 <Text><Icon name="close" size={30} color={colors.white} /></Text>
                             </TouchableOpacity>
                         </View>
-                        <SafeAreaView style={{ flexDirection: 'row', bottom: 30 }}>
+                        <SafeAreaView style={styles.fontslidersafearea}>
                             <Slider
-                                style={{ width: width * 0.85, height: 33 }}
+                                style={styles.fontsliderslider}
                                 minimumValue={0}
                                 maximumValue={100}
                                 minimumTrackTintColor="#fff"
@@ -146,7 +126,7 @@ const Editior = (props) => {
                                     (sliderValue) => setSliderValue(sliderValue)
                                 }
                             />
-                            <Text style={{ color: colors.white, fontSize: 20 }}>
+                            <Text style={styles.fontslidersafeareatext}>
                                 {sliderValue.toFixed()}
                             </Text>
                         </SafeAreaView>
@@ -157,22 +137,22 @@ const Editior = (props) => {
             {/* colors */}
 
             <Modal transparent={true} visible={colormodel}>
-                <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-                    <View style={{ backgroundColor: colors.white, padding: 15, width: width * 0.8, height: height * 2, borderRadius: 2, justifyContent: 'space-between' }}>
-                        <Text style={{ color: oldcolor, fontSize: 20 }} >Choose color</Text>
-                        <View style={{ alignItems: 'center', borderRadius: 200 }}>
+                <View style={styles.colorsview}>
+                    <View style={styles.colorview1}>
+                        <Text style={[{ color: oldcolor},styles.colorheader]}>Choose color</Text>
+                        <View style={styles.colorview2}>
                             <ColorPicker
                                 oldColor={oldcolor}
                                 onColorChange={changeColor}
-                                style={{ width: width * 0.7, height: height * 1.4 }}
+                                style={styles.colorpicker}
                             />
                         </View>
-                        <View style={{ flexDirection: 'row', justifyContent: 'flex-end' }}>
-                            <TouchableOpacity onPress={() => setColormodel(!colormodel)} style={{ marginRight: 20 }}>
-                                <Text style={{ fontSize: 17, color: colors.black }}>cancel</Text>
+                        <View style={styles.colorview3}>
+                            <TouchableOpacity onPress={() => setColormodel(!colormodel)} style={styles.colortouchable1}>
+                                <Text style={styles.colortouchabletext}>cancel</Text>
                             </TouchableOpacity>
-                            <TouchableOpacity onPress={() => setOldcolor(oldcolor)} style={{ marginRight: 10 }}>
-                                <Text style={{ fontSize: 17, color: colors.black }}>ok</Text>
+                            <TouchableOpacity onPress={() => setOldcolor(oldcolor)} style={styles.colortouchable2}>
+                                <Text style={styles.colortouchabletext}>ok</Text>
                             </TouchableOpacity>
                         </View>
                     </View>
@@ -182,11 +162,11 @@ const Editior = (props) => {
             {/* font style */}
 
             <Modal transparent={true} visible={fontmodel}>
-                <View style={{ flex: 1, alignItems: 'center', justifyContent: 'flex-end' }}>
-                    <View style={{ backgroundColor: colors.black, padding: 15, width: width, height: 270, borderRadius: 4}}>
-                        <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                            <Text style={{ fontSize: 17, color: colors.white }}>Select font style</Text>
-                            <TouchableOpacity onPress={() => setFontmodel(!fontmodel)} style={{ backgroundColor: colors.black, justifyContent: 'center' }}>
+                <View style={styles.fontstyleview}>
+                    <View style={styles.fontstyleview1}>
+                        <View style={styles.fontstyleview2}>
+                            <Text style={styles.fontstyleheader}>Select font style</Text>
+                            <TouchableOpacity onPress={() => setFontmodel(!fontmodel)} style={styles.fontstyletouchable}>
                                 <Text><Icon name="check" size={30} color={colors.white} /></Text>
                             </TouchableOpacity>
                         </View>
@@ -198,8 +178,8 @@ const Editior = (props) => {
             </Modal>
 
 
-            <View style={{ backgroundColor: colors.white }}>
-                <View style={{ flex: 1, flexDirection: 'row', height: 50 }}>
+            <View style={styles.mainview}>
+                <View style={styles.mainview1}>
                     <TouchableOpacity style={[styles.flex, styles.top]}>
                         <Text>
                             <Icon name="title" size={32} color={colors.black} />
@@ -233,13 +213,3 @@ const Editior = (props) => {
 };
 
 export default Editior;
-
-const styles = StyleSheet.create({
-    flex: {
-        flex: 1,
-        alignItems: 'center',
-    },
-    top: {
-        top: 10,
-    },
-});

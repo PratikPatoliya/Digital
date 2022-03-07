@@ -20,6 +20,7 @@
     "react-native-drag-text-editor": "^0.0.6",
     "react-native-element-dropdown": "^1.7.1",
     "react-native-image-crop-picker": "^0.37.3",
+    "react-native-image-slider": "^2.0.3",
     "react-native-image-swiper": "^0.0.8",
     "react-native-otp-inputs": "^7.1.1",
     "react-native-paper": "^4.11.2",

@@ -6,6 +6,8 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import colors from '../utils/colors';
 import ImagePicker from 'react-native-image-crop-picker';
 import image from '../utils/image';
+import Share from 'react-native-share';
+
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
 
@@ -50,6 +52,21 @@ const Account = ({ navigation }) => {
         });
         setModel(false);
     }
+
+    const myCustomerShare = async () => {
+        const shareOption = {
+            message: `Hello Customer
+        Digital App
+        maaapnu savagat che`,
+        };
+        try {
+            const ShareResponse = await Share.open(shareOption);
+            console.log(JSON.stringify(ShareResponse));
+        }
+        catch (error) {
+            console.log('Error => ', error);
+        }
+    };
 
     return (
         <View>
@@ -97,7 +114,7 @@ const Account = ({ navigation }) => {
                             <Icon name='cellphone-message' size={22} style={{ color: colors.white, marginRight: 6 }} />
                             <Text style={{ color: colors.white, fontSize:18 }}>Contact US</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={{ margin: 7, marginLeft: 20, flexDirection: 'row' }}>
+                        <TouchableOpacity onPress={myCustomerShare} style={{ margin: 7, marginLeft: 20, flexDirection: 'row' }}>
                             <Icon name='share-all' size={22} style={{ color: colors.white, marginRight: 6 }} />
                             <Text style={{ color: colors.white, fontSize:18 }}>Share</Text>
                         </TouchableOpacity>

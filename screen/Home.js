@@ -4,7 +4,9 @@ import { ScrollView, View ,Linking} from 'react-native';
 import { FAB } from 'react-native-paper';
 import CatagoryImage from '../components/CategoryImage';
 import Header from '../components/Header';
+import HomeSlider from '../components/HomeSlider';
 import Lable from '../components/Lable';
+import Model from '../components/Model';
 import styles from '../styles/Home';
 import { img } from '../utils/Imgdata';
 
@@ -38,7 +40,9 @@ const Home = (props) => {
   return (
     <View style={styles.homeBackground}>
       <Header title="Home"  {...props} />
+        <Model />
       <ScrollView>
+        <HomeSlider />
         <View style={styles.homeview}>
           {
             img && img.map((item) => {
