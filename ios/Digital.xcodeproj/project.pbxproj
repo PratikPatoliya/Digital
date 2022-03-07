@@ -12,6 +12,8 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		376ECD2627D60C68003C5158 /* BhuTukaExpandedOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 376ECD2527D60C68003C5158 /* BhuTukaExpandedOne-Regular.ttf */; };
+		376ECD2A27D60CAD003C5158 /* Hubballi-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 376ECD2927D60CAD003C5158 /* Hubballi-Regular.ttf */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		B71483CA5A3D835473102CE3 /* libPods-Digital.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2653C3798837909CC572CC8 /* libPods-Digital.a */; };
 /* End PBXBuildFile section */
@@ -41,6 +43,8 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Digital/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Digital/main.m; sourceTree = "<group>"; };
 		1EBDC9A9EB2E4558882FF37B /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
+		376ECD2527D60C68003C5158 /* BhuTukaExpandedOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "BhuTukaExpandedOne-Regular.ttf"; path = "../../Downloads/BhuTuka_Expanded_One/BhuTukaExpandedOne-Regular.ttf"; sourceTree = "<group>"; };
+		376ECD2927D60CAD003C5158 /* Hubballi-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hubballi-Regular.ttf"; path = "../../Downloads/Hubballi/Hubballi-Regular.ttf"; sourceTree = "<group>"; };
 		400E2C18E5F04F548EB3BB5A /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
 		49D827AA4311487E82E604F1 /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Solid.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf"; sourceTree = "<group>"; };
 		51109B1201784B13961DAFDB /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
@@ -166,6 +170,8 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				376ECD2927D60CAD003C5158 /* Hubballi-Regular.ttf */,
+				376ECD2527D60C68003C5158 /* BhuTukaExpandedOne-Regular.ttf */,
 				13B07FAE1A68108700A75B9A /* Digital */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* DigitalTests */,
@@ -282,6 +288,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				376ECD2A27D60CAD003C5158 /* Hubballi-Regular.ttf in Resources */,
+				376ECD2627D60C68003C5158 /* BhuTukaExpandedOne-Regular.ttf in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 			);

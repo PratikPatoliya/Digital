@@ -12,22 +12,8 @@ import { BitMapColorPicker as ColorPicker } from 'react-native-bitmap-color-pick
 import styles from '../styles/Editior';
 
 const Data = [
-    { id: 1, text: 'Avenir' },
-    { id: 2, text: 'monospace' },
-    { id: 3, text: 'serif' },
-    { id: 4, text: 'Roboto' },
-    { id: 5, text: 'sans-serif' },
-    { id: 6, text: 'sans-serif-light' },
-    { id: 7, text: 'sans-serif-thin' },
-    { id: 8, text: 'sans-serif-condensed' },
-    { id: 9, text: 'sans-serif-medium' },
-    { id: 10, text: 'Arial' },
-    // { id: 11, text: 'Helvetica-Bold' },
-    // { id: 12, text: 'HelveticaNeue-Italic' },
-    // { id: 13, text: 'DancingScript-Italic' },
-    // { id: 14, text: 'DancingScript-Bold' },
-    // { id: 15, text: 'DancingScript' },
-    // { id: 16, text: 'Yanonekaffeesatz-ExtraLight' },
+    { id: 1, text: 'Hubballi-Regular' },
+    { id: 2, text: 'BhuTukaExpandedOne-Regular' },
 ];
 
 const Editior = (props) => {
