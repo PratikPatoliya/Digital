@@ -8,7 +8,6 @@ import Login from '../screen/verification/Login';
 import Verify from '../screen/verification/Verifyotp';
 import AppStack from './AppStack';
 
-
 const Stack = createNativeStackNavigator();
 
 function Auth() {
@@ -20,7 +19,6 @@ function Auth() {
     </Stack.Navigator>
   );
 }
-
 
 function Routes() {
     return (

@@ -25,7 +25,6 @@ const Viewall = ({ route ,navigation }) => {
     return (
         <View style={styles.backgroung}>
             <ScrollView>
-                {/* <Header title={route.params.headername.header} isBack={() =>  navigation.goBack()} inamel="chevron-back-outline" /> */}
                 <Header2 title={route.params.headername.header} isBack={() =>  navigation.goBack()} inamel="chevron-back-outline" />
                 <View style={styles.viewflate}>
                     <FlatList data={viewAllData} renderItem={renderItem} numColumns={2} />

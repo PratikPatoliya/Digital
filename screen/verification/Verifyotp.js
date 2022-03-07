@@ -1,11 +1,10 @@
 /* eslint-disable prettier/prettier */
 import React, { useRef, useState } from 'react';
-import { Button, Text, TextInput, View, Dimensions, Image, TouchableOpacity } from 'react-native';
+import { Text, TextInput, View, Dimensions, Image, TouchableOpacity } from 'react-native';
 import styles from '../../styles/Verifyotp';
 import image from '../../utils/image';
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
-
 
 const Verify = ({ navigation }) => {
     const firstInput = useRef();
@@ -26,7 +25,6 @@ const Verify = ({ navigation }) => {
                 <TextInput keyboardType='number-pad' ref={fourInput} onChangeText={(text) => { setOtp({...otp ,4:text}); !text && thirdInput.current.focus() }} maxLength={1} style={{ flex: 0.1, fontSize: 15, borderWidth: 1, alignSelf: 'center', marginLeft: 8, paddingTop: 10, height: 40, paddingLeft: 15, }} />
             </View>
             <View style={{ marginBottom: height / 3, width: width / 1.7, marginTop: height / 12 }}>
-                {/* <Button title='Verify' style={{ borderRadius: 10 }} color={'#06a10e'} onPress={() => navigation.navigate('AppStack')} /> */}
                 <TouchableOpacity style={styles.tochable} onPress={() => navigation.navigate('AppStack')}>
                     <Text style={styles.tochabletext} >Verify</Text>
                 </TouchableOpacity>

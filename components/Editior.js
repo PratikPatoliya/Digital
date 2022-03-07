@@ -1,7 +1,6 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable no-shadow */
 /* eslint-disable no-unused-vars */
-/* eslint-disable react-native/no-inline-styles */
 import React, { useState } from 'react';
 import {Text, TouchableOpacity, View,  Modal, SafeAreaView, FlatList, ScrollView } from 'react-native';
 import colors from '../utils/colors';
@@ -70,7 +69,6 @@ const Editior = (props) => {
     };
     return (
         <View>
-
             {/* image  */}
             <Modal transparent={true} visible={model}>
                 <View style={styles.imageview1}>
@@ -88,9 +86,7 @@ const Editior = (props) => {
                     </View>
                 </View>
             </Modal>
-
             {/* font Slider */}
-
             <Modal transparent={true} visible={slider}>
                 <View style={styles.fontslidermainview}>
                     <View style={styles.fontsliderview1}>
@@ -144,9 +140,7 @@ const Editior = (props) => {
                     </View>
                 </View>
             </Modal>
-
             {/* font style */}
-
             <Modal transparent={true} visible={fontmodel}>
                 <View style={styles.fontstyleview}>
                     <View style={styles.fontstyleview1}>
@@ -162,8 +156,6 @@ const Editior = (props) => {
                     </View>
                 </View>
             </Modal>
-
-
             <View style={styles.mainview}>
                 <View style={styles.mainview1}>
                     <TouchableOpacity style={[styles.flex, styles.top]}>

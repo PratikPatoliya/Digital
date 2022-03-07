@@ -3,15 +3,12 @@ import React, { useState } from 'react';
 import { StyleSheet, View, TouchableOpacity, Image, Dimensions, TextInput, Text, Platform } from 'react-native';
 import colors from '../utils/colors';
 import Header2 from '../components/Header2';
-
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
-
 
 const EditProfile = ({ navigation }) => {
   const [model, setModel] = useState(false);
   const [imageSource, setImageSource] = useState('https://www.clipartmax.com/png/middle/349-3496330_download-person-icon-orange-clipart-computer-icons-user-icon-orange-png.png');
-
   return (
     <View style={{ backgroundColor: colors.black, height }}>
       <Header2 inamel="chevron-back-outline" title="Edit Profile" isBack={() => navigation.goBack()} rightname="Save" />

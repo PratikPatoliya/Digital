@@ -29,7 +29,6 @@ const Model = () => {
                         </View>
                         <View style={styles.modalbtnview}>
                             <TouchableOpacity onPress={() => setModel(true)} style={styles.modalbuttouchable}>
-                                {/* <Icon name='wifi-outline' size={20}/> */}
                                 <Text style={styles.modalbuttouchabletext}>Wifi</Text>
                             </TouchableOpacity>
                             <TouchableOpacity onPress={() => setModel(true)} style={[styles.modalbuttouchable,styles.modalbuttouchablemobiledata]}>

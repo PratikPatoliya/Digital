@@ -1,8 +1,4 @@
 /* eslint-disable prettier/prettier */
-/* eslint-disable quotes */
-/* eslint-disable no-unused-vars */
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable react-hooks/rules-of-hooks */
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, Dimensions, TouchableOpacity } from 'react-native';
 import { DragTextEditor } from 'react-native-drag-text-editor';
@@ -32,13 +28,11 @@ const seting = () => {
       defLineHeight: 15,
       defFontSize: 15,
     };
-    // arrayTextData.push([DEFS]);
     setArrayTextData([...arrayTextData, DEFS]);
   }
   const removeText = (c) => {
     const filtered = arrayTextData.filter(x => x.defTextID !== c);
     console.warn("filtered", filtered);
-    //  console.log("filtered",filtered);
     setArrayTextData(filtered);
     setTextID(arrayTextData.length);
   };

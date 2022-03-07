@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable eol-last */
 import React from 'react';
-import { StyleSheet, Text, View, Image, Dimensions,TouchableHighlight } from 'react-native';
+import { StyleSheet, View, Image, Dimensions } from 'react-native';
 import colors from '../utils/colors';
 import ImageSlider from 'react-native-image-slider';
 
@@ -23,29 +23,10 @@ const HomeSlider = () => {
                 autoPlayWithInterval={2000}
                 images={images}
                 customSlide={({ index, item, style, width }) => (
-                    // It's important to put style here because it's got offset inside
                     <View key={index} style={[style, styles.customSlide]}>
                         <Image source={{ uri: item }} style={styles.customImage} />
                     </View>
                 )}
-            //   customButtons={(position, move) => (
-            //     <View style={styles.buttons}>
-            //       {images.map((image, index) => {
-            //         return (
-            //           <TouchableHighlight
-            //             key={index}
-            //             underlayColor="#ccc"
-            //             onPress={() => move(index)}
-            //             style={styles.button}
-            //           >
-            //             <Text style={position === index && styles.buttonSelected }>
-            //               {index + 1}
-            //             </Text>
-            //           </TouchableHighlight>
-            //         );
-            //       })}
-            //     </View>
-            //   )}
             />
         </View>
     );

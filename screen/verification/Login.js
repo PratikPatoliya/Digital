@@ -1,10 +1,8 @@
 /* eslint-disable prettier/prettier */
-/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import { Text, TextInput, View, Image,TouchableOpacity } from 'react-native';
 import styles from '../../styles/Login';
 import image from '../../utils/image';
-
 
 const Login = ({ navigation }) => {
     return (
@@ -18,12 +16,9 @@ const Login = ({ navigation }) => {
                 <Text style={styles.viewtext}>+91</Text>
                 <TextInput dataDetectorTypes={'phoneNumber'} maxLength={10} keyboardType={'numeric'} backgroundColor="#c9f2cb" style={styles.textinput} />
             </View>
-            {/* <View style={styles.buttonview}> */}
-                {/* <Button title="Send" style={{ borderRadius: 10 }} color={'#06a10e'} text={'#06a10e'} onPress={() => navigation.navigate('verify')} /> */}
                 <TouchableOpacity style={styles.buttonview} onPress={() => navigation.navigate('verify')}>
                     <Text style={styles.tochabletext} >Send</Text>
                 </TouchableOpacity>
-            {/* </View> */}
         </View>
     );
 };

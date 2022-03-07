@@ -5,10 +5,9 @@ import Header2 from '../components/Header2';
 import image from '../utils/image';
 import styles from '../styles/Download';
 
-const Download = ({navigation}) => {
+const Download = () => {
     return (
         <View>
-            {/* <Header title="My Downloads" /> */}
             <Header2 title="My Downloads"/>
             <View style={styles.container}>
                 <View style={styles.wrap}>

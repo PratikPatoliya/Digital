@@ -1,5 +1,4 @@
 /* eslint-disable prettier/prettier */
-/* eslint-disable react-native/no-inline-styles */
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, Dimensions, TouchableOpacity, Image, ScrollView, Modal,Platform } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -14,12 +13,8 @@ const height = Dimensions.get('window').height;
 const Account = ({ navigation }) => {
     const [model, setModel] = useState(false);
     const [imageSource, setImageSource] = useState(image.userImage);
-
-
     function selectImage() {
         ImagePicker.openPicker({
-            // width: 300,
-            // height: 400,
             compressImageMaxWidth: 300,
             compressImageMaxHeight: 400,
             compressImageQuality: 0.7,
@@ -30,8 +25,6 @@ const Account = ({ navigation }) => {
             includeBase64: true,
             mediaType: 'photo',
         }).then(image => {
-            // console.log(image);
-            // console.warn(image.path);
             setImageSource(image.path);
         });
         setModel(false);
@@ -46,8 +39,6 @@ const Account = ({ navigation }) => {
             freeStyleCropEnabled: true,
             includeBase64: true,
         }).then(image => {
-            // console.log(image);
-            // console.warn(image.path);
             setImageSource(image.path);
         });
         setModel(false);
@@ -55,9 +46,7 @@ const Account = ({ navigation }) => {
 
     const myCustomerShare = async () => {
         const shareOption = {
-            message: `Hello Customer
-        Digital App
-        maaapnu savagat che`,
+            message: `Hey! Customer Welcome to Digital Customer App`,
         };
         try {
             const ShareResponse = await Share.open(shareOption);

@@ -1,7 +1,4 @@
 /* eslint-disable prettier/prettier */
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-return-assign */
-/* eslint-disable eqeqeq */
 import React from 'react';
 import { Text, Platform } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -22,9 +19,6 @@ import EditProfile from '../screen/EditProfile';
 import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
 import Privacy_Policy from '../screen/Privacy_Policy';
 import Terms_conditions from '../screen/Terms_conditions';
-
-
-
 
 const Stack = createNativeStackNavigator();
 
@@ -71,7 +65,6 @@ function AccountStackScreen() {
         </Stack.Navigator>
     );
 }
-
 
 const Tab = createBottomTabNavigator();
 const AppStack = () => {
