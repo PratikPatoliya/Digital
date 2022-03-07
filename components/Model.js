@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import React, { useState } from 'react';
-import { Modal, Text, TouchableOpacity, View, Image } from 'react-native';
+import { Modal, Text, TouchableOpacity, View, Image, Linking } from 'react-native';
 import image from '../utils/image';
 import styles from '../styles/Model';
 
@@ -28,10 +28,10 @@ const Model = () => {
                             <Text style={styles.modalwarningtext}>PLEASE TURN ON</Text>
                         </View>
                         <View style={styles.modalbtnview}>
-                            <TouchableOpacity onPress={() => setModel(true)} style={styles.modalbuttouchable}>
+                            <TouchableOpacity onPress={() => Linking.openURL("App-Prefs:root=WIFI")} style={styles.modalbuttouchable}>
                                 <Text style={styles.modalbuttouchabletext}>Wifi</Text>
                             </TouchableOpacity>
-                            <TouchableOpacity onPress={() => setModel(true)} style={[styles.modalbuttouchable,styles.modalbuttouchablemobiledata]}>
+                            <TouchableOpacity onPress={() => Linking.openSettings()} style={[styles.modalbuttouchable,styles.modalbuttouchablemobiledata]}>
                                 <Text style={styles.modalbuttouchabletext}>Mobile data</Text>
                             </TouchableOpacity>
                         </View>

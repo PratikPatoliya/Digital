@@ -1,6 +1,4 @@
 /* eslint-disable prettier/prettier */
-/* eslint-disable no-shadow */
-/* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import {Text, TouchableOpacity, View,  Modal, SafeAreaView, FlatList, ScrollView } from 'react-native';
 import colors from '../utils/colors';
