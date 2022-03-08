@@ -69,7 +69,7 @@ const Editior = props => {
       <View>
         <TouchableOpacity style={styles.renderitem}>
           <Text style={[{fontFamily: `${item.text}`}, styles.renderitemfont]}>
-            Avenir
+            DIGITAL APP
           </Text>
         </TouchableOpacity>
       </View>

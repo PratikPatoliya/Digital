@@ -1,7 +1,6 @@
 /* eslint-disable prettier/prettier */
 import React, {useState} from 'react';
 import {
-  StyleSheet,
   Text,
   View,
   Dimensions,
@@ -9,13 +8,13 @@ import {
   Image,
   ScrollView,
   Modal,
-  Platform,
 } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import colors from '../utils/colors';
 import ImagePicker from 'react-native-image-crop-picker';
 import image from '../utils/image';
 import Share from 'react-native-share';
+import AccountModule from '../components/AccountModule';
+import styles from '../styles/Account';
 
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
@@ -69,33 +68,26 @@ const Account = ({navigation}) => {
   return (
     <View>
       <Modal transparent={true} visible={model}>
-        <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+        <View style={styles.topContainer}>
           <View
-            style={{
-              backgroundColor: '#fff',
-              padding: 15,
-              width: width * 0.8,
-              height: height * 0.24,
-              borderRadius: 4,
-              justifyContent: 'space-between',
-            }}>
+            style={styles.modelContainer}>
             <Text style={{fontSize: 17, color: colors.black}}>
               Select File from
             </Text>
             <TouchableOpacity
               onPress={selectImage}
               style={{backgroundColor: colors.white, justifyContent: 'center'}}>
-              <Text style={{fontSize: 15, padding: 4}}>Choose Image</Text>
+              <Text style={styles.titleTxt}>Choose Image</Text>
             </TouchableOpacity>
             <TouchableOpacity
               onPress={selectCamera}
               style={{backgroundColor: colors.white, justifyContent: 'center'}}>
-              <Text style={{fontSize: 15, padding: 4}}>Capture Image</Text>
+              <Text style={styles.titleTxt}>Capture Image</Text>
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => setModel(!model)}
               style={{backgroundColor: colors.white, justifyContent: 'center'}}>
-              <Text style={{fontSize: 15, padding: 4}}>Cancel</Text>
+              <Text style={styles.titleTxt}>Cancel</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -123,73 +115,34 @@ const Account = ({navigation}) => {
             </Text>
           </View>
           <View style={{margin: 10, marginTop: 30}}>
-            <TouchableOpacity
-              onPress={() => navigation.navigate('Termsconditions')}
-              style={{margin: 7, marginLeft: 20, flexDirection: 'row'}}>
-              <Icon
-                name="notebook-outline"
-                size={22}
-                style={{color: colors.white, marginRight: 6}}
-              />
-              <Text style={{color: colors.white, fontSize: 18}}>
-                Terms & Conditions
-              </Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              onPress={() => navigation.navigate('Privatepolicy')}
-              style={{margin: 7, marginLeft: 20, flexDirection: 'row'}}>
-              <Icon
-                name="lock"
-                size={22}
-                style={{color: colors.white, marginRight: 6}}
-              />
-              <Text style={{color: colors.white, fontSize: 18}}>
-                Privacy Policy
-              </Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              onPress={() => navigation.navigate('ContactUs')}
-              style={{margin: 7, marginLeft: 20, flexDirection: 'row'}}>
-              <Icon
-                name="cellphone-message"
-                size={22}
-                style={{color: colors.white, marginRight: 6}}
-              />
-              <Text style={{color: colors.white, fontSize: 18}}>
-                Contact US
-              </Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              onPress={myCustomerShare}
-              style={{margin: 7, marginLeft: 20, flexDirection: 'row'}}>
-              <Icon
-                name="share-all"
-                size={22}
-                style={{color: colors.white, marginRight: 6}}
-              />
-              <Text style={{color: colors.white, fontSize: 18}}>Share</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              onPress={() => navigation.navigate('login')}
-              style={{margin: 7, marginLeft: 20, flexDirection: 'row'}}>
-              <Icon
-                name="logout"
-                size={22}
-                style={{color: colors.white, marginRight: 6}}
-              />
-              <Text style={{color: colors.white, fontSize: 18}}>Logout</Text>
-            </TouchableOpacity>
+            <AccountModule
+              title="Terms & Conditions"
+              iconName="notebook-outline"
+              onClick={() => navigation.navigate('Termsconditions')}
+            />
+            <AccountModule
+              title="Privacy Policy"
+              iconName="lock"
+              onClick={() => navigation.navigate('Privatepolicy')}
+            />
+            <AccountModule
+              title="Contact US"
+              iconName="cellphone-message"
+              onClick={() => navigation.navigate('ContactUs')}
+            />
+            <AccountModule
+              title="Share"
+              iconName="share-all"
+              onClick={myCustomerShare}
+            />
+            <AccountModule
+              title="Logout"
+              iconName="logout"
+              onClick={() => navigation.navigate('login')}
+            />
           </View>
           <View style={{alignItems: 'center'}}>
-            <Text
-              style={{
-                color: colors.yellow,
-                marginTop: height * 0.15,
-                fontWeight: '200',
-                fontSize: 20,
-              }}>
-              Designed by HOME Tech
-            </Text>
+            <Text style={styles.descriptionTxt}>Designed by HOME Tech</Text>
           </View>
         </ScrollView>
       </View>
@@ -199,17 +152,4 @@ const Account = ({navigation}) => {
 
 export default Account;
 
-const styles = StyleSheet.create({
-  title: {
-    alignItems: 'flex-end',
-    justifyContent: 'center',
-    backgroundColor: colors.black,
-    paddingEnd: Platform.OS === 'ios' ? 36 : 18,
-    paddingTop: Platform.OS === 'ios' ? 50 : 10,
-  },
-  titlefont: {
-    fontSize: 16,
-    fontWeight: '800',
-    color: colors.yellow,
-  },
-});
+
