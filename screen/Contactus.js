@@ -4,6 +4,7 @@ import { View, Image } from 'react-native';
 import Header2 from '../components/Header2';
 import styles from '../styles/ContactUs';
 import image from '../utils/image';
+import Editform from './Editform';
 
 const Contactus = (props) => {
     return (
@@ -12,6 +13,7 @@ const Contactus = (props) => {
             <View style={styles.container}>
                 <View style={styles.wrap}>
                     <Image source={{ uri: image.contactUs }} style={styles.image} />
+                    <Editform />
                 </View>
             </View>
         </View>

@@ -154,6 +154,7 @@ const Editior = (props) => {
                     </View>
                 </View>
             </Modal>
+
             <View style={styles.mainview}>
                 <View style={styles.mainview1}>
                     <TouchableOpacity style={[styles.flex, styles.top]}>

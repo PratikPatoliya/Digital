@@ -3,10 +3,19 @@ import React, { useState } from 'react';
 import { Modal, Text, TouchableOpacity, View, Image, Linking } from 'react-native';
 import image from '../utils/image';
 import styles from '../styles/Model';
-
+import { useNetInfo } from '@react-native-community/netinfo';
 
 const Model = () => {
-    const [model, setModel] = useState(false);
+    const netinfo = useNetInfo();
+    const [model, setModel] = useState(!netinfo.isConnected);
+
+    const mobile = () => {
+        Linking.openSettings();
+        setModel(netinfo.isConnected);
+    }
+    console.log("netinfo", netinfo);
+    console.log("isWifiEnabled", netinfo.isWifiEnabled);
+    console.log("isConnected", netinfo.isConnected);
     return (
         <View style={styles.view1}>
             <Modal transparent={true} visible={!model}>
@@ -28,10 +37,10 @@ const Model = () => {
                             <Text style={styles.modalwarningtext}>PLEASE TURN ON</Text>
                         </View>
                         <View style={styles.modalbtnview}>
-                            <TouchableOpacity onPress={() => Linking.openURL("App-Prefs:root=WIFI")} style={styles.modalbuttouchable}>
+                            <TouchableOpacity onPress={() => setModel(true)} style={styles.modalbuttouchable}>
                                 <Text style={styles.modalbuttouchabletext}>Wifi</Text>
                             </TouchableOpacity>
-                            <TouchableOpacity onPress={() => Linking.openSettings()} style={[styles.modalbuttouchable,styles.modalbuttouchablemobiledata]}>
+                            <TouchableOpacity onPress={mobile} style={[styles.modalbuttouchable, styles.modalbuttouchablemobiledata]}>
                                 <Text style={styles.modalbuttouchabletext}>Mobile data</Text>
                             </TouchableOpacity>
                         </View>

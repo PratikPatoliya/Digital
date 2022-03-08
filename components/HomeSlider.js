@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable eol-last */
 import React from 'react';
-import { StyleSheet, View, Image, Dimensions } from 'react-native';
+import { StyleSheet,View, Image, Dimensions } from 'react-native';
 import colors from '../utils/colors';
 import ImageSlider from 'react-native-image-slider';
 
@@ -12,7 +12,6 @@ const images = [
     'https://placeimg.com/640/640/nature',
     'https://placeimg.com/640/640/people',
     'https://placeimg.com/640/640/animals',
-    'https://placeimg.com/640/640/beer',
 ];
 
 const HomeSlider = () => {
@@ -20,7 +19,7 @@ const HomeSlider = () => {
         <View>
             <ImageSlider
                 loopBothSides
-                autoPlayWithInterval={2000}
+                autoPlayWithInterval={3000}
                 images={images}
                 customSlide={({ index, item, style, width }) => (
                     <View key={index} style={[style, styles.customSlide]}>

@@ -1,4 +1,7 @@
 /* eslint-disable prettier/prettier */
+/* eslint-disable no-unused-vars */
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable react-hooks/rules-of-hooks */
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, Dimensions, TouchableOpacity } from 'react-native';
 import { DragTextEditor } from 'react-native-drag-text-editor';
@@ -15,7 +18,7 @@ const seting = () => {
     console.warn('textID',textID);
     addText();
   }, []);
-  console.log("textID",textID);
+  console.log('textID',textID);
   function addText() {
     console.log('Hello');
     setTextID(textID + 1);
@@ -32,7 +35,7 @@ const seting = () => {
   }
   const removeText = (c) => {
     const filtered = arrayTextData.filter(x => x.defTextID !== c);
-    console.warn("filtered", filtered);
+    console.warn('filtered', filtered);
     setArrayTextData(filtered);
     setTextID(arrayTextData.length);
   };
