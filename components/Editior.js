@@ -132,75 +132,6 @@ const Editior = props => {
 
       {/* colors */}
 
-<<<<<<< HEAD
-            <Modal transparent={true} visible={colormodel}>
-                <View style={styles.colorsview}>
-                    <View style={styles.colorview1}>
-                        <Text style={[{ color: oldcolor},styles.colorheader]}>Choose color</Text>
-                        <View style={styles.colorview2}>
-                            <ColorPicker
-                                oldColor={oldcolor}
-                                onColorChange={changeColor}
-                                style={styles.colorpicker}
-                            />
-                        </View>
-                        <View style={styles.colorview3}>
-                            <TouchableOpacity onPress={() => setColormodel(!colormodel)} style={styles.colortouchable1}>
-                                <Text style={styles.colortouchabletext}>cancel</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity onPress={() => setOldcolor(oldcolor)} style={styles.colortouchable2}>
-                                <Text style={styles.colortouchabletext}>ok</Text>
-                            </TouchableOpacity>
-                        </View>
-                    </View>
-                </View>
-            </Modal>
-            {/* font style */}
-            <Modal transparent={true} visible={fontmodel}>
-                <View style={styles.fontstyleview}>
-                    <View style={styles.fontstyleview1}>
-                        <View style={styles.fontstyleview2}>
-                            <Text style={styles.fontstyleheader}>Select font style</Text>
-                            <TouchableOpacity onPress={() => setFontmodel(!fontmodel)} style={styles.fontstyletouchable}>
-                                <Text><Icon name="check" size={30} color={colors.white} /></Text>
-                            </TouchableOpacity>
-                        </View>
-                        <ScrollView style={{}}>
-                            <FlatList data={Data} renderItem={renderItem} numColumns={3} />
-                        </ScrollView>
-                    </View>
-                </View>
-            </Modal>
-
-            <View style={styles.mainview}>
-                <View style={styles.mainview1}>
-                    <TouchableOpacity style={[styles.flex, styles.top]}>
-                        <Text>
-                            <Icon name="title" size={32} color={colors.black} />
-                        </Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={[styles.flex, styles.top]} onPress={() => setColormodel(true)}>
-                        <Text >
-                            <Icon name="opacity" size={32} color={colors.black} />
-                        </Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={[styles.flex, styles.top]} onPress={() => setFontmodel(true)}>
-                        <Text >
-                            <Icon name="format-italic" size={32} color={colors.black} />
-                        </Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={[styles.flex, styles.top]} onPress={() => setSlider(true)}>
-                        <Text >
-                            <Icon name="format-size" size={32} color={colors.black} />
-                        </Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={[styles.flex, styles.top]} onPress={() => setModel(true)}>
-                        <Text >
-                            <Icon name="add-photo-alternate" size={32} color={colors.black} />
-                        </Text>
-                    </TouchableOpacity>
-                </View>
-=======
       <Modal transparent={true} visible={colormodel}>
         <View style={styles.colorsview}>
           <View style={styles.colorview1}>
@@ -213,7 +144,6 @@ const Editior = props => {
                 onColorChange={changeColor}
                 style={styles.colorpicker}
               />
->>>>>>> 4da4e7dc8042485de8a5ad224a271aeb7397de98
             </View>
             <View style={styles.colorview3}>
               <TouchableOpacity

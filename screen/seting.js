@@ -1,12 +1,7 @@
 /* eslint-disable prettier/prettier */
-<<<<<<< HEAD
 /* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react-hooks/rules-of-hooks */
-import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, Dimensions, TouchableOpacity } from 'react-native';
-import { DragTextEditor } from 'react-native-drag-text-editor';
-=======
 import React, {useState, useEffect} from 'react';
 import {
   StyleSheet,
@@ -16,7 +11,6 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {DragTextEditor} from 'react-native-drag-text-editor';
->>>>>>> 4da4e7dc8042485de8a5ad224a271aeb7397de98
 const WINDOW = Dimensions.get('window');
 
 const seting = () => {
@@ -29,11 +23,7 @@ const seting = () => {
     console.warn('textID', textID);
     addText();
   }, []);
-<<<<<<< HEAD
-  console.log('textID',textID);
-=======
   console.log('textID', textID);
->>>>>>> 4da4e7dc8042485de8a5ad224a271aeb7397de98
   function addText() {
     console.log('Hello');
     setTextID(textID + 1);
