@@ -26,8 +26,7 @@ const Data = [
 ];
 
 const Editior = props => {
-  const { imageSource, 
-   } = props;
+  const { imageSource,setImageSource} = props;
   const [model, setModel] = useState(false);
   const [fontmodel, setFontmodel] = useState(false);
   const [colormodel, setColormodel] = useState(false);
@@ -121,7 +120,7 @@ const Editior = props => {
         LetterSpacing={ID.defLetterSpacing}
         FontSize={ID.defFontSize}
         TopRightAction={() => removeText(ID.defTextID)}
-        centerPress={() => textInAction(ID.defTextID)}
+        centerPress={() => setTextInAction(ID.defTextID)}
         isDraggable={true}
         isResizable={true}
         onDragStart={() => console.log('-Drag Started')}
@@ -135,7 +134,10 @@ const Editior = props => {
   });
 
   return (
-    <View>
+    <View style={{ bottom :45}}>
+      <View style={{ bottom: 500}}>
+      {ADDED_TEXTS}
+      </View>
       {/* image  */}
       <Modal transparent={true} visible={model}>
         <View style={styles.imageview1}>
@@ -239,7 +241,8 @@ const Editior = props => {
           </View>
         </View>
       </Modal>
-      {ADDED_TEXTS}
+       
+  
       <View style={styles.mainview}>
         <View style={styles.mainview1}>
           <TouchableOpacity style={[styles.flex, styles.top]} onPress={() => addText()}>
