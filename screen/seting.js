@@ -1,9 +1,14 @@
 /* eslint-disable prettier/prettier */
-import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, Dimensions, TouchableOpacity } from 'react-native';
-import { DragTextEditor } from 'react-native-drag-text-editor';
+import React, {useState, useEffect} from 'react';
+import {
+  StyleSheet,
+  Text,
+  View,
+  Dimensions,
+  TouchableOpacity,
+} from 'react-native';
+import {DragTextEditor} from 'react-native-drag-text-editor';
 const WINDOW = Dimensions.get('window');
-
 
 const seting = () => {
   const [arrayTextData, setArrayTextData] = useState([]);
@@ -12,10 +17,10 @@ const seting = () => {
   const [defaultLabel, setdefaultLabel] = useState('5454');
   useEffect(() => {
     console.log('Heloooooooooooooooo');
-    console.warn('textID',textID);
+    console.warn('textID', textID);
     addText();
   }, []);
-  console.log("textID",textID);
+  console.log('textID', textID);
   function addText() {
     console.log('Hello');
     setTextID(textID + 1);
@@ -30,23 +35,20 @@ const seting = () => {
     };
     setArrayTextData([...arrayTextData, DEFS]);
   }
-  const removeText = (c) => {
+  const removeText = c => {
     const filtered = arrayTextData.filter(x => x.defTextID !== c);
-    console.warn("filtered", filtered);
+    console.warn('filtered', filtered);
     setArrayTextData(filtered);
     setTextID(arrayTextData.length);
   };
 
   const processButtons = () => {
     return (
-      <TouchableOpacity
-        onPress={() => addText()}
-        style={styles.touch}>
+      <TouchableOpacity onPress={() => addText()} style={styles.touch}>
         <Text>Hello</Text>
       </TouchableOpacity>
     );
   };
-
 
   let ADDED_TEXTS = arrayTextData.map((ID, index) => {
     return (
@@ -79,9 +81,7 @@ const seting = () => {
   return (
     <View>
       <Text>seting</Text>
-      <View >
-        {processButtons()}
-      </View>
+      <View>{processButtons()}</View>
       {ADDED_TEXTS}
     </View>
   );
