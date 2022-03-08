@@ -80,6 +80,16 @@ const styles = StyleSheet.create({
     height: 40,
     paddingLeft: 15,
   },
+  inputContainer4:{
+    flex: 0.1,
+    fontSize: 15,
+    borderWidth: 1,
+    alignSelf: 'center',
+    marginLeft: 8,
+    paddingTop: 10,
+    height: 40,
+    paddingLeft: 15,
+  },
   buttonContainer:{
     marginBottom: height / 3,
     width: width / 1.7,

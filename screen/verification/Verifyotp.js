@@ -38,7 +38,7 @@ const Verify = ({navigation}) => {
             text ? thirdInput.current.focus() : firstInput.current.focus();
           }}
           maxLength={1}
-          style={{}}
+          style={styles.inputContainer2}
         />
         <TextInput
           keyboardType="number-pad"
@@ -48,7 +48,7 @@ const Verify = ({navigation}) => {
             text ? fourInput.current.focus() : secondInput.current.focus();
           }}
           maxLength={1}
-          style={styles.inputContainer2}
+          style={styles.inputContainer3}
         />
         <TextInput
           keyboardType="number-pad"
@@ -58,7 +58,7 @@ const Verify = ({navigation}) => {
             !text && thirdInput.current.focus();
           }}
           maxLength={1}
-          style={styles.inputContainer3}
+          style={styles.inputContainer4}
         />
       </View>
       <View style={styles.buttonContainer}>
