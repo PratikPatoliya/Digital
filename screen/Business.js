@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import React from 'react';
-import { Image, Text, View } from 'react-native';
-import  Icon  from 'react-native-vector-icons/MaterialIcons';
+import {Image, Text, View} from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 import Header from '../components/Header';
 import image from '../utils/image';
 import styles from '../styles/Business';
@@ -13,15 +13,19 @@ const Business = () => {
       <View style={styles.container}>
         <View style={styles.wrap}>
           <View style={styles.firstWidth}>
-            <Image source={{ uri: image.businessImage }} style={styles.image} />
+            <Image source={{uri: image.businessImage}} style={styles.image} />
           </View>
           <View style={styles.secondWidth}>
             <Text style={styles.commonColor}>Company Name</Text>
             <Text style={styles.commonColor}>Company mobile number</Text>
-            <Text style={styles.commonColor}>No,Street name,Road Name,Area-pincode</Text>
+            <Text style={styles.commonColor}>
+              No,Street name,Road Name,Area-pincode
+            </Text>
           </View>
           <View style={styles.thirdWidth}>
-            <Text style={styles.commonColor}><Icon name="edit" size={22} /></Text>
+            <Text style={styles.commonColor}>
+              <Icon name="edit" size={22} />
+            </Text>
           </View>
         </View>
       </View>
