@@ -15,7 +15,6 @@ import image from '../utils/image';
 import Share from 'react-native-share';
 import AccountModule from '../components/AccountModule';
 import styles from '../styles/Account';
-
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
 
