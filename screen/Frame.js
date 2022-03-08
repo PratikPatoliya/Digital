@@ -19,11 +19,9 @@ const Frame = ({route, navigation}) => {
     return (
       <View>
         <Image source={{uri: item.img}} style={styles.image} />
-        {imageSource === null ? (
-          <Text> Not Found Img</Text>
-        ) : (
-          <Image source={{uri: imageSource}} style={styles.insideimage} />
-        )}
+        {imageSource === null ?
+        (<Text> Not Found Img</Text>) : (<Image source={{uri: imageSource}} style={styles.insideimage} />)
+        }
       </View>
     );
   };

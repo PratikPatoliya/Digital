@@ -7,7 +7,12 @@ import image from '../utils/image';
 
 const EditProfile = ({navigation}) => {
   const [model, setModel] = useState(false);
+  const [nonestyle, setNonestyle] = useState(false);
   const [imageSource, setImageSource] = useState(image.userImage);
+
+  const changeStyle = () => {
+    setNonestyle(true);
+  };
   return (
     <View style={styles.container}>
       <Header2
@@ -22,9 +27,9 @@ const EditProfile = ({navigation}) => {
           <Image source={{uri: imageSource}} style={styles.image} />
         </TouchableOpacity>
         <View style={{top: 20}}>
-          <View style={styles.fieldSet}>
-            <Text style={styles.legend}> Enter Your Name </Text>
-            <TextInput style={styles.inputContainer} />
+          <View style={nonestyle ? styles.fieldSet1 : styles.fieldSet}>
+            <Text style={ nonestyle ? styles.legend : styles.legend1}> Enter Your Name </Text>
+            <TextInput onFocus={changeStyle} style={styles.inputContainer} />
           </View>
         </View>
       </View>

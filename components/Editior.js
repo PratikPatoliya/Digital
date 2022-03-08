@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   Text,
   TouchableOpacity,
@@ -13,16 +13,17 @@ import colors from '../utils/colors';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import ImagePicker from 'react-native-image-crop-picker';
 import Slider from '@react-native-community/slider';
-import {BitMapColorPicker as ColorPicker} from 'react-native-bitmap-color-picker';
+import { BitMapColorPicker as ColorPicker } from 'react-native-bitmap-color-picker';
 import styles from '../styles/Editior';
 
 const Data = [
-  {id: 1, text: 'Hubballi-Regular'},
-  {id: 2, text: 'BhuTukaExpandedOne-Regular'},
+  { id: 1, text: 'Hubballi-Regular' },
+  { id: 2, text: 'BhuTukaExpandedOne-Regular' },
+  { id: 3, text: 'BhuTukaExpandedOne-Regular' },
 ];
 
 const Editior = props => {
-  const {imageSource, setImageSource} = props;
+  const { imageSource, setImageSource } = props;
   const [model, setModel] = useState(false);
   const [fontmodel, setFontmodel] = useState(false);
   const [colormodel, setColormodel] = useState(false);
@@ -64,11 +65,11 @@ const Editior = props => {
     setModel(false);
   }
 
-  const renderItem = ({item}) => {
+  const renderItem = ({ item }) => {
     return (
       <View>
         <TouchableOpacity style={styles.renderitem}>
-          <Text style={[{fontFamily: `${item.text}`}, styles.renderitemfont]}>
+          <Text style={[{ fontFamily: `${item.text}` }, styles.renderitemfont]}>
             DIGITAL APP
           </Text>
         </TouchableOpacity>
@@ -135,7 +136,7 @@ const Editior = props => {
       <Modal transparent={true} visible={colormodel}>
         <View style={styles.colorsview}>
           <View style={styles.colorview1}>
-            <Text style={[{color: oldcolor}, styles.colorheader]}>
+            <Text style={[{ color: oldcolor }, styles.colorheader]}>
               Choose color
             </Text>
             <View style={styles.colorview2}>
@@ -180,6 +181,7 @@ const Editior = props => {
           </View>
         </View>
       </Modal>
+
       <View style={styles.mainview}>
         <View style={styles.mainview1}>
           <TouchableOpacity style={[styles.flex, styles.top]}>

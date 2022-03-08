@@ -43,10 +43,6 @@ const Editform = () => {
         </Text>
         <TextInput onBlur={changeStyle1} style={styles.textbox} />
       </View>
-      {/* <View style={nonestyle ? styles.fieldSet : styles.fieldSet1}  >
-                <Text style={nonestyle ? styles.legend : styles.legend1}>  Enter Your Name  </Text>
-                <TextInput onFocus={changeStyle} style={{ color: colors.white, width: width * 0.80, height: Platform.OS === 'ios' ? 45 : 45, borderRadius: 5, textAlign: 'center', fontSize: 16 }} />
-            </View> */}
     </View>
   );
 };

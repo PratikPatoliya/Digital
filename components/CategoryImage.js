@@ -3,8 +3,10 @@ import React from 'react';
 import {FlatList, Image, TouchableOpacity, View} from 'react-native';
 import styles from '../styles/CategoryImage';
 const CatagoryImage = props => {
+  console.warn(props);
   const {data, onPress} = props;
   const renderItem = ({item}) => {
+    console.log("props",props.data.id);
     return (
       <View style={styles.Grig}>
         <TouchableOpacity onPress={onPress}>
