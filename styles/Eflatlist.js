@@ -1,6 +1,6 @@
 import {StyleSheet, Dimensions} from 'react-native';
-const {width} = Dimensions.get('window');
 import colors from '../utils/colors';
+const {width} = Dimensions.get('window');
 
 const styles = StyleSheet.create({
   Grig: {

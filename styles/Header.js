@@ -1,5 +1,4 @@
 /* eslint-disable prettier/prettier */
-/* eslint-disable quotes */
 import {StyleSheet, Platform} from 'react-native';
 import colors from '../utils/colors';
 const styles = StyleSheet.create({
@@ -29,7 +28,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   titlefont: {
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: 'normal',
     color: colors.white,
   },

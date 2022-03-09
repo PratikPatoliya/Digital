@@ -1,5 +1,4 @@
 /* eslint-disable prettier/prettier */
-/* eslint-disable quotes */
 import {StyleSheet, Platform} from 'react-native';
 const styles = StyleSheet.create({
   lable1: {

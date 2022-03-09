@@ -37,7 +37,7 @@ const Home = props => {
       <Header title="Home" {...props} />
       {/* <Model /> */}
       <ScrollView>
-        <HomeSlider />
+        <HomeSlider {...props} />
         <View style={styles.homeview}>
           {img &&
             img.map(item => {

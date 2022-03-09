@@ -1,5 +1,4 @@
 /* eslint-disable prettier/prettier */
-/* eslint-disable eol-last */
 import React from 'react';
 import {StyleSheet, View, Image, Dimensions} from 'react-native';
 import colors from '../utils/colors';
@@ -15,20 +14,18 @@ const images = [
   'https://placeimg.com/640/640/beer',
 ];
 
-const HomeSlider = () => {
+const HomeSlider = (props) => {
   return (
-    <View>
       <ImageSlider
         loopBothSides
         autoPlayWithInterval={2000}
         images={images}
-        customSlide={({index, item, style, width}) => (
+        customSlide={({index, item, style}) => (
           <View key={index} style={[style, styles.customSlide]}>
             <Image source={{uri: item}} style={styles.customImage} />
           </View>
         )}
       />
-    </View>
   );
 };
 

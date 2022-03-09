@@ -1,6 +1,5 @@
 /* eslint-disable prettier/prettier */
-/* eslint-disable eol-last */
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import {
   StyleSheet,
   Text,
@@ -12,7 +11,6 @@ import {
 import colors from '../utils/colors';
 
 const width = Dimensions.get('window').width;
-const height = Dimensions.get('window').height;
 
 const Editform = () => {
   const [nonestyle, setNonestyle] = useState(false);
@@ -24,9 +22,6 @@ const Editform = () => {
   const changeStyle1 = () => {
     setNonestyle1(true);
   };
-
-  console.log('nonestyle', nonestyle);
-  console.log('nonestyle1', nonestyle1);
   return (
     <View>
       <View style={nonestyle ? styles.fieldSet : styles.fieldSet1}>

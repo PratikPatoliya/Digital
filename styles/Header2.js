@@ -1,5 +1,4 @@
 /* eslint-disable prettier/prettier */
-/* eslint-disable quotes */
 import {StyleSheet, Platform} from 'react-native';
 import colors from '../utils/colors';
 const styles = StyleSheet.create({
@@ -25,7 +24,7 @@ const styles = StyleSheet.create({
     left: Platform.OS === 'ios' ? 20 : 10,
   },
   titlefont: {
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: 'normal',
     color: colors.white,
   },

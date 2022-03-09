@@ -10,11 +10,10 @@ import {
 } from 'react-native';
 import Header2 from '../components/Header2';
 import Eflatlist from '../components/Eflatlist';
-import Editior from '../components/Editior';
 import Share from 'react-native-share';
 import styles from '../styles/Frame';
 import RNFetchBlob from 'rn-fetch-blob';
-
+import Editior from '../components/Editior';
 
 const Frame = ({route, navigation}) => {
   const [imageSource, setImageSource] = useState(null);
@@ -22,7 +21,7 @@ const Frame = ({route, navigation}) => {
 
   useEffect(() => {
     request_storage_runtime_permission();
-  }, []);
+  });
   const renderItem = ({item}) => {
     return (
       <View>

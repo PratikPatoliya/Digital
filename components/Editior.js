@@ -58,12 +58,13 @@ const Editior = props => {
   }
   function selectCamera() {
     ImagePicker.openCamera({
-      cropping: true,
       compressImageMaxWidth: 300,
       compressImageMaxHeight: 400,
       compressImageQuality: 0.7,
+      cropping: true,
       cropperCircleOverlay: true,
       freeStyleCropEnabled: true,
+      avoidEmptySpaceAroundImage: true,
       includeBase64: true,
     }).then(image => {
       setImageSource(image.path);
@@ -84,7 +85,6 @@ const Editior = props => {
   };
 
   function addText() {
-    console.log('Hello');
     setTextID(textID + 1);
     let DEFS = {
       defTextID: textID,
@@ -99,7 +99,6 @@ const Editior = props => {
   }
   const removeText = c => {
     const filtered = arrayTextData.filter(x => x.defTextID !== c);
-    console.warn('filtered', filtered);
     setArrayTextData(filtered);
     setTextID(arrayTextData.length);
   };
@@ -107,6 +106,7 @@ const Editior = props => {
   let ADDED_TEXTS = arrayTextData.map((ID, index) => {
     return (
       <DragTextEditor
+        key={index}
         minWidth={100}
         minHeight={100}
         w={200}
@@ -119,7 +119,7 @@ const Editior = props => {
         LetterSpacing={ID.defLetterSpacing}
         FontSize={ID.defFontSize}
         TopRightAction={() => removeText(ID.defTextID)}
-        centerPress={() => setTextInAction(ID.defTextID)}
+        centerPress={()=> setTextInAction(ID.defTextID)} 
         isDraggable={true}
         isResizable={true}
         onDragStart={() => console.log('-Drag Started')}

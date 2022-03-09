@@ -15,16 +15,14 @@ const Viewall = ({route, navigation}) => {
   const renderItem = ({item}) => {
     return (
       <View style={styles.container}>
-        <View style={styles.Grig}>
-          <TouchableOpacity onPress={() => {}}>
+        <TouchableOpacity style={styles.Grig}>
             <Image
               style={styles.tinyLogo}
               source={{
                 uri: item.img,
               }}
             />
-          </TouchableOpacity>
-        </View>
+        </TouchableOpacity>
       </View>
     );
   };

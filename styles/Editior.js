@@ -47,8 +47,6 @@ const styles = StyleSheet.create({
     padding: 4,
   },
 
-  // fontslider
-
   fontslidermainview: {
     flex: 1,
     alignItems: 'center',

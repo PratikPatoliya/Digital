@@ -54,7 +54,7 @@ const Account = ({navigation}) => {
 
   const myCustomerShare = async () => {
     const shareOption = {
-      message: `Hey! Customer Welcome to Digital Customer App`,
+      message: `Hey! Customer Welcome to Digital App`,
     };
     try {
       const ShareResponse = await Share.open(shareOption);
@@ -141,7 +141,7 @@ const Account = ({navigation}) => {
             />
           </View>
           <View style={{alignItems: 'center'}}>
-            <Text style={styles.descriptionTxt}>Designed by HOME Tech</Text>
+            <Text style={styles.descriptionTxt}>Designed by Bluesoft Infotech</Text>
           </View>
         </ScrollView>
       </View>

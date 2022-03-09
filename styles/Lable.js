@@ -15,8 +15,8 @@ const styles = StyleSheet.create({
     marginLeft: 10,
   },
   viewtxt: {
-    color: colors.txtcolor,
-    fontWeight: '100',
+    color: colors.white,
+    fontWeight: 'bold',
     fontSize: 12,
     marginRight: 10,
   },

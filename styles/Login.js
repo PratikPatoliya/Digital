@@ -1,10 +1,9 @@
 /* eslint-disable prettier/prettier */
-/* eslint-disable quotes */
-// eslint-disable-next-line eol-last
 import {StyleSheet, Dimensions, Platform} from 'react-native';
+import colors from '../utils/colors';
+
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
-import colors from '../utils/colors';
 
 const styles = StyleSheet.create({
   topview: {

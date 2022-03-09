@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import {StyleSheet, Dimensions} from 'react-native';
-const height = Dimensions.get('window').height;
 import colors from '../utils/colors';
+const height = Dimensions.get('window').height;
 const styles = StyleSheet.create({
   container: {
     backgroundColor: colors.black,
