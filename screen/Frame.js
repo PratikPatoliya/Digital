@@ -110,7 +110,6 @@ const Frame = ({route, navigation}) => {
       <ScrollView>
         <View style={styles.topmargin}>
           <Eflatlist />
-          <View>
             <View style={styles.flatelistview}>
               <FlatList
                 data={categoryImage}
@@ -119,12 +118,8 @@ const Frame = ({route, navigation}) => {
                 showsHorizontalScrollIndicator={false}
               />
             </View>
-            <Editior
-              setImageSource={setImageSource}
-              imageSource={imageSource}
-            />
+            <Editior/>
           </View>
-        </View>
       </ScrollView>
     </View>
   );

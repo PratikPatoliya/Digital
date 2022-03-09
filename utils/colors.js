@@ -5,6 +5,7 @@ const colors = {
   white: '#fff',
   green: 'green',
   txtcolor: '#c4bfbe',
+  darkWhite: '#E1D9D1',
 };
 
 export default colors;

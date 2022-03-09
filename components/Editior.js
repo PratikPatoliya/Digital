@@ -16,7 +16,7 @@ import ImagePicker from 'react-native-image-crop-picker';
 import Slider from '@react-native-community/slider';
 import {BitMapColorPicker as ColorPicker} from 'react-native-bitmap-color-picker';
 import styles from '../styles/Editior';
-import {DragTextEditor} from 'react-native-drag-text-editor';
+import TextEditor from './TextEditor';
 const WINDOW = Dimensions.get('window');
 
 const Data = [
@@ -25,7 +25,7 @@ const Data = [
 ];
 
 const Editior = props => {
-  const {imageSource, setImageSource} = props;
+  const [imageSource, setImageSource] = useState();
   const [model, setModel] = useState(false);
   const [fontmodel, setFontmodel] = useState(false);
   const [colormodel, setColormodel] = useState(false);
@@ -35,10 +35,22 @@ const Editior = props => {
   const [arrayTextData, setArrayTextData] = useState([]);
   const [textID, setTextID] = useState(0);
   const [textInAction, setTextInAction] = useState(0);
-  const [defaultLabel, setdefaultLabel] = useState('5454');
+  const [defaultLabel, setdefaultLabel] = useState();
   function changeColor(colorRgb, resType) {
     resType === 'end' && setOldcolor(colorRgb);
+    setColorToText(colorRgb)
   }
+
+  const setColorToText = colorofArray => {
+    const index = textInAction;
+    const markers = [...arrayTextData];
+    if (markers[index]) {
+      markers[index].defColor = colorofArray;
+      setArrayTextData(markers)
+    } else {
+      return null;
+    }
+  };
 
   function selectImage() {
     ImagePicker.openPicker({
@@ -91,9 +103,9 @@ const Editior = props => {
       defTextValue: defaultLabel,
       defAlign: 'center',
       defLetterSpacing: 0,
-      defColor: 'green',
+      defColor:'#E2A76F',
       defLineHeight: 15,
-      defFontSize: 15,
+      defFontSize: 20,
     };
     setArrayTextData([...arrayTextData, DEFS]);
   }
@@ -105,7 +117,7 @@ const Editior = props => {
 
   let ADDED_TEXTS = arrayTextData.map((ID, index) => {
     return (
-      <DragTextEditor
+      <TextEditor
         key={index}
         minWidth={100}
         minHeight={100}
@@ -131,6 +143,11 @@ const Editior = props => {
       />
     );
   });
+
+  const colorSubmit = () => {
+    setColormodel(!colormodel);
+    setOldcolor(oldcolor)
+  }
 
   return (
     <View style={{bottom: 45}}>
@@ -210,7 +227,7 @@ const Editior = props => {
                 <Text style={styles.colortouchabletext}>cancel</Text>
               </TouchableOpacity>
               <TouchableOpacity
-                onPress={() => setOldcolor(oldcolor)}
+                onPress={colorSubmit}
                 style={styles.colortouchable2}>
                 <Text style={styles.colortouchabletext}>ok</Text>
               </TouchableOpacity>
@@ -243,7 +260,7 @@ const Editior = props => {
         <View style={styles.mainview1}>
           <TouchableOpacity
             style={[styles.flex, styles.top]}
-            onPress={() => addText()}>
+            onPress={addText}>
             <Text>
               <Icon name="title" size={32} color={colors.black} />
             </Text>
