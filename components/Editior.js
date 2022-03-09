@@ -36,6 +36,7 @@ const Editior = () => {
   const [textID, setTextID] = useState(0);
   const [textInAction, setTextInAction] = useState(0);
   const [defaultLabel, setdefaultLabel] = useState();
+  const [lineHegOfText, setLineofText] = useState(0);
   function changeColor(colorRgb, resType) {
     resType === 'end' && setOldcolor(colorRgb);
     setColorToText(colorRgb)
@@ -51,6 +52,20 @@ const Editior = () => {
       return null;
     }
   };
+
+  const fontSizing = (sizeValue) => {
+    const index = textInAction;
+    const markers = [...arrayTextData];
+
+    if (markers[index]) {
+      markers[index].defFontSize = sizeValue;
+      markers[index].defLineHeight = sizeValue;
+      setArrayTextData(markers),
+      setLineofText(sizeValue/2)
+    } else {
+      return null;
+    }
+  }
 
   function selectImage() {
     ImagePicker.openPicker({
@@ -195,7 +210,9 @@ const Editior = () => {
                 minimumTrackTintColor="#fff"
                 maximumTrackTintColor="#3d3215"
                 value={sliderValue}
-                onValueChange={sliderValue => setSliderValue(sliderValue)}
+                onValueChange={sliderValue => {
+                  fontSizing(sliderValue);
+                }}
               />
               <Text style={styles.fontslidersafeareatext}>
                 {sliderValue.toFixed()}
