@@ -24,7 +24,7 @@ const Data = [
   {id: 2, text: 'BhuTukaExpandedOne-Regular'},
 ];
 
-const Editior = props => {
+const Editior = () => {
   const [imageSource, setImageSource] = useState();
   const [model, setModel] = useState(false);
   const [fontmodel, setFontmodel] = useState(false);
@@ -210,7 +210,7 @@ const Editior = props => {
       <Modal transparent={true} visible={colormodel}>
         <View style={styles.colorsview}>
           <View style={styles.colorview1}>
-            <Text style={[{color: oldcolor}, styles.colorheader]}>
+            <Text style={[{color: colors.black}, styles.colorheader]}>
               Choose color
             </Text>
             <View style={styles.colorview2}>
