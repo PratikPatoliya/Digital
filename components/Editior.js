@@ -67,6 +67,18 @@ const Editior = () => {
     }
   }
 
+  const setFontFamily = item => {
+    const index = textInAction;
+    const markers = [...arrayTextData];
+    if (markers[index]) {
+      markers[index].defFontFamily = item;
+      console.warn(markers)
+      setArrayTextData(markers)
+    } else {
+      return null;
+    }
+  };
+
   function selectImage() {
     ImagePicker.openPicker({
       compressImageMaxWidth: 300,
@@ -103,7 +115,7 @@ const Editior = () => {
     return (
       <View>
         <TouchableOpacity style={styles.renderitem}>
-          <Text style={[{fontFamily: `${item.text}`}, styles.renderitemfont]}>
+          <Text style={[{fontFamily: `${item.text}`}, styles.renderitemfont]} onPress={() =>setFontFamily(item.text)}>
             DIGITAL APP
           </Text>
         </TouchableOpacity>
@@ -116,6 +128,7 @@ const Editior = () => {
     let DEFS = {
       defTextID: textID,
       defTextValue: defaultLabel,
+      defFontFamily:'Hubballi-Regular',
       defAlign: 'center',
       defLetterSpacing: 0,
       defColor:'#E2A76F',
@@ -212,6 +225,7 @@ const Editior = () => {
                 value={sliderValue}
                 onValueChange={sliderValue => {
                   fontSizing(sliderValue);
+                  setSliderValue(sliderValue)
                 }}
               />
               <Text style={styles.fontslidersafeareatext}>
