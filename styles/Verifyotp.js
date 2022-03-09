@@ -95,5 +95,10 @@ const styles = StyleSheet.create({
     width: width / 1.7,
     marginTop: height / 12,
   },
+  buttonContainer1:{
+    marginBottom: height / 3,
+    width: width / 1.7,
+    marginTop: height / 15,
+  },
 });
 export default styles;

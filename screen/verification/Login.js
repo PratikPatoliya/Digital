@@ -1,10 +1,22 @@
 /* eslint-disable prettier/prettier */
-import React from 'react';
-import {Text, TextInput, View, Image, TouchableOpacity} from 'react-native';
+import React, { useState } from 'react';
+import { Text, TextInput, View, Image, TouchableOpacity, Animatable } from 'react-native';
 import styles from '../../styles/Login';
 import image from '../../utils/image';
 
-const Login = ({navigation}) => {
+const Login = ({ navigation }) => {
+  const [number, setNumber] = useState('');
+  const [validuser, setValiduser] = useState(true);
+
+  const validation = () => {
+    if (number.length < 10) {
+      setValiduser(false);
+    } else {
+      setValiduser(true);
+      navigation.navigate('verify',{num:number});
+    }
+  };
+
   return (
     <View style={styles.topview}>
       <View>
@@ -12,7 +24,7 @@ const Login = ({navigation}) => {
       </View>
       <Text style={styles.verifytext}>Verify Your Number</Text>
       <Text style={styles.numbertext}>
-        Please enter your country & {'\n'} your phone number
+        Please enter your country & {'\n'}        your phone number
       </Text>
       <View style={styles.inputview}>
         <Text style={styles.viewtext}>+91</Text>
@@ -22,11 +34,19 @@ const Login = ({navigation}) => {
           keyboardType={'numeric'}
           backgroundColor="#c9f2cb"
           style={styles.textinput}
+          onChangeText={newnumber => setNumber(newnumber)}
+          defaultValue={number}
         />
       </View>
+      {
+        validuser ? null :
+          <Text style={{ left: 25, top: 40, color: "red" }}>*Enter your valid 10 digit number</Text>
+      }
       <TouchableOpacity
         style={styles.buttonview}
-        onPress={() => navigation.navigate('verify')}>
+        // onPress={() => navigation.navigate('verify')}
+        onPress={validation}
+      >
         <Text style={styles.tochabletext}>Send</Text>
       </TouchableOpacity>
     </View>
