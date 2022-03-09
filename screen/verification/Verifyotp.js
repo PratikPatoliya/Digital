@@ -43,6 +43,7 @@ const Verify = ({ route, navigation }) => {
             setOtp({ ...otp, 1: text });
             text && secondInput.current.focus();
           }}
+          onChange={() => setValidotp(true)}
           maxLength={1}
           style={styles.inputContainer}
         />
@@ -53,6 +54,7 @@ const Verify = ({ route, navigation }) => {
             setOtp({ ...otp, 2: text });
             text ? thirdInput.current.focus() : firstInput.current.focus();
           }}
+          onChange={() => setValidotp(true)}
           maxLength={1}
           style={styles.inputContainer2}
         />
@@ -63,6 +65,7 @@ const Verify = ({ route, navigation }) => {
             setOtp({ ...otp, 3: text });
             text ? fourInput.current.focus() : secondInput.current.focus();
           }}
+          onChange={() => setValidotp(true)}
           maxLength={1}
           style={styles.inputContainer3}
         />
@@ -73,17 +76,14 @@ const Verify = ({ route, navigation }) => {
             setOtp({ ...otp, 4: text });
             !text && thirdInput.current.focus();
           }}
+          onChange={() => setValidotp(true)}
           maxLength={1}
           style={styles.inputContainer4}
         />
       </View>
       {
         validotp ? null :
-          <TouchableOpacity
-            style={{ alignItems: 'center', marginTop: 0 }}
-            onPress={() => navigation.navigate('login')}>
-            <Text style={{ color: 'red', top: 25 }}>Valid otp OR {'\n'}Resend code</Text>
-          </TouchableOpacity>
+          <Text style={{ color: 'red', top: 25 }}>Valid otp</Text>
       }
       <View style={validotp ? styles.buttonContainer : styles.buttonContainer1}>
         <TouchableOpacity
@@ -91,6 +91,11 @@ const Verify = ({ route, navigation }) => {
           onPress={validationotp}
         >
           <Text style={styles.tochabletext}>Verify</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={{ alignItems: 'center', marginTop: 0 }}
+          onPress={() => navigation.navigate('login')}>
+          <Text style={{ color: "green", fontSize: 15 }} >Resend code</Text>
         </TouchableOpacity>
       </View>
     </View>
