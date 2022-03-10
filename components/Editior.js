@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   Text,
   TouchableOpacity,
@@ -9,19 +9,20 @@ import {
   FlatList,
   ScrollView,
   Dimensions,
+  Image,
 } from 'react-native';
 import colors from '../utils/colors';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import ImagePicker from 'react-native-image-crop-picker';
 import Slider from '@react-native-community/slider';
-import {BitMapColorPicker as ColorPicker} from 'react-native-bitmap-color-picker';
+import { BitMapColorPicker as ColorPicker } from 'react-native-bitmap-color-picker';
 import styles from '../styles/Editior';
 import TextEditor from './TextEditor';
 const WINDOW = Dimensions.get('window');
 
 const Data = [
-  {id: 1, text: 'Hubballi-Regular'},
-  {id: 2, text: 'BhuTukaExpandedOne-Regular'},
+  { id: 1, text: 'Hubballi-Regular' },
+  { id: 2, text: 'BhuTukaExpandedOne-Regular' },
 ];
 
 const Editior = () => {
@@ -110,12 +111,12 @@ const Editior = () => {
     setModel(false);
   }
 
-  const renderItem = ({item}) => {
+  const renderItem = ({ item }) => {
     return (
       <View>
         <TouchableOpacity style={styles.renderitem}>
           <Text
-            style={[{fontFamily: `${item.text}`}, styles.renderitemfont]}
+            style={[{ fontFamily: `${item.text}` }, styles.renderitemfont]}
             onPress={() => setFontFamily(item.text)}>
             DIGITAL APP
           </Text>
@@ -179,8 +180,8 @@ const Editior = () => {
   };
 
   return (
-    <View style={{bottom: 45}}>
-      <View style={{bottom: 500}}>{ADDED_TEXTS}</View>
+    <View style={{ bottom: 45 }}>
+      <View style={{ bottom: 500 }}>{ADDED_TEXTS}</View>
       {/* image  */}
       <Modal transparent={true} visible={model}>
         <View style={styles.imageview1}>
@@ -242,7 +243,7 @@ const Editior = () => {
       <Modal transparent={true} visible={colormodel}>
         <View style={styles.colorsview}>
           <View style={styles.colorview1}>
-            <Text style={[{color: colors.black}, styles.colorheader]}>
+            <Text style={[{ color: colors.black }, styles.colorheader]}>
               Choose color
             </Text>
             <View style={styles.colorview2}>
@@ -289,6 +290,7 @@ const Editior = () => {
       </Modal>
 
       <View style={styles.mainview}>
+        <Image source={{ uri: imageSource }} style={{ width: Dimensions.get('window').width, height: Dimensions.get('window').height / 4 }} />
         <View style={styles.mainview1}>
           <TouchableOpacity style={[styles.flex, styles.top]} onPress={addText}>
             <Text>
