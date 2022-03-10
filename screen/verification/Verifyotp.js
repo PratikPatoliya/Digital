@@ -30,7 +30,7 @@ const Verify = ({ route, navigation }) => {
       setValidotp(false);
     } else {
       setValidotp(true);
-      navigation.navigate('AppStack');
+      navigation.navigate('Profile');
     }
   };
   return (

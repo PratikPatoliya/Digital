@@ -19,6 +19,7 @@ import EditProfile from '../screen/EditProfile';
 import {getFocusedRouteNameFromRoute} from '@react-navigation/native';
 import Privacy_Policy from '../screen/Privacy_Policy';
 import Terms_conditions from '../screen/Terms_conditions';
+import EditBusiness from '../screen/EditBusiness';
 
 const Stack = createNativeStackNavigator();
 
@@ -81,6 +82,11 @@ function BusinessStackScreen() {
       <Stack.Screen
         name="Business"
         component={Business}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="EditBusiness"
+        component={EditBusiness}
         options={{headerShown: false}}
       />
     </Stack.Navigator>
@@ -220,7 +226,7 @@ const AppStack = () => {
             ),
         }}
       />
-      {/* <Tab.Screen name="Business" component={BusinessStackScreen} options={{ headerShown: false, tabBarIcon: (({ color, focused }) => focused ? <Icon name="briefcase-outline" size={23} style={{ color: color }} /> : <Icon name="briefcase-outline" size={20} style={{ color: color }} />) }} /> */}
+      <Tab.Screen name="Business" component={BusinessStackScreen} options={{ headerShown: false, tabBarIcon: (({ color, focused }) => focused ? <Icon name="briefcase-outline" size={23} style={{ color: color }} /> : <Icon name="briefcase-outline" size={20} style={{ color: color }} />) }} />
       <Tab.Screen
         name="Account"
         component={AccountStackScreen}

@@ -7,6 +7,7 @@ import Splash from '../Splash';
 import Login from '../screen/verification/Login';
 import Verify from '../screen/verification/Verifyotp';
 import AppStack from './AppStack';
+import Profile from '../screen/verification/Profile';
 
 const Stack = createNativeStackNavigator();
 
@@ -16,6 +17,7 @@ function Auth() {
       <Stack.Screen name="Splash" component={Splash} />
       <Stack.Screen name="login" component={Login} />
       <Stack.Screen name="verify" component={Verify} />
+      <Stack.Screen name="Profile" component={Profile} />
     </Stack.Navigator>
   );
 }
@@ -23,7 +25,7 @@ function Auth() {
 function Routes() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="AppStack">
+      <Stack.Navigator initialRouteName="Auth">
         <Stack.Screen
           name="Auth"
           component={Auth}
