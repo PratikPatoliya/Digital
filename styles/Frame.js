@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
-import {StyleSheet, Dimensions} from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 import colors from '../utils/colors';
-const {width} = Dimensions.get('window');
+const { width } = Dimensions.get('window');
 const height = width * 0.5;
 
 const styles = StyleSheet.create({
@@ -11,9 +11,10 @@ const styles = StyleSheet.create({
     backgroundColor: colors.yellow,
   },
   insideimage: {
-    width: width,
-    height: height*1.1,
-    bottom:22,
+    width: width / 4.5,
+    height: height / 2.3,
+    bottom: 390,
+    left:5
   },
   fview: {
     backgroundColor: colors.black,

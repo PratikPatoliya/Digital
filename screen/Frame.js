@@ -118,7 +118,7 @@ const Frame = ({ route, navigation }) => {
               showsHorizontalScrollIndicator={false}
             />
           </View>
-          <View style={{top:40}}>
+          <View style={{top:-23}}>
             <Editior imageSource={imageSource} setImageSource={setImageSource} />
           </View>
         </View>
