@@ -9,8 +9,12 @@ import Lable from '../components/Lable';
 import Model from '../components/Model';
 import styles from '../styles/Home';
 import {img} from '../utils/Imgdata';
+import {useRoute} from '@react-navigation/native';
+
+
 
 const Home = props => {
+  const route = useRoute();
   const openWhatsApp = () => {
     let msg = 'demo';
     let mobile = 6352432738;
@@ -50,6 +54,7 @@ const Home = props => {
                       props.navigation.navigate('Viewall', {
                         itemdata: item.image,
                         headername: item,
+                        screenName : route.name
                       })
                     }
                   />

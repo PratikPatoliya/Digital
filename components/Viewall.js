@@ -15,13 +15,21 @@ const Viewall = ({route, navigation}) => {
   const renderItem = ({item}) => {
     return (
       <View style={styles.container}>
-        <TouchableOpacity style={styles.Grig}>
-            <Image
-              style={styles.tinyLogo}
-              source={{
-                uri: item.img,
-              }}
-            />
+        <TouchableOpacity
+          style={styles.Grig}
+          onPress={() =>
+            navigation.navigate('Frame', {
+              id: item.img,
+              img: item.img,
+              routeName : route.params.screenName
+            })
+          }>
+          <Image
+            style={styles.tinyLogo}
+            source={{
+              uri: item.img,
+            }}
+          />
         </TouchableOpacity>
       </View>
     );

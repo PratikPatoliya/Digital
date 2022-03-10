@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   Image,
   View,
@@ -15,21 +15,22 @@ import styles from '../styles/Frame';
 import RNFetchBlob from 'rn-fetch-blob';
 import Editior from '../components/Editior';
 
-const Frame = ({ route, navigation }) => {
+const Frame = ({route, navigation}) => {
   const [imageSource, setImageSource] = useState(null);
   const categoryImage = route.params.img;
+  const screenName = route.params.routeName;
 
   useEffect(() => {
     request_storage_runtime_permission();
   });
-  const renderItem = ({ item }) => {
+  const renderItem = ({item}) => {
     return (
       <View>
-        <Image source={{ uri: item.img }} style={styles.image} />
+        <Image source={{uri: item.img}} style={styles.image} />
         {imageSource === null ? (
           <Text> Not Found Img</Text>
         ) : (
-          <Image source={{ uri: imageSource }} style={styles.insideimage} />
+          <Image source={{uri: imageSource}} style={styles.insideimage} />
         )}
       </View>
     );
@@ -53,7 +54,7 @@ const Frame = ({ route, navigation }) => {
       'https://reactnativecode.com/wp-content/uploads/2018/02/motorcycle.jpg';
     var ext = getExtention(image_URL);
     ext = '.' + ext[0];
-    const { config, fs } = RNFetchBlob;
+    const {config, fs} = RNFetchBlob;
     let PictureDir = fs.dirs.PictureDir;
     let options = {
       fileCache: true,
@@ -118,9 +119,14 @@ const Frame = ({ route, navigation }) => {
               showsHorizontalScrollIndicator={false}
             />
           </View>
-          <View  style={{top:imageSource ? -22:43}}>
-            <Editior imageSource={imageSource} setImageSource={setImageSource} />
-          </View>
+          <View style={{top: imageSource ? -22 : 43}}>
+          {screenName === 'Home1' ? null : (
+              <Editior
+                imageSource={imageSource}
+                setImageSource={setImageSource}
+              />
+          )}
+           </View>
         </View>
       </ScrollView>
     </View>
