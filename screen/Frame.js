@@ -119,7 +119,6 @@ const Frame = ({route, navigation}) => {
               showsHorizontalScrollIndicator={false}
             />
           </View>
-<<<<<<< Updated upstream
           <View style={{top: imageSource ? -22 : 43}}>
           {screenName === 'Home1' ? null : (
               <Editior
@@ -128,11 +127,6 @@ const Frame = ({route, navigation}) => {
               />
           )}
            </View>
-=======
-          <View style={{ top: imageSource ? -22 : 43 }}>
-            <Editior imageSource={imageSource} setImageSource={setImageSource} />
-          </View>
->>>>>>> Stashed changes
         </View>
       </ScrollView>
     </View>
