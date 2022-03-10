@@ -3,7 +3,6 @@ import React from 'react';
 import {StyleSheet, View, Image, Dimensions} from 'react-native';
 import colors from '../utils/colors';
 import ImageSlider from 'react-native-image-slider';
-
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
 
@@ -14,18 +13,18 @@ const images = [
   'https://placeimg.com/640/640/beer',
 ];
 
-const HomeSlider = (props) => {
+const HomeSlider = props => {
   return (
-      <ImageSlider
-        loopBothSides
-        autoPlayWithInterval={2000}
-        images={images}
-        customSlide={({index, item, style}) => (
-          <View key={index} style={[style, styles.customSlide]}>
-            <Image source={{uri: item}} style={styles.customImage} />
-          </View>
-        )}
-      />
+    <ImageSlider
+      loopBothSides
+      autoPlayWithInterval={2000}
+      images={images}
+      customSlide={({index, item, style}) => (
+        <View key={index} style={[style, styles.customSlide]}>
+          <Image source={{uri: item}} style={styles.customImage} />
+        </View>
+      )}
+    />
   );
 };
 

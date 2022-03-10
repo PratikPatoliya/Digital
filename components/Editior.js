@@ -39,7 +39,7 @@ const Editior = () => {
   const [lineHegOfText, setLineofText] = useState(0);
   function changeColor(colorRgb, resType) {
     resType === 'end' && setOldcolor(colorRgb);
-    setColorToText(colorRgb)
+    setColorToText(colorRgb);
   }
 
   const setColorToText = colorofArray => {
@@ -47,33 +47,32 @@ const Editior = () => {
     const markers = [...arrayTextData];
     if (markers[index]) {
       markers[index].defColor = colorofArray;
-      setArrayTextData(markers)
+      setArrayTextData(markers);
     } else {
       return null;
     }
   };
 
-  const fontSizing = (sizeValue) => {
+  const fontSizing = sizeValue => {
     const index = textInAction;
     const markers = [...arrayTextData];
 
     if (markers[index]) {
       markers[index].defFontSize = sizeValue;
       markers[index].defLineHeight = sizeValue;
-      setArrayTextData(markers),
-      setLineofText(sizeValue/2)
+      setArrayTextData(markers), setLineofText(sizeValue / 2);
     } else {
       return null;
     }
-  }
+  };
 
   const setFontFamily = item => {
     const index = textInAction;
     const markers = [...arrayTextData];
     if (markers[index]) {
       markers[index].defFontFamily = item;
-      console.warn(markers)
-      setArrayTextData(markers)
+      console.warn(markers);
+      setArrayTextData(markers);
     } else {
       return null;
     }
@@ -115,7 +114,9 @@ const Editior = () => {
     return (
       <View>
         <TouchableOpacity style={styles.renderitem}>
-          <Text style={[{fontFamily: `${item.text}`}, styles.renderitemfont]} onPress={() =>setFontFamily(item.text)}>
+          <Text
+            style={[{fontFamily: `${item.text}`}, styles.renderitemfont]}
+            onPress={() => setFontFamily(item.text)}>
             DIGITAL APP
           </Text>
         </TouchableOpacity>
@@ -128,10 +129,10 @@ const Editior = () => {
     let DEFS = {
       defTextID: textID,
       defTextValue: defaultLabel,
-      defFontFamily:'Hubballi-Regular',
+      defFontFamily: 'Hubballi-Regular',
       defAlign: 'center',
       defLetterSpacing: 0,
-      defColor:'#E2A76F',
+      defColor: '#E2A76F',
       defLineHeight: 15,
       defFontSize: 20,
     };
@@ -159,7 +160,7 @@ const Editior = () => {
         LetterSpacing={ID.defLetterSpacing}
         FontSize={ID.defFontSize}
         TopRightAction={() => removeText(ID.defTextID)}
-        centerPress={()=> setTextInAction(ID.defTextID)} 
+        centerPress={() => setTextInAction(ID.defTextID)}
         isDraggable={true}
         isResizable={true}
         onDragStart={() => console.log('-Drag Started')}
@@ -174,8 +175,8 @@ const Editior = () => {
 
   const colorSubmit = () => {
     setColormodel(!colormodel);
-    setOldcolor(oldcolor)
-  }
+    setOldcolor(oldcolor);
+  };
 
   return (
     <View style={{bottom: 45}}>
@@ -225,7 +226,7 @@ const Editior = () => {
                 value={sliderValue}
                 onValueChange={sliderValue => {
                   fontSizing(sliderValue);
-                  setSliderValue(sliderValue)
+                  setSliderValue(sliderValue);
                 }}
               />
               <Text style={styles.fontslidersafeareatext}>
@@ -289,9 +290,7 @@ const Editior = () => {
 
       <View style={styles.mainview}>
         <View style={styles.mainview1}>
-          <TouchableOpacity
-            style={[styles.flex, styles.top]}
-            onPress={addText}>
+          <TouchableOpacity style={[styles.flex, styles.top]} onPress={addText}>
             <Text>
               <Icon name="title" size={32} color={colors.black} />
             </Text>
