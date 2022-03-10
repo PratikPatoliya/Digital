@@ -1,15 +1,14 @@
 /* eslint-disable prettier/prettier */
 import React from 'react';
-import {ScrollView, View, Linking} from 'react-native';
-import {FAB} from 'react-native-paper';
+import { ScrollView, View, Linking } from 'react-native';
+import { FAB } from 'react-native-paper';
 import CatagoryImage from '../components/CategoryImage';
 import Header from '../components/Header';
 import HomeSlider from '../components/HomeSlider';
 import Lable from '../components/Lable';
-import Model from '../components/Model';
 import styles from '../styles/Home';
-import {img} from '../utils/Imgdata';
-import {useRoute} from '@react-navigation/native';
+import { img } from '../utils/Imgdata';
+import { useRoute } from '@react-navigation/native';
 
 const Home = props => {
   const route = useRoute();
@@ -37,7 +36,6 @@ const Home = props => {
   return (
     <View style={styles.homeBackground}>
       <Header title="Home" {...props} />
-      {/* <Model /> */}
       <ScrollView>
         <HomeSlider {...props} />
         <View style={styles.homeview}>
