@@ -10,7 +10,9 @@ const Verify = ({ route, navigation }) => {
   const secondInput = useRef();
   const thirdInput = useRef();
   const fourInput = useRef();
-  const [otp, setOtp] = useState({ 1: '', 2: '', 3: '', 4: '' });
+  const fiveInput = useRef();
+  const sixInput = useRef();
+  const [otp, setOtp] = useState({ 1: '', 2: '', 3: '', 4: '', 5: '', 6: '' });
   const [validotp, setValidotp] = useState(true);
 
   const validationotp = () => {
@@ -21,6 +23,10 @@ const Verify = ({ route, navigation }) => {
     } else if (otp[3].length < 1) {
       setValidotp(false);
     } else if (otp[4].length < 1) {
+      setValidotp(false);
+    } else if (otp[5].length < 1) {
+      setValidotp(false);
+    } else if (otp[6].length < 1) {
       setValidotp(false);
     } else {
       setValidotp(true);
@@ -74,16 +80,38 @@ const Verify = ({ route, navigation }) => {
           ref={fourInput}
           onChangeText={text => {
             setOtp({ ...otp, 4: text });
-            !text && thirdInput.current.focus();
+            text ? fiveInput.current.focus() : thirdInput.current.focus();
           }}
           onChange={() => setValidotp(true)}
           maxLength={1}
           style={styles.inputContainer4}
         />
+        <TextInput
+          keyboardType="number-pad"
+          ref={fiveInput}
+          onChangeText={text => {
+            setOtp({ ...otp, 5: text });
+            text ? sixInput.current.focus() : fourInput.current.focus();
+          }}
+          onChange={() => setValidotp(true)}
+          maxLength={1}
+          style={styles.inputContainer5}
+        />
+        <TextInput
+          keyboardType="number-pad"
+          ref={sixInput}
+          onChangeText={text => {
+            setOtp({ ...otp, 6: text });
+            !text && fiveInput.current.focus();
+          }}
+          onChange={() => setValidotp(true)}
+          maxLength={1}
+          style={styles.inputContainer6}
+        />
       </View>
       {
         validotp ? null :
-          <Text style={{ color: 'red', top: 25 }}>Valid otp</Text>
+          <Text style={{ color: 'red', top: 25 }}>Enter Otp</Text>
       }
       <View style={validotp ? styles.buttonContainer : styles.buttonContainer1}>
         <TouchableOpacity

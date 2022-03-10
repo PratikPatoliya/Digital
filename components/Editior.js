@@ -38,6 +38,7 @@ const Editior = (props) => {
   const [textInAction, setTextInAction] = useState(0);
   const [defaultLabel, setdefaultLabel] = useState();
   const [lineHegOfText, setLineofText] = useState(0);
+  const [fontf ,setFontf] = useState('');
   function changeColor(colorRgb, resType) {
     resType === 'end' && setOldcolor(colorRgb);
     setColorToText(colorRgb);
@@ -117,7 +118,7 @@ const Editior = (props) => {
         <TouchableOpacity style={styles.renderitem}>
           <Text
             style={[{ fontFamily: `${item.text}` }, styles.renderitemfont]}
-            onPress={() => setFontFamily(item.text)}>
+            onPress={() => setFontf(item.text)}>
             DIGITAL APP
           </Text>
         </TouchableOpacity>
@@ -273,7 +274,7 @@ const Editior = (props) => {
         <View style={styles.fontstyleview}>
           <View style={styles.fontstyleview1}>
             <View style={styles.fontstyleview2}>
-              <Text style={styles.fontstyleheader}>Select font style</Text>
+              <Text style={[styles.fontstyleheader,{fontFamily:`${fontf}`}]}>Select font style</Text>
               <TouchableOpacity
                 onPress={() => setFontmodel(!fontmodel)}
                 style={styles.fontstyletouchable}>
