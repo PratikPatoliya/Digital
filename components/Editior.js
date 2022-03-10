@@ -25,8 +25,8 @@ const Data = [
   { id: 2, text: 'BhuTukaExpandedOne-Regular' },
 ];
 
-const Editior = () => {
-  const [imageSource, setImageSource] = useState();
+const Editior = (props) => {
+  const { imageSource, setImageSource } = props;
   const [model, setModel] = useState(false);
   const [fontmodel, setFontmodel] = useState(false);
   const [colormodel, setColormodel] = useState(false);
@@ -290,7 +290,6 @@ const Editior = () => {
       </Modal>
 
       <View style={styles.mainview}>
-        <Image source={{ uri: imageSource }} style={{ width: Dimensions.get('window').width, height: Dimensions.get('window').height / 4 }} />
         <View style={styles.mainview1}>
           <TouchableOpacity style={[styles.flex, styles.top]} onPress={addText}>
             <Text>

@@ -11,8 +11,9 @@ const styles = StyleSheet.create({
     backgroundColor: colors.yellow,
   },
   insideimage: {
-    width: 400,
-    height: 300,
+    width: width,
+    height: height*1.1,
+    bottom:22,
   },
   fview: {
     backgroundColor: colors.black,
