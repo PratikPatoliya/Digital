@@ -127,10 +127,6 @@ const Frame = ({route, navigation}) => {
               />
           )}
            </View>
-<<<<<<< HEAD
-=======
-
->>>>>>> c654726de370af1d99d5610b0b89655982d1fd97
         </View>
       </ScrollView>
     </View>
