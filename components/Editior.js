@@ -23,6 +23,10 @@ const WINDOW = Dimensions.get('window');
 const Data = [
   { id: 1, text: 'Hubballi-Regular' },
   { id: 2, text: 'BhuTukaExpandedOne-Regular' },
+  { id: 3, text: 'Caveat-Bold' },
+  { id: 4, text: 'Caveat-Medium' },
+  { id: 5, text: 'Caveat-Regular' },
+  { id: 6, text: 'Caveat-SemiBold' },
 ];
 
 const Editior = (props) => {
@@ -38,7 +42,6 @@ const Editior = (props) => {
   const [textInAction, setTextInAction] = useState(0);
   const [defaultLabel, setdefaultLabel] = useState();
   const [lineHegOfText, setLineofText] = useState(0);
-  const [fontf ,setFontf] = useState('');
   function changeColor(colorRgb, resType) {
     resType === 'end' && setOldcolor(colorRgb);
     setColorToText(colorRgb);
@@ -73,7 +76,6 @@ const Editior = (props) => {
     const markers = [...arrayTextData];
     if (markers[index]) {
       markers[index].defFontFamily = item;
-      console.warn(markers);
       setArrayTextData(markers);
     } else {
       return null;
@@ -118,8 +120,8 @@ const Editior = (props) => {
         <TouchableOpacity style={styles.renderitem}>
           <Text
             style={[{ fontFamily: `${item.text}` }, styles.renderitemfont]}
-            onPress={() => setFontf(item.text)}>
-            DIGITAL APP
+            onPress={() => setFontFamily(item.text)}>
+            DIGITAL Banner
           </Text>
         </TouchableOpacity>
       </View>
@@ -131,12 +133,12 @@ const Editior = (props) => {
     let DEFS = {
       defTextID: textID,
       defTextValue: defaultLabel,
-      defFontFamily: 'Hubballi-Regular',
+      defFontFamily: 'Caveat-Regular',
       defAlign: 'center',
       defLetterSpacing: 0,
       defColor: '#E2A76F',
-      defLineHeight: 15,
-      defFontSize: 20,
+      defLineHeight: 12,
+      defFontSize: 16,
     };
     setArrayTextData([...arrayTextData, DEFS]);
   }
@@ -161,6 +163,7 @@ const Editior = (props) => {
         TextAlign={ID.defAlign}
         LetterSpacing={ID.defLetterSpacing}
         FontSize={ID.defFontSize}
+        FontFamily={ID.defFontFamily}
         TopRightAction={() => removeText(ID.defTextID)}
         centerPress={() => setTextInAction(ID.defTextID)}
         isDraggable={true}
@@ -274,7 +277,7 @@ const Editior = (props) => {
         <View style={styles.fontstyleview}>
           <View style={styles.fontstyleview1}>
             <View style={styles.fontstyleview2}>
-              <Text style={[styles.fontstyleheader,{fontFamily:`${fontf}`}]}>Select font style</Text>
+              <Text style={[styles.fontstyleheader]}>Select font style</Text>
               <TouchableOpacity
                 onPress={() => setFontmodel(!fontmodel)}
                 style={styles.fontstyletouchable}>
@@ -284,7 +287,7 @@ const Editior = (props) => {
               </TouchableOpacity>
             </View>
             <ScrollView style={{}}>
-              <FlatList data={Data} renderItem={renderItem} numColumns={3} />
+              <FlatList data={Data} renderItem={renderItem} numColumns={2} />
             </ScrollView>
           </View>
         </View>
@@ -307,16 +310,16 @@ const Editior = (props) => {
           </TouchableOpacity>
           <TouchableOpacity
             style={[styles.flex, styles.top]}
-            onPress={() => setFontmodel(true)}>
+            onPress={() => setSlider(true)}>
             <Text>
-              <Icon name="format-italic" size={32} color={colors.black} />
+              <Icon name="format-size" size={32} color={colors.black} />
             </Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={[styles.flex, styles.top]}
-            onPress={() => setSlider(true)}>
+            onPress={() => setFontmodel(true)}>
             <Text>
-              <Icon name="format-size" size={32} color={colors.black} />
+              <Icon name="format-italic" size={32} color={colors.black} />
             </Text>
           </TouchableOpacity>
           <TouchableOpacity

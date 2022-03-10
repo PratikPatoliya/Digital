@@ -15,9 +15,9 @@ const styles = StyleSheet.create({
   renderitemfont: {
     color: colors.white,
     padding: 5,
-    width: width * 0.275,
+    width: width * 0.35,
     height: height * 0.2,
-    fontSize:15,
+    fontSize:13,
     alignSelf: 'center',
     justifyContent: 'center',
   },

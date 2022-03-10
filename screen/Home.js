@@ -11,8 +11,6 @@ import styles from '../styles/Home';
 import {img} from '../utils/Imgdata';
 import {useRoute} from '@react-navigation/native';
 
-
-
 const Home = props => {
   const route = useRoute();
   const openWhatsApp = () => {
@@ -54,7 +52,7 @@ const Home = props => {
                       props.navigation.navigate('Viewall', {
                         itemdata: item.image,
                         headername: item,
-                        screenName : route.name
+                        screenName: route.name,
                       })
                     }
                   />
@@ -64,6 +62,7 @@ const Home = props => {
                       props.navigation.navigate('Frame', {
                         id: item.image,
                         img: item.image,
+                        routeName: route.name,
                       })
                     }
                   />
