@@ -15,10 +15,6 @@ const Contactus = props => {
       <View style={styles.container}>
         <View style={styles.wrap}>
           <Image source={{uri: image.contactUs}} style={styles.image} />
-<<<<<<< Updated upstream
-=======
-          {/* <Editform /> */}
->>>>>>> Stashed changes
         </View>
       </View>
     </View>
