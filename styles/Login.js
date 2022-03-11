@@ -55,6 +55,10 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     marginRight: 20,
     height: 40,
+    backgroundColor:"#c9f2cb",
+  },
+  textbox:{
+    marginLeft:10,
   },
   buttonview: {
     marginBottom: Platform.OS === 'ios' ? height / 2.8 : height / 3,

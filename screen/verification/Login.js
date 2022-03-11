@@ -29,16 +29,17 @@ const Login = ({ navigation }) => {
       </Text>
       <View style={styles.inputview}>
         <Text style={styles.viewtext}>+91</Text>
-        <TextInput
-          dataDetectorTypes={'phoneNumber'}
-          maxLength={10}
-          keyboardType={'numeric'}
-          backgroundColor="#c9f2cb"
-          style={styles.textinput}
-          onChangeText={newnumber => setNumber(newnumber)}
-          onChange={() => setValiduser(true)}
-          defaultValue={number}
-        />
+        <View style={styles.textinput}>
+          <TextInput
+            dataDetectorTypes={'phoneNumber'}
+            maxLength={10}
+            keyboardType={'numeric'}
+            style={styles.textbox}
+            onChangeText={newnumber => setNumber(newnumber)}
+            onChange={() => setValiduser(true)}
+            defaultValue={number}
+          />
+        </View>
       </View>
       {
         validuser ? null :

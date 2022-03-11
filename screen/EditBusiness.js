@@ -95,7 +95,7 @@ const EditBusiness = ({ navigation }) => {
                             {' '}
                             Enter Company Name{' '}
                         </Text>
-                        <TextInput style={styles.textbox} />
+                        <TextInput dataDetectorTypes={'all'} keyboardType={'default'} style={styles.textbox} />
                     </View>
                     <View style={{ flexDirection: 'row', width: width * 0.85, alignSelf: 'center' }}>
                         <View style={styles.viewtext}>
@@ -106,7 +106,7 @@ const EditBusiness = ({ navigation }) => {
                                 {' '}
                                 Mobile Number{' '}
                             </Text>
-                            <TextInput style={styles.textbox} />
+                            <TextInput dataDetectorTypes={'phoneNumber'} maxLength={10} keyboardType={'numeric'} style={styles.textbox} />
                         </View>
                     </View>
                     <View style={styles.fieldSet}>
@@ -114,35 +114,35 @@ const EditBusiness = ({ navigation }) => {
                             {' '}
                             Enter Second Mobile Number (Optional){' '}
                         </Text>
-                        <TextInput style={styles.textbox} />
+                        <TextInput dataDetectorTypes={'phoneNumber'} maxLength={10} keyboardType={'numeric'} style={styles.textbox} />
                     </View>
                     <View style={styles.fieldSet}>
                         <Text style={styles.legend}>
                             {' '}
                             Enter Company Email Address{' '}
                         </Text>
-                        <TextInput style={styles.textbox} />
+                        <TextInput dataDetectorTypes={'all'} keyboardType={'email-address'} style={styles.textbox} />
                     </View>
                     <View style={styles.fieldSet}>
                         <Text style={styles.legend}>
                             {' '}
                             Enter Company Website (Optional){' '}
                         </Text>
-                        <TextInput style={styles.textbox} />
+                        <TextInput dataDetectorTypes={'link'} keyboardType={'url'} style={styles.textbox} />
                     </View>
                     <View style={styles.fieldSet}>
                         <Text style={styles.legend}>
                             {' '}
                             Enter Company Address{' '}
                         </Text>
-                        <TextInput style={styles.adresstextbox} multiline={true} numberOfLines={2} />
+                        <TextInput dataDetectorTypes={'address'} keyboardType={'default'} style={styles.adresstextbox} multiline={true} numberOfLines={2} />
                     </View>
                     <View style={styles.fieldSet}>
                         <Text style={styles.legend}>
                             {' '}
                             Company Description (Optional){' '}
                         </Text>
-                        <TextInput style={styles.textbox} />
+                        <TextInput dataDetectorTypes={'all'} keyboardType={'default'} style={styles.textbox} />
                     </View>
                     <View style={styles.button}>
                         <TouchableOpacity style={styles.click}>
