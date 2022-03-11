@@ -11,7 +11,7 @@ const Terms_conditions = ({navigation}) => {
         isBack={() => navigation.goBack()}
       />
       <ScrollView>
-        <Text style={{fontSize: 22}}>1. Acceptance of the Terms of Use</Text>
+        <Text style={{fontSize: 22, alignSelf: 'center'}}>Acceptance of the Terms of Use</Text>
         <Text style={{width: '90%', alignSelf: 'center'}}>
           The following terms and conditions, together with any referenced
           documents (collectively, "Terms of Use") form a legal agreement

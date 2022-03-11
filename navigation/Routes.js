@@ -23,7 +23,7 @@ function Auth() {
 function Routes() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Auth">
+      <Stack.Navigator initialRouteName="AppStack">
         <Stack.Screen
           name="Auth"
           component={Auth}

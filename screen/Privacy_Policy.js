@@ -11,7 +11,7 @@ const Privacy_Policy = ({navigation}) => {
         isBack={() => navigation.goBack()}
       />
       <ScrollView>
-        <Text style={{fontSize: 22}}>1. INTRODUCTION</Text>
+        <Text style={{fontSize: 22, alignSelf: 'center'}}>INTRODUCTION</Text>
         <Text style={{width: '90%', alignSelf: 'center'}}>
           Demos is committed to protecting your privacy and security. This
           policy explains how and why we use your personal data, to ensure you
