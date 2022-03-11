@@ -13,6 +13,8 @@ const image = {
   otp: require('../utils/img/otp.png'),
   userImage:
     'https://www.clipartmax.com/png/middle/349-3496330_download-person-icon-orange-clipart-computer-icons-user-icon-orange-png.png',
+  yourlogohere:'https://pngimage.net/wp-content/uploads/2018/06/logo-here-png-4.png',
+  growyourbusiness:'https://www.vhv.rs/dpng/d/177-1777613_growth-png-pictures-grow-your-business-logo-transparent.png',
 };
 
 export default image;

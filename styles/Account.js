@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import {StyleSheet, Platform, Dimensions} from 'react-native';
 import colors from '../utils/colors';
 const width = Dimensions.get('window').width;
@@ -36,7 +37,7 @@ const styles = StyleSheet.create({
     topContainer :{
       flex: 1, 
       alignItems: 'center', 
-      justifyContent: 'center'
+      justifyContent: 'center',
     },
 });
 export default styles;

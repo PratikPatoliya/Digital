@@ -17,7 +17,7 @@ function Auth() {
       <Stack.Screen name="Splash" component={Splash} />
       <Stack.Screen name="login" component={Login} />
       <Stack.Screen name="verify" component={Verify} />
-      <Stack.Screen name="Profile" component={Profile} />
+      {/* <Stack.Screen name="Profile" component={Profile} /> */}
     </Stack.Navigator>
   );
 }
@@ -25,7 +25,7 @@ function Auth() {
 function Routes() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Auth">
+      <Stack.Navigator initialRouteName="AppStack">
         <Stack.Screen
           name="Auth"
           component={Auth}
