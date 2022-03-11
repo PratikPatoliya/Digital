@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import {StyleSheet, Platform} from 'react-native';
 import colors from '../utils/colors';
 const styles = StyleSheet.create({

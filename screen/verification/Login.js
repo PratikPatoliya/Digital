@@ -1,11 +1,9 @@
-/* eslint-disable prettier/prettier */
-/* eslint-disable react-native/no-inline-styles */
-import React, { useState } from 'react';
-import { Text, TextInput, View, Image, TouchableOpacity } from 'react-native';
+import React, {useState} from 'react';
+import {Text, TextInput, View, Image, TouchableOpacity} from 'react-native';
 import styles from '../../styles/Login';
 import image from '../../utils/image';
 
-const Login = ({ navigation }) => {
+const Login = ({navigation}) => {
   const [number, setNumber] = useState('');
   const [validuser, setValiduser] = useState(true);
 
@@ -14,7 +12,7 @@ const Login = ({ navigation }) => {
       setValiduser(false);
     } else {
       setValiduser(true);
-      navigation.navigate('verify', { num: number });
+      navigation.navigate('verify', {num: number});
     }
   };
 
@@ -25,7 +23,7 @@ const Login = ({ navigation }) => {
       </View>
       <Text style={styles.verifytext}>Verify Your Number</Text>
       <Text style={styles.numbertext}>
-        Please enter your country & {'\n'}        your phone number
+        Please enter your country & {'\n'} your phone number
       </Text>
       <View style={styles.inputview}>
         <Text style={styles.viewtext}>+91</Text>
@@ -41,14 +39,12 @@ const Login = ({ navigation }) => {
           />
         </View>
       </View>
-      {
-        validuser ? null :
-          <Text style={{ left: 25, top: 40, color: 'red' }}>*Enter your valid 10 digit number</Text>
-      }
-      <TouchableOpacity
-        style={styles.buttonview}
-        onPress={validation}
-      >
+      {validuser ? null : (
+        <Text style={{left: 25, top: 40, color: 'red'}}>
+          *Enter your valid 10 digit number
+        </Text>
+      )}
+      <TouchableOpacity style={styles.buttonview} onPress={validation}>
         <Text style={styles.tochabletext}>Send</Text>
       </TouchableOpacity>
     </View>

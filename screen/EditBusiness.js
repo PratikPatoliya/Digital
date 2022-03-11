@@ -1,5 +1,3 @@
-/* eslint-disable prettier/prettier */
-/* eslint-disable react-native/no-inline-styles */
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, Dimensions, Image, ScrollView, TouchableOpacity, Modal } from 'react-native';
 import Header2 from '../components/Header2';

@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import {StyleSheet, Dimensions, Platform} from 'react-native';
 const height = Dimensions.get('window').height;
 const width = Dimensions.get('window').width;

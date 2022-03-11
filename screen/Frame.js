@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import React, {useState, useEffect} from 'react';
 import {
   Image,
@@ -7,6 +6,7 @@ import {
   ScrollView,
   FlatList,
   PermissionsAndroid,
+  Platform,
 } from 'react-native';
 import Header2 from '../components/Header2';
 import Eflatlist from '../components/Eflatlist';
@@ -21,7 +21,7 @@ const Frame = ({route, navigation}) => {
   const screenName = route.params.routeName;
 
   useEffect(() => {
-    request_storage_runtime_permission();
+    Platform.OS === 'android' ? request_storage_runtime_permission() : null;
   });
   const renderItem = ({item}) => {
     return (
@@ -120,13 +120,13 @@ const Frame = ({route, navigation}) => {
             />
           </View>
           <View style={{top: imageSource ? -22 : 43}}>
-          {screenName === 'Home1' ? null : (
+            {screenName === 'Home1' ? null : (
               <Editior
                 imageSource={imageSource}
                 setImageSource={setImageSource}
               />
-          )}
-           </View>
+            )}
+          </View>
         </View>
       </ScrollView>
     </View>

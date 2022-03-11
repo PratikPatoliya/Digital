@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import React, {useState} from 'react';
 import {View, TouchableOpacity, Image, TextInput, Text} from 'react-native';
 import styles from '../styles/EditProfile';
@@ -28,7 +27,10 @@ const EditProfile = ({navigation}) => {
         </TouchableOpacity>
         <View style={{top: 20}}>
           <View style={nonestyle ? styles.fieldSet1 : styles.fieldSet}>
-            <Text style={ nonestyle ? styles.legend : styles.legend1}> Enter Your Name </Text>
+            <Text style={nonestyle ? styles.legend : styles.legend1}>
+              {' '}
+              Enter Your Name{' '}
+            </Text>
             <TextInput onFocus={changeStyle} style={styles.inputContainer} />
           </View>
         </View>

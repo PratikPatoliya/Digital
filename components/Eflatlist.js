@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import React from 'react';
 import {View, TouchableOpacity, Image, FlatList} from 'react-native';
 import styles from '../styles/Eflatlist';

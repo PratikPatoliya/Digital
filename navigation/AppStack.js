@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import React from 'react';
 import {Text, Platform} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
@@ -226,7 +225,19 @@ const AppStack = () => {
             ),
         }}
       />
-      <Tab.Screen name="Business" component={BusinessStackScreen} options={{ headerShown: false, tabBarIcon: (({ color, focused }) => focused ? <Icon name="briefcase-outline" size={23} style={{ color: color }} /> : <Icon name="briefcase-outline" size={20} style={{ color: color }} />) }} />
+      <Tab.Screen
+        name="Business"
+        component={BusinessStackScreen}
+        options={{
+          headerShown: false,
+          tabBarIcon: ({color, focused}) =>
+            focused ? (
+              <Icon name="briefcase-outline" size={23} style={{color: color}} />
+            ) : (
+              <Icon name="briefcase-outline" size={20} style={{color: color}} />
+            ),
+        }}
+      />
       <Tab.Screen
         name="Account"
         component={AccountStackScreen}

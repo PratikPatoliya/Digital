@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { StyleSheet, Dimensions } from 'react-native';
 import colors from '../utils/colors';
 const { width } = Dimensions.get('window');

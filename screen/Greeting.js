@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import React from 'react';
 import {ScrollView, View} from 'react-native';
 import Header2 from '../components/Header2';

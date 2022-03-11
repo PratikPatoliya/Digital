@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import React from 'react';
 import {
   View,
@@ -21,7 +20,7 @@ const Viewall = ({route, navigation}) => {
             navigation.navigate('Frame', {
               id: item.img,
               img: item.img,
-              routeName : route.params.screenName
+              routeName: route.params.screenName,
             })
           }>
           <Image

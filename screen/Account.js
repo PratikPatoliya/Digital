@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import React, {useState} from 'react';
 import {
   Text,
@@ -68,8 +67,7 @@ const Account = ({navigation}) => {
     <View>
       <Modal transparent={true} visible={model}>
         <View style={styles.topContainer}>
-          <View
-            style={styles.modelContainer}>
+          <View style={styles.modelContainer}>
             <Text style={{fontSize: 17, color: colors.black}}>
               Select File from
             </Text>
@@ -141,7 +139,9 @@ const Account = ({navigation}) => {
             />
           </View>
           <View style={{alignItems: 'center'}}>
-            <Text style={styles.descriptionTxt}>Designed by Bluesoft Infotech</Text>
+            <Text style={styles.descriptionTxt}>
+              Designed by Bluesoft Infotech
+            </Text>
           </View>
         </ScrollView>
       </View>
@@ -150,5 +150,3 @@ const Account = ({navigation}) => {
 };
 
 export default Account;
-
-

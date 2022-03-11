@@ -1,9 +1,8 @@
-/* eslint-disable prettier/prettier */
 import React from 'react';
 import {FlatList, Image, TouchableOpacity, View} from 'react-native';
 import styles from '../styles/CategoryImage';
 const CatagoryImage = props => {
-  const {data,onPress} = props;
+  const {data, onPress} = props;
   const renderItem = ({item}) => {
     return (
       <View style={styles.Grig}>

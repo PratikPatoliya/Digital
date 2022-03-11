@@ -1,15 +1,11 @@
-/* eslint-disable prettier/prettier */
 import React, {useState} from 'react';
 import {View, TouchableOpacity, Image, TextInput, Text} from 'react-native';
-// import styles from '../styles/EditProfile';
 import styles from '../../styles/Profile';
-import Header2 from '../../components/Header2';
 import image from '../../utils/image';
 
 const Profile = ({navigation}) => {
   const [model, setModel] = useState(false);
   const [nonestyle, setNonestyle] = useState(false);
-  const [nonestyle1, setNonestyle1] = useState(false);
   const [imageSource, setImageSource] = useState(image.userImage);
 
   const changeStyle = () => {

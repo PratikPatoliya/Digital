@@ -1,5 +1,4 @@
-/* eslint-disable prettier/prettier */
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {
   Text,
   TouchableOpacity,
@@ -9,28 +8,27 @@ import {
   FlatList,
   ScrollView,
   Dimensions,
-  Image,
 } from 'react-native';
 import colors from '../utils/colors';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import ImagePicker from 'react-native-image-crop-picker';
 import Slider from '@react-native-community/slider';
-import { BitMapColorPicker as ColorPicker } from 'react-native-bitmap-color-picker';
+import {BitMapColorPicker as ColorPicker} from 'react-native-bitmap-color-picker';
 import styles from '../styles/Editior';
 import TextEditor from './TextEditor';
 const WINDOW = Dimensions.get('window');
 
 const Data = [
-  { id: 1, text: 'Hubballi-Regular' },
-  { id: 2, text: 'BhuTukaExpandedOne-Regular' },
-  { id: 3, text: 'Caveat-Bold' },
-  { id: 4, text: 'Caveat-Medium' },
-  { id: 5, text: 'Caveat-Regular' },
-  { id: 6, text: 'Caveat-SemiBold' },
+  {id: 1, text: 'Hubballi-Regular'},
+  {id: 2, text: 'BhuTukaExpandedOne-Regular'},
+  {id: 3, text: 'Caveat-Bold'},
+  {id: 4, text: 'Caveat-Medium'},
+  {id: 5, text: 'Caveat-Regular'},
+  {id: 6, text: 'Caveat-SemiBold'},
 ];
 
-const Editior = (props) => {
-  const { imageSource, setImageSource } = props;
+const Editior = props => {
+  const {imageSource, setImageSource} = props;
   const [model, setModel] = useState(false);
   const [fontmodel, setFontmodel] = useState(false);
   const [colormodel, setColormodel] = useState(false);
@@ -114,12 +112,12 @@ const Editior = (props) => {
     setModel(false);
   }
 
-  const renderItem = ({ item }) => {
+  const renderItem = ({item}) => {
     return (
       <View>
         <TouchableOpacity style={styles.renderitem}>
           <Text
-            style={[{ fontFamily: `${item.text}` }, styles.renderitemfont]}
+            style={[{fontFamily: `${item.text}`}, styles.renderitemfont]}
             onPress={() => setFontFamily(item.text)}>
             DIGITAL Banner
           </Text>
@@ -184,8 +182,8 @@ const Editior = (props) => {
   };
 
   return (
-    <View style={{ bottom: 45 }}>
-      <View style={{ bottom: 500 }}>{ADDED_TEXTS}</View>
+    <View style={{bottom: 45}}>
+      <View style={{bottom: 500}}>{ADDED_TEXTS}</View>
       {/* image  */}
       <Modal transparent={true} visible={model}>
         <View style={styles.imageview1}>
@@ -247,7 +245,7 @@ const Editior = (props) => {
       <Modal transparent={true} visible={colormodel}>
         <View style={styles.colorsview}>
           <View style={styles.colorview1}>
-            <Text style={[{ color: colors.black }, styles.colorheader]}>
+            <Text style={[{color: colors.black}, styles.colorheader]}>
               Choose color
             </Text>
             <View style={styles.colorview2}>

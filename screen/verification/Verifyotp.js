@@ -1,10 +1,9 @@
-/* eslint-disable prettier/prettier */
-import React, { useRef, useState } from 'react';
-import { Text, TextInput, View, Image, TouchableOpacity } from 'react-native';
+import React, {useRef, useState} from 'react';
+import {Text, TextInput, View, Image, TouchableOpacity} from 'react-native';
 import styles from '../../styles/Verifyotp';
 import image from '../../utils/image';
 
-const Verify = ({ route, navigation }) => {
+const Verify = ({route, navigation}) => {
   const phonenumber = route.params.num;
   const firstInput = useRef();
   const secondInput = useRef();
@@ -12,7 +11,7 @@ const Verify = ({ route, navigation }) => {
   const fourInput = useRef();
   const fiveInput = useRef();
   const sixInput = useRef();
-  const [otp, setOtp] = useState({ 1: '', 2: '', 3: '', 4: '', 5: '', 6: '' });
+  const [otp, setOtp] = useState({1: '', 2: '', 3: '', 4: '', 5: '', 6: ''});
   const [validotp, setValidotp] = useState(true);
 
   const validationotp = () => {
@@ -38,7 +37,7 @@ const Verify = ({ route, navigation }) => {
       <Image source={image.otp} style={styles.img} />
       <Text style={styles.textheader}>Verification Code</Text>
       <Text style={styles.texttitle}>
-        Please enter code sent {'\n'}      to{' '}
+        Please enter code sent {'\n'} to{' '}
         <Text style={styles.textnumber}>{phonenumber}</Text>
       </Text>
       <View style={styles.textinputview}>
@@ -46,7 +45,7 @@ const Verify = ({ route, navigation }) => {
           keyboardType="number-pad"
           ref={firstInput}
           onChangeText={text => {
-            setOtp({ ...otp, 1: text });
+            setOtp({...otp, 1: text});
             text && secondInput.current.focus();
           }}
           onChange={() => setValidotp(true)}
@@ -57,7 +56,7 @@ const Verify = ({ route, navigation }) => {
           keyboardType="number-pad"
           ref={secondInput}
           onChangeText={text => {
-            setOtp({ ...otp, 2: text });
+            setOtp({...otp, 2: text});
             text ? thirdInput.current.focus() : firstInput.current.focus();
           }}
           onChange={() => setValidotp(true)}
@@ -68,7 +67,7 @@ const Verify = ({ route, navigation }) => {
           keyboardType="number-pad"
           ref={thirdInput}
           onChangeText={text => {
-            setOtp({ ...otp, 3: text });
+            setOtp({...otp, 3: text});
             text ? fourInput.current.focus() : secondInput.current.focus();
           }}
           onChange={() => setValidotp(true)}
@@ -79,7 +78,7 @@ const Verify = ({ route, navigation }) => {
           keyboardType="number-pad"
           ref={fourInput}
           onChangeText={text => {
-            setOtp({ ...otp, 4: text });
+            setOtp({...otp, 4: text});
             text ? fiveInput.current.focus() : thirdInput.current.focus();
           }}
           onChange={() => setValidotp(true)}
@@ -90,7 +89,7 @@ const Verify = ({ route, navigation }) => {
           keyboardType="number-pad"
           ref={fiveInput}
           onChangeText={text => {
-            setOtp({ ...otp, 5: text });
+            setOtp({...otp, 5: text});
             text ? sixInput.current.focus() : fourInput.current.focus();
           }}
           onChange={() => setValidotp(true)}
@@ -101,7 +100,7 @@ const Verify = ({ route, navigation }) => {
           keyboardType="number-pad"
           ref={sixInput}
           onChangeText={text => {
-            setOtp({ ...otp, 6: text });
+            setOtp({...otp, 6: text});
             !text && fiveInput.current.focus();
           }}
           onChange={() => setValidotp(true)}
@@ -109,21 +108,15 @@ const Verify = ({ route, navigation }) => {
           style={styles.inputContainer6}
         />
       </View>
-      {
-        validotp ? null :
-          <Text style={{ color: 'red', top: 25 }}>Enter Otp</Text>
-      }
+      {validotp ? null : <Text style={{color: 'red', top: 25}}>Enter Otp</Text>}
       <View style={validotp ? styles.buttonContainer : styles.buttonContainer1}>
-        <TouchableOpacity
-          style={styles.tochable}
-          onPress={validationotp}
-        >
+        <TouchableOpacity style={styles.tochable} onPress={validationotp}>
           <Text style={styles.tochabletext}>Verify</Text>
         </TouchableOpacity>
         <TouchableOpacity
-          style={{ alignItems: 'center', marginTop: 0 }}
+          style={{alignItems: 'center', marginTop: 0}}
           onPress={() => navigation.navigate('login')}>
-          <Text style={{ color: "green", fontSize: 15 }} >Resend code</Text>
+          <Text style={{color: 'green', fontSize: 15}}>Resend code</Text>
         </TouchableOpacity>
       </View>
     </View>
