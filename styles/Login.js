@@ -54,10 +54,11 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     marginRight: 20,
     height: 40,
-    backgroundColor:"#c9f2cb",
+    backgroundColor: '#c9f2cb',
   },
-  textbox:{
-    marginLeft:10,
+  textbox: {
+    marginLeft: 10,
+    paddingTop: Platform.OS === 'ios' ? 10 : 0,
   },
   buttonview: {
     marginBottom: Platform.OS === 'ios' ? height / 2.8 : height / 3,

@@ -1,4 +1,4 @@
-import {StyleSheet, Dimensions} from 'react-native';
+import {StyleSheet, Dimensions, Platform} from 'react-native';
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
 const styles = StyleSheet.create({
@@ -48,76 +48,76 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     fontWeight: '600',
   },
-  inputContainer :{
+  inputContainer: {
     flex: 0.1,
     fontSize: 15,
     borderWidth: 1,
     alignSelf: 'center',
-    paddingTop: 10,
+    paddingTop: Platform.OS === 'ios' ? 2 : 10,
     height: 40,
-    paddingLeft: 15,
+    paddingLeft: 10,
     marginRight: 8,
   },
-  inputContainer2:{
+  inputContainer2: {
     flex: 0.1,
     fontSize: 15,
     borderWidth: 1,
     alignSelf: 'center',
     marginLeft: 8,
-    paddingTop: 10,
+    paddingTop: Platform.OS === 'ios' ? 2 : 10,
     height: 40,
-    paddingLeft: 15,
+    paddingLeft: 10,
     marginRight: 8,
   },
-  inputContainer3:{
+  inputContainer3: {
     flex: 0.1,
     fontSize: 15,
     borderWidth: 1,
     alignSelf: 'center',
     marginLeft: 8,
-    paddingTop: 10,
+    paddingTop: Platform.OS === 'ios' ? 2 : 10,
     height: 40,
-    paddingLeft: 15,
+    paddingLeft: 10,
     marginRight: 8,
   },
-  inputContainer4:{
+  inputContainer4: {
     flex: 0.1,
     fontSize: 15,
     borderWidth: 1,
     alignSelf: 'center',
     marginLeft: 8,
-    paddingTop: 10,
+    paddingTop: Platform.OS === 'ios' ? 2 : 10,
     height: 40,
-    paddingLeft: 15,
+    paddingLeft: 10,
     marginRight: 8,
   },
-  inputContainer5:{
+  inputContainer5: {
     flex: 0.1,
     fontSize: 15,
     borderWidth: 1,
     alignSelf: 'center',
     marginLeft: 8,
-    paddingTop: 10,
+    paddingTop: Platform.OS === 'ios' ? 2 : 10,
     height: 40,
-    paddingLeft: 15,
+    paddingLeft: 10,
     marginRight: 8,
   },
-  inputContainer6:{
+  inputContainer6: {
     flex: 0.1,
     fontSize: 15,
     borderWidth: 1,
     alignSelf: 'center',
     marginLeft: 8,
-    paddingTop: 10,
+    paddingTop: Platform.OS === 'ios' ? 2 : 10,
     height: 40,
-    paddingLeft: 15,
+    paddingLeft: 10,
   },
-  buttonContainer:{
+  buttonContainer: {
     marginBottom: height / 3,
     width: width / 1.7,
     marginTop: height / 12,
   },
-  buttonContainer1:{
+  buttonContainer1: {
     marginBottom: height / 3,
     width: width / 1.7,
     marginTop: height / 15,
