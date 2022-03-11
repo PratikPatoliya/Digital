@@ -4,10 +4,11 @@ import styles from '../styles/EditProfile';
 import Header2 from '../components/Header2';
 import image from '../utils/image';
 
-const EditProfile = ({navigation}) => {
+const EditProfile = ({ route,navigation}) => {
+  const imageSource = route.params.imageSource;
   const [model, setModel] = useState(false);
   const [nonestyle, setNonestyle] = useState(false);
-  const [imageSource, setImageSource] = useState(image.userImage);
+  // const [imageSource, setImageSource] = useState(image.userImage);
 
   const changeStyle = () => {
     setNonestyle(true);

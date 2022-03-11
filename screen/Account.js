@@ -92,7 +92,7 @@ const Account = ({navigation}) => {
 
       <View style={{backgroundColor: colors.black, height, width}}>
         <View style={styles.title}>
-          <TouchableOpacity onPress={() => navigation.navigate('Editprofile')}>
+          <TouchableOpacity onPress={() => navigation.navigate('Editprofile',{imageSource : imageSource})}>
             <Text style={styles.titlefont}>Edit Profile</Text>
           </TouchableOpacity>
         </View>
