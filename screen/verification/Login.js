@@ -17,10 +17,10 @@ const Login = ({navigation}) => {
       setValiduser(true);
       navigation.navigate('verify', {num: number});
     }
-    // const item = {
+    // const params = {
     //   mobileNumber: number,
     // };
-    // dispatch(actionLogin(item));
+    // dispatch(actionLogin(params));
   };
 
   return (

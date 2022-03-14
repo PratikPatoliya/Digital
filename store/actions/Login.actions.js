@@ -8,10 +8,10 @@ const succesLogin = payload => {
   };
 };
 
-export const actionLogin = item => {
+export const actionLogin = params => {
   return async dispatch => {
     try {
-      await ApiService.MobileNumber(item).then(res => {
+      await ApiService.MobileNumber(params).then(res => {
         if (res.status === 200) {
           dispatch(succesLogin(res.data));
         } else {
