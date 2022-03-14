@@ -14,10 +14,7 @@ const initialState = {
   status: statusList.idle,
 };
 
-export default function Reducer(
-  state = initialState,
-  {type, payload} = action,
-) {
+function Login(state = initialState, {type, payload} = action) {
   switch (type) {
     case LOGIN:
       return {
@@ -47,3 +44,5 @@ export default function Reducer(
       return state;
   }
 }
+
+export default Login;
