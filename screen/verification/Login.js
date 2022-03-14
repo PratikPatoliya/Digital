@@ -2,8 +2,11 @@ import React, {useState} from 'react';
 import {Text, TextInput, View, Image, TouchableOpacity} from 'react-native';
 import styles from '../../styles/Login';
 import image from '../../utils/image';
+import {useDispatch} from 'react-redux';
+import {actionLogin} from '../../store/actions/Login.actions';
 
 const Login = ({navigation}) => {
+  const dispatch = useDispatch();
   const [number, setNumber] = useState('');
   const [validuser, setValiduser] = useState(true);
 
@@ -14,6 +17,10 @@ const Login = ({navigation}) => {
       setValiduser(true);
       navigation.navigate('verify', {num: number});
     }
+    // const item = {
+    //   mobileNumber: number,
+    // };
+    // dispatch(actionLogin(item));
   };
 
   return (

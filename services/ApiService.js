@@ -2,8 +2,8 @@ import ajax from './AxiosService';
 
 const API_URL = '';
 const ApiService = function () {
-  const MobileNumber = () => {
-    return ajax.post(API_URL + '');
+  const MobileNumber = item => {
+    return ajax.post(API_URL + '', item);
   };
   return {
     MobileNumber,
