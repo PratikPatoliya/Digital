@@ -2,25 +2,27 @@ import React, {useState} from 'react';
 import {Text, TextInput, View, Image, TouchableOpacity} from 'react-native';
 import styles from '../../styles/Login';
 import image from '../../utils/image';
-import {useDispatch} from 'react-redux';
-import {actionLogin} from '../../store/actions/Login.actions';
+import {useDispatch,useSelector} from 'react-redux';
+import { login } from '../../store/actions';
 
 const Login = ({navigation}) => {
-  const dispatch = useDispatch();
   const [number, setNumber] = useState('');
   const [validuser, setValiduser] = useState(true);
 
+  const dispatch = useDispatch()
+
+  const x = useSelector((data) => console.log("++++++++dataaaaaaaaaaa",data.loginReducer.data))
+
   const validation = () => {
+    debugger
     if (number.length < 10) {
       setValiduser(false);
     } else {
       setValiduser(true);
-      navigation.navigate('verify', {num: number});
+      dispatch(login({'mobile_number': number }))
+      // navigation.navigate('verify', {num: number});
     }
-    // const params = {
-    //   mobileNumber: number,
-    // };
-    // dispatch(actionLogin(params));
+    
   };
 
   return (
