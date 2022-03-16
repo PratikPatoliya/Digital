@@ -1,6 +1,8 @@
-import {SET_LOGIN_STATE ,SET_OTP_STATE} from '../types/Login.types';
+import {SET_LOGIN_STATE, SET_OTP_STATE} from '../types/Login.types';
 
-const initialState = {};
+const initialState = {
+  userToken: '',
+};
 
 export const loginReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -9,16 +11,10 @@ export const loginReducer = (state = initialState, action) => {
         ...state,
         ...action.payload,
       };
-    default:
-      return state;
-  }
-};
-export const otpReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case SET_OTP_STATE:
+    case SET_USER_TOKEN:
       return {
         ...state,
-        ...action.payload,
+        userToken: action.payload,
       };
     default:
       return state;
