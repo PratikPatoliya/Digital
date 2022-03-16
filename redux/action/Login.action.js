@@ -20,6 +20,23 @@ export const login = loginInput => {
       });
   };
 };
+export const otplogin = otpInput => {
+  return dispatch => {
+    return axios
+      .post(LoginUrl, otpInput, {
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+      })
+      .then(res => {
+        dispatch(setLoginState(res.data));
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+};
 
 const setLoginState = loginData => {
   return {

@@ -11,9 +11,9 @@ const Login = ({navigation}) => {
 
   const dispatch = useDispatch();
 
-  const x = useSelector(data =>
-    console.log('++++++++dataaaaaaaaaaa', data.loginReducer.data),
-  );
+  // const x = useSelector(data =>
+  //   data && data.loginReducer && data.loginReducer.data && data.loginReducer.data.length>0 &&data.loginReducer.data[0].mobile_number
+  // );
 
   const validation = () => {
     if (number.length < 10) {
@@ -21,7 +21,7 @@ const Login = ({navigation}) => {
     } else {
       setValiduser(true);
       dispatch(login({mobile_number: number}));
-      // navigation.navigate('verify', {num: number});
+      navigation.navigate('verify', {num: number});  
     }
   };
 
