@@ -15,7 +15,7 @@ const Login = ({navigation}) => {
     } else {
       setValiduser(true);
       dispatch(login({mobile_number: number}));
-      navigation.navigate('verify', {num: number});
+      navigation.navigate('verify');
     }
   };
 

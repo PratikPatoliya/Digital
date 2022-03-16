@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
   },
   textbox: {
     marginLeft: 10,
-    paddingTop: Platform.OS === 'ios' ? 10 : 0,
+    paddingTop: Platform.OS === 'ios' ? 10 : 11,
   },
   buttonview: {
     marginBottom: Platform.OS === 'ios' ? height / 2.8 : height / 3,
