@@ -1,4 +1,4 @@
-import {SET_LOGIN_STATE, SET_OTP_STATE} from '../types/Login.types';
+import {SET_LOGIN_STATE, SET_USER_TOKEN} from '../types/Login.types';
 
 const initialState = {
   userToken: '',
