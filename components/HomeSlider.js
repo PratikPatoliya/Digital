@@ -18,8 +18,8 @@ const CarouselCardItem = ({ item, index }) => {
   )
 }
 const HomeSlider = () => {
-  const state = useSelector(state => state.bannerReducer.bannerData)
-  console.log("state", state);
+  const state = useSelector(state => state.bannerReducer?.bannerData)
+  // console.log("state", state);
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(bannerslider())
@@ -27,7 +27,6 @@ const HomeSlider = () => {
   const isCarousel = useRef(null)
   return (
     <View>
-      <Text>HomeSlider</Text>
       <Carousel
         // layout="stack"
         loop={true}

@@ -6,7 +6,7 @@ const initialState = {
 export const bannerReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_BANNER:
-        console.log("action.payload",action.payload);
+        // console.log("action.payload",action.payload);
       return {
         ...state,
         bannerData: action.payload,

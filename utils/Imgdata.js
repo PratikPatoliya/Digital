@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-export const img = [
+export const img123 = [
   {
     id: 1,
     header: 'Good Morning',

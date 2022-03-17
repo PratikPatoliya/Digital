@@ -1,18 +1,25 @@
-import React from 'react';
-import {ScrollView, View, Linking} from 'react-native';
-import {FAB} from 'react-native-paper';
+import React, { useEffect } from 'react';
+import { ScrollView, View, Linking, Text } from 'react-native';
+import { FAB } from 'react-native-paper';
 import CatagoryImage from '../components/CategoryImage';
 import Header from '../components/Header';
 import Lable from '../components/Lable';
 import styles from '../styles/Home';
-import {img} from '../utils/Imgdata';
-import {useRoute} from '@react-navigation/native';
+import { img123 } from '../utils/Imgdata';
+import { useRoute } from '@react-navigation/native';
 import HomeSlider from '../components/HomeSlider';
-// import BASE_URL from '../config/baseUrl';
-
+import { homeapidata } from '../redux/action/Home.action';
+import { useDispatch, useSelector } from 'react-redux';
 const Home = props => {
   const route = useRoute();
-  // const img = BASE_URL + '/homepage';
+
+  const homedata = useSelector(state => state.homeReducer?.homeData)
+  console.log("homedata", homedata);
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(homeapidata())
+  }, [dispatch])
+
   const openWhatsApp = () => {
     let msg = 'demo';
     let mobile = 6352432738;
@@ -39,36 +46,35 @@ const Home = props => {
       <Header title="Home" {...props} />
       <ScrollView>
         <HomeSlider />
-        <View style={styles.homeview}>
-          {img &&
-            img.map(item => {
-              return (
-                <>
-                  <Lable
-                    title={item.header}
-                    view="View All"
-                    onPress={() =>
-                      props.navigation.navigate('Viewall', {
-                        itemdata: item.image,
-                        headername: item,
-                        screenName: route.name,
-                      })
-                    }
-                  />
-                  <CatagoryImage
-                    data={item.image}
-                    onPress={() =>
-                      props.navigation.navigate('Frame', {
-                        id: item.image,
-                        img: item.image,
-                        routeName: route.name,
-                      })
-                    }
-                  />
-                </>
-              );
-            })}
-        </View>
+          <View style={styles.homeview}>
+            {img123 && img123.map(item => {
+                return (
+                  <>
+                    <Lable
+                      title={item.header}
+                      view="View All"
+                      onPress={() =>
+                        props.navigation.navigate('Viewall', {
+                          itemdata: item.image,
+                          headername: item,
+                          screenName: route.name,
+                        })
+                      }
+                    />
+                    <CatagoryImage
+                      data={item.image}
+                      onPress={() =>
+                        props.navigation.navigate('Frame', {
+                          id: item.image,
+                          img: item.image,
+                          routeName: route.name,
+                        })
+                      }
+                    />
+                  </>
+                );
+              })}
+          </View>
       </ScrollView>
       <FAB
         style={styles.homefdb}
