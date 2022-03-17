@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
   inputview: {
     flex: 1,
     flexDirection: 'row',
-    marginTop: height / 15,
+    marginTop: height / 12,
   },
   viewtext: {
     flex: 0.2,
@@ -61,10 +61,10 @@ const styles = StyleSheet.create({
     paddingTop: Platform.OS === 'ios' ? 10 : 11,
   },
   buttonview: {
-    marginBottom: Platform.OS === 'ios' ? height / 2.8 : height / 3,
+    marginBottom: Platform.OS === 'ios' ? height / 2.7 : height / 2.9,
     width: width / 1.24,
     height: 40,
-    marginTop: height / 12,
+    marginTop: height / 16,
     borderRadius: 8,
     backgroundColor: '#06a10e',
     justifyContent: 'center',

@@ -1,7 +1,8 @@
-import {SET_LOGIN_STATE, SET_USER_TOKEN} from '../types/Login.types';
+import {SET_LOGIN_STATE, SET_USER_ERROR, SET_USER_TOKEN} from '../types/Login.types';
 
 const initialState = {
   userToken: '',
+  setUserError:'',
 };
 
 export const loginReducer = (state = initialState, action) => {
@@ -16,6 +17,11 @@ export const loginReducer = (state = initialState, action) => {
         ...state,
         userToken: action.payload,
       };
+      case SET_USER_ERROR:
+        return{
+          ...state,
+          setUserError: action.payload,
+        };
     default:
       return state;
   }

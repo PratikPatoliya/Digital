@@ -1,6 +1,7 @@
-import { GET_BANNER } from '../types/Banner.types';
+import { GET_BANNER, GET_BANNER_ERROR } from '../types/Banner.types';
 const initialState = {
   bannerData: '',
+  bannerDataError:'',
 };
 
 export const bannerReducer = (state = initialState, action) => {
@@ -10,7 +11,12 @@ export const bannerReducer = (state = initialState, action) => {
       return {
         ...state,
         bannerData: action.payload,
-      };
+      }
+    case GET_BANNER_ERROR:
+      return{
+        ...state,
+        bannerDataError:action.payload,
+      }
     default:
       return state;
   }

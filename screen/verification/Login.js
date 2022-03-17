@@ -30,7 +30,7 @@ const Login = ({navigation}) => {
       </View>
       <Text style={styles.verifytext}>Verify Your Number</Text>
       <Text style={styles.numbertext}>
-        Please enter your country & {'\n'}        your phone number
+        Please Enter Your Mobile Number
       </Text>
       <View style={styles.inputview}>
         <Text style={styles.viewtext}>+91</Text>

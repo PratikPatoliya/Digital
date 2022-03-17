@@ -1,4 +1,4 @@
-import { SET_LOGIN_STATE, SET_USER_TOKEN } from '../types/Login.types';
+import { SET_LOGIN_STATE, SET_USER_ERROR, SET_USER_TOKEN } from '../types/Login.types';
 import axios from 'axios';
 import BASE_URL from '../../config/baseUrl';
 const LoginUrl = `${BASE_URL}/connect`;
@@ -18,6 +18,14 @@ const setUserLoginState = userToken => {
   };
 };
 
+const setUserError = userError => {
+  return {
+    type: SET_USER_ERROR,
+    payload: userError,
+  };
+};
+
+
 export const login = loginInput => {
   return dispatch => {
     return axios
@@ -32,7 +40,8 @@ export const login = loginInput => {
         dispatch(setUserLoginState(res?.data?.data[0]?.token));
       })
       .catch(err => {
-        console.log(err);
+        // console.log(err);
+        dispatch(setUserError(err.data));
       });
   };
 };

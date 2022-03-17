@@ -48,7 +48,7 @@ const Verify = ({navigation}) => {
       <Image source={image.otp} style={styles.img} />
       <Text style={styles.textheader}>Verification Code</Text>
       <Text style={styles.texttitle}>
-        Please enter code sent {'\n'}      to{' '}
+        Verification code sent {'\n'}      to{' '}
         <Text style={styles.textnumber}>{number}</Text>
       </Text>
       <View style={styles.textinputview}>
@@ -132,7 +132,7 @@ const Verify = ({navigation}) => {
           <Text style={styles.tochabletext}>Verify</Text>
         </TouchableOpacity>
         <TouchableOpacity
-          style={{alignItems: 'center', marginTop: 0}}
+          style={{alignItems: 'center', marginTop: 8}}
           onPress={() => navigation.navigate('login')}>
           <Text style={{color: 'green', fontSize: 15}}>Resend code</Text>
         </TouchableOpacity>

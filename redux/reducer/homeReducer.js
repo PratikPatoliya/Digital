@@ -1,6 +1,7 @@
-import { GET_HOME } from '../types/Home.types';
+import { GET_HOME, GET_HOME_ERROR } from '../types/Home.types';
 const initialState = {
   homeData: '',
+  HomeError:''
 };
 
 export const homeReducer = (state = initialState, action) => {
@@ -11,6 +12,11 @@ export const homeReducer = (state = initialState, action) => {
         ...state,
         homeData: action.payload,
       };
+      case GET_HOME_ERROR:
+          return{
+            ...state,
+            HomeError:action.payload,
+          }
     default:
       return state;
   }
