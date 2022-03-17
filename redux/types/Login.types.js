@@ -1,3 +1,5 @@
+export const SET_LOGIN_STATE_START = 'SET_LOGIN_STATE_START';
 export const SET_LOGIN_STATE = 'SET_LOGIN_STATE';
 export const SET_USER_TOKEN = 'SET_USER_TOKEN';
 export const SET_USER_ERROR = 'SET_USER_ERROR';
+

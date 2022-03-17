@@ -29,8 +29,8 @@ const Verify = ({navigation}) => {
       state.loginReducer.data[0].mobile_number,
   );
   
-  console.log("number",number);
-  const xyz = useSelector(value => console.log("value",value))
+  // console.log("number",number);
+  // const xyz = useSelector(value => console.log("value",value))
 
   const validationotp = () => {
     if (otp1.length === 0) {

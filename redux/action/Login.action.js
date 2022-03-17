@@ -1,4 +1,4 @@
-import { SET_LOGIN_STATE, SET_USER_ERROR, SET_USER_TOKEN } from '../types/Login.types';
+import { SET_LOGIN_STATE, SET_LOGIN_STATE_START, SET_USER_ERROR, SET_USER_TOKEN } from '../types/Login.types';
 import axios from 'axios';
 import BASE_URL from '../../config/baseUrl';
 const LoginUrl = `${BASE_URL}/connect`;
@@ -25,9 +25,15 @@ const setUserError = userError => {
   };
 };
 
+const pendingloginError = () => {
+  return {
+    type : SET_LOGIN_STATE_START,
+  }
+}
 
 export const login = loginInput => {
   return dispatch => {
+    dispatch(pendingloginError())
     return axios
       .post(LoginUrl, loginInput, {
         headers: {

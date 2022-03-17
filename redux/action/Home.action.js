@@ -20,7 +20,7 @@ export const homeapidata = () => {
   return dispatch => {
     return axios.get(HomeData)
       .then((res) => {
-        console.log("Home", res.data);
+        // console.log("Home", res.data);
         dispatch(setHomeData(res.data));
     }).catch((err) => {
         // console.log(err);

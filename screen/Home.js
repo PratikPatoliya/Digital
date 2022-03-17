@@ -14,7 +14,7 @@ const Home = props => {
   const route = useRoute();
 
   const homedata = useSelector(state => state.homeReducer?.homeData)
-  console.log("homedata", homedata);
+  // console.log("homedata", homedata);
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(homeapidata())

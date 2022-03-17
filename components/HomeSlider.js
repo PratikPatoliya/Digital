@@ -34,8 +34,8 @@ const HomeSlider = () => {
         ref={isCarousel}
         activeAnimationType='timing'
         autoplay={true}
-        autoplayInterval={1000}
-        autoplayDelay={3000}
+        autoplayInterval={3000}
+        autoplayDelay={2000}
         data={state}
         renderItem={CarouselCardItem}
         sliderWidth={width}
