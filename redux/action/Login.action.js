@@ -1,7 +1,8 @@
-import {SET_LOGIN_STATE, SET_USER_TOKEN} from '../types/Login.types';
+import { SET_LOGIN_STATE, SET_USER_TOKEN } from '../types/Login.types';
 import axios from 'axios';
 import BASE_URL from '../../config/baseUrl';
 const LoginUrl = `${BASE_URL}/connect`;
+
 
 const setLoginState = loginData => {
   return {

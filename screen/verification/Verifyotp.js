@@ -4,7 +4,7 @@ import styles from '../../styles/Verifyotp';
 import image from '../../utils/image';
 import {useSelector} from 'react-redux';
 
-const Verify = ({navigation}) => {
+const Verify = ({navigation}) => { 
   const firstInput = useRef();
   const secondInput = useRef();
   const thirdInput = useRef();
@@ -28,6 +28,9 @@ const Verify = ({navigation}) => {
       state.loginReducer.data.length > 0 &&
       state.loginReducer.data[0].mobile_number,
   );
+  
+  console.log("number",number);
+  const xyz = useSelector(value => console.log("value",value))
 
   const validationotp = () => {
     if (otp1.length === 0) {
@@ -45,7 +48,7 @@ const Verify = ({navigation}) => {
       <Image source={image.otp} style={styles.img} />
       <Text style={styles.textheader}>Verification Code</Text>
       <Text style={styles.texttitle}>
-        Please enter code sent {'\n'} to{' '}
+        Please enter code sent {'\n'}      to{' '}
         <Text style={styles.textnumber}>{number}</Text>
       </Text>
       <View style={styles.textinputview}>

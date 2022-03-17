@@ -1,43 +1,67 @@
-import React from 'react';
-import {StyleSheet, View, Image, Dimensions} from 'react-native';
-import colors from '../utils/colors';
-import ImageSlider from 'react-native-image-slider';
+import React, { useRef, useEffect } from 'react';
+import { View, Text, StyleSheet, Dimensions, Image } from 'react-native';
+import Carousel from 'react-native-snap-carousel';
+import { useDispatch, useSelector } from 'react-redux';
+import { bannerslider } from '../redux/action/Banner.action';
+
 const width = Dimensions.get('window').width;
-const height = Dimensions.get('window').height;
 
-const images = [
-  'https://placeimg.com/640/640/nature',
-  'https://placeimg.com/640/640/people',
-  'https://placeimg.com/640/640/animals',
-  'https://placeimg.com/640/640/beer',
-];
 
-const HomeSlider = props => {
+const CarouselCardItem = ({ item, index }) => {
   return (
-    <ImageSlider
-      loopBothSides
-      autoPlayWithInterval={2000}
-      images={images}
-      customSlide={({index, item, style}) => (
-        <View key={index} style={[style, styles.customSlide]}>
-          <Image source={{uri: item}} style={styles.customImage} />
-        </View>
-      )}
-    />
-  );
-};
+    <View style={styles.container} key={index}>
+      <Image
+        source={{ uri: item.photo }}
+        style={styles.image}
+      />
+    </View>
+  )
+}
+const HomeSlider = () => {
+  const state = useSelector(state => state.bannerReducer.bannerData)
+  console.log("state", state);
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(bannerslider())
+  }, [dispatch])
+  const isCarousel = useRef(null)
+  return (
+    <View>
+      <Text>HomeSlider</Text>
+      <Carousel
+        // layout="stack"
+        loop={true}
+        layoutCardOffset={0}
+        ref={isCarousel}
+        activeAnimationType='timing'
+        autoplay={true}
+        autoplayInterval={3000}
+        autoplayDelay={3000}
+        data={state}
+        renderItem={CarouselCardItem}
+        sliderWidth={width}
+        itemWidth={width * .92}
+        inactiveSlideShift={0}
+      // useScrollView={true}
+      />
+    </View>
+  )
+}
 
-export default HomeSlider;
+export default HomeSlider
 
 const styles = StyleSheet.create({
-  customImage: {
-    height: height * 0.25,
-    width: width * 0.92,
-    backgroundColor: colors.black,
+  container: {
+    borderRadius: 8,
+    width: width,
+    shadowColor: "#000",
     alignSelf: 'center',
-    borderRadius: 5,
+    marginBottom:10,
   },
-  customSlide: {
-    backgroundColor: colors.black,
+  image: {
+    borderRadius: 8,
+    alignSelf: 'center',
+    width: width * 0.9,
+    height: 200,
   },
-});
+})

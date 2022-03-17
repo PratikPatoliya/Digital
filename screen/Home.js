@@ -3,14 +3,16 @@ import {ScrollView, View, Linking} from 'react-native';
 import {FAB} from 'react-native-paper';
 import CatagoryImage from '../components/CategoryImage';
 import Header from '../components/Header';
-import HomeSlider from '../components/HomeSlider';
 import Lable from '../components/Lable';
 import styles from '../styles/Home';
 import {img} from '../utils/Imgdata';
 import {useRoute} from '@react-navigation/native';
+import HomeSlider from '../components/HomeSlider';
+// import BASE_URL from '../config/baseUrl';
 
 const Home = props => {
   const route = useRoute();
+  // const img = BASE_URL + '/homepage';
   const openWhatsApp = () => {
     let msg = 'demo';
     let mobile = 6352432738;
@@ -36,7 +38,7 @@ const Home = props => {
     <View style={styles.homeBackground}>
       <Header title="Home" {...props} />
       <ScrollView>
-        <HomeSlider {...props} />
+        <HomeSlider />
         <View style={styles.homeview}>
           {img &&
             img.map(item => {
@@ -44,7 +46,7 @@ const Home = props => {
                 <>
                   <Lable
                     title={item.header}
-                    view={item.view}
+                    view="View All"
                     onPress={() =>
                       props.navigation.navigate('Viewall', {
                         itemdata: item.image,

@@ -14,12 +14,23 @@ import image from '../utils/image';
 import Share from 'react-native-share';
 import AccountModule from '../components/AccountModule';
 import styles from '../styles/Account';
+import { useSelector } from 'react-redux';
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
 
 const Account = ({navigation}) => {
   const [model, setModel] = useState(false);
   const [imageSource, setImageSource] = useState(image.userImage);
+
+  const number = useSelector(
+    state =>
+      state &&
+      state.loginReducer &&
+      state.loginReducer.data &&
+      state.loginReducer.data.length > 0 &&
+      state.loginReducer.data[0].mobile_number,
+  );
+
   function selectImage() {
     ImagePicker.openPicker({
       compressImageMaxWidth: 300,
@@ -108,7 +119,7 @@ const Account = ({navigation}) => {
               User Name
             </Text>
             <Text style={{color: colors.white, fontSize: 15, marginTop: 0}}>
-              1234567890
+              {number}
             </Text>
           </View>
           <View style={{margin: 10, marginTop: 30}}>
