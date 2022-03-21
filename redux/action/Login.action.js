@@ -1,9 +1,4 @@
-import {
-  SET_LOGIN_STATE,
-  SET_LOGIN_STATE_START,
-  SET_USER_ERROR,
-  SET_USER_TOKEN,
-} from '../types/Login.types';
+import { SET_LOGIN_STATE, SET_LOADER_START, SET_USER_ERROR, SET_USER_TOKEN, SET_LOADER_STOP } from '../types/Login.types';
 import axios from 'axios';
 import BASE_URL from '../../config/baseUrl';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -17,6 +12,7 @@ const setLoginState = loginData => {
 };
 
 const setUserLoginState = userToken => {
+  // console.log("userToken", userToken);
   return {
     type: SET_USER_TOKEN,
     payload: userToken,
@@ -30,15 +26,21 @@ const setUserError = userError => {
   };
 };
 
-const pendingloginError = () => {
+export const startLoader = () => {
   return {
-    type: SET_LOGIN_STATE_START,
-  };
-};
+    type: SET_LOADER_START,
+  }
+}
+export const stopLoader = () => {
+  return {
+    type: SET_LOADER_STOP,
+  }
+}
 
-export const login = loginInput => {
+
+export const login = (loginInput) => {
   return dispatch => {
-    dispatch(pendingloginError());
+    dispatch(startLoader())
     return axios
       .post(LoginUrl, loginInput, {
         headers: {
@@ -46,10 +48,15 @@ export const login = loginInput => {
           'Content-Type': 'application/json',
         },
       })
-      .then(async res => {
+      .then(async (res) => {
+        // console.log("res",res);
         dispatch(setLoginState(res.data));
         dispatch(setUserLoginState(res?.data?.data[0]?.token));
-        await AsyncStorage.setItem('userToken', res?.data?.data[0]?.token);
+        try {
+          await AsyncStorage.setItem('storedata', res?.data?.data[0]?.token)
+        } catch (error) {
+          console.log("login AsyncStorage error", error);
+        }
       })
       .catch(err => {
         // console.log(err);

@@ -1,24 +1,44 @@
-import React, { useEffect } from 'react';
-import { ScrollView, View, Linking, Text } from 'react-native';
+import React, { useCallback, useEffect, useState } from 'react';
+import { ScrollView, View, Linking, Text, BackHandler } from 'react-native';
 import { FAB } from 'react-native-paper';
 import CatagoryImage from '../components/CategoryImage';
 import Header from '../components/Header';
 import Lable from '../components/Lable';
 import styles from '../styles/Home';
 import { img123 } from '../utils/Imgdata';
-import { useRoute } from '@react-navigation/native';
+import { useFocusEffect, useRoute } from '@react-navigation/native';
 import HomeSlider from '../components/HomeSlider';
 import { homeapidata } from '../redux/action/Home.action';
 import { useDispatch, useSelector } from 'react-redux';
+import Toast from 'react-native-simple-toast';
+
 const Home = props => {
   const route = useRoute();
+  const [backPressedCount, setBackPressedCount] = useState(0);
 
   const homedata = useSelector(state => state.homeReducer?.homeData)
+
   // console.log("homedata", homedata);
   const dispatch = useDispatch()
+
+  useFocusEffect(
+    useCallback(() => {
+      BackHandler.addEventListener('hardwareBackPress', () => {
+        setBackPressedCount((backPressedCount) => backPressedCount + 1);
+        return true;
+      });
+      return () =>
+        BackHandler.removeEventListener('hardwareBackPress', () => false);
+    }, []),
+  );
   useEffect(() => {
     dispatch(homeapidata())
-  }, [dispatch])
+    if (backPressedCount === 1) {
+      Toast.show('Double tap to exit!');
+    } else if (backPressedCount === 2) {
+      BackHandler.exitApp();
+    }
+  }, [dispatch,backPressedCount])
 
   const openWhatsApp = () => {
     let msg = 'demo';

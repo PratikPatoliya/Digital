@@ -10,19 +10,19 @@ const Login = ({ navigation }) => {
   const [number, setNumber] = useState('');
   const [validuser, setValiduser] = useState(true);
   const dispatch = useDispatch();
-  const validation = () => {
+  const validation = async () => {
     if (number.length < 10) {
       setValiduser(false);
     } else {
       setValiduser(true);
       // console.log("number", number);
-      dispatch(login({ mobile_number: number }));
-      navigation.navigate('verify');
+      await dispatch(login({ mobile_number: number }));
+      navigation.navigate('verify',{name:number});
     }
   };
 
-  const loader = useSelector(state => state.loginReducer.isLoader);
-  console.log(loader)
+  const loader = useSelector(state => state.loginReducer.isLoader) || false;
+  // console.log("loader login",loader)
 
   return (
     <>
@@ -56,7 +56,10 @@ const Login = ({ navigation }) => {
           </Text>
         )}
         <TouchableOpacity style={styles.buttonview} onPress={validation}>
+          {
+            loader? <ActivityIndicator size="large" color="" />:
           <Text style={styles.tochabletext}>Send</Text>
+          }
         </TouchableOpacity>
       </View>
 

@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import React, {useEffect} from 'react';
 import {Image, ImageBackground, StyleSheet, View} from 'react-native';
 import image from './utils/image';
@@ -22,7 +21,7 @@ const Splash = ({navigation}) => {
 
   return (
     <ImageBackground style={styles.bg}>
-      <View style={styles.viewcenter}>
+    <View style={styles.viewcenter}>
         <Image source={image.logo} style={styles.img} />
       </View>
     </ImageBackground>
