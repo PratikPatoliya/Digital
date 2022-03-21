@@ -39,11 +39,11 @@ const Verify = ({ navigation }) => {
   // const xyz = useSelector(value => console.log("value",value))
 
   const validationotp = () => {
-    dispatch(startLoader())
     if (otp1.length === 0) {
       setErrorMessage('Enter OTP');
     } else {
       if (otp1.length === 6 && variftOtp === otp1) {
+        dispatch(startLoader())
         setTimeout(() => {
           navigation.navigate('AppStack');
           dispatch(stopLoader())

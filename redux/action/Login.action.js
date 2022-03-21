@@ -12,7 +12,7 @@ const setLoginState = loginData => {
 };
 
 const setUserLoginState = userToken => {
-  // console.log("userToken", userToken);
+  console.log("userToken", userToken);
   return {
     type: SET_USER_TOKEN,
     payload: userToken,

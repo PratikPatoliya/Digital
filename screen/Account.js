@@ -32,6 +32,7 @@ const Account = ({navigation}) => {
   // );
 
   const number = useSelector(state => state.loginReducer.userData.data[0]['mobile_number']);
+  
   function selectImage() {
     ImagePicker.openPicker({
       compressImageMaxWidth: 300,

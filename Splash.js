@@ -3,6 +3,7 @@ import {Image, ImageBackground, StyleSheet, View} from 'react-native';
 import image from './utils/image';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+
 const Splash = ({navigation}) => {
   useEffect(() => {
     setTimeout(() => {
