@@ -33,7 +33,7 @@ const Eflatlist = () => {
     return (
       <View style={styles.Grig}>
         <TouchableOpacity>
-          <Image source={{uri: item.img}} style={styles.tinyo} />
+          <Image source={{uri: item.img}} style={styles.tinyLogo} />
         </TouchableOpacity>
       </View>
     );

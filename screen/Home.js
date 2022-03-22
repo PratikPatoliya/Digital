@@ -40,11 +40,11 @@ const Home = props => {
   }, [dispatch,backPressedCount])
 /* whattsapp  function */
   const openWhatsApp = () => {
-    let msg = 'demo';
+    let msg = 'Welcome to Your App';
     let mobile = 6352432738;
     if (mobile) {
       if (msg) {
-        let url = 'whatsapp://send?text=' + 'demo' + '&phone=91' + 6352432738;
+        let url = 'whatsapp://send?text=' + msg + '&phone=91' + mobile;
         Linking.openURL(url)
           .then(data => {
             console.log('WhatsApp Opened successfully ' + data);

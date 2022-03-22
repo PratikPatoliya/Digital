@@ -1,3 +1,3 @@
-const BASE_URL = 'https://backend-banner-data.herokuapp.com';
+const BASE_URL = 'https://nodehostheroku.herokuapp.com';
 
 export default BASE_URL;
