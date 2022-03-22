@@ -1,21 +1,23 @@
-import React, {useCallback, useEffect, useState} from 'react';
-import {ScrollView, View, Linking, Text, BackHandler} from 'react-native';
-import {FAB} from 'react-native-paper';
+import React, { useCallback, useEffect, useState } from 'react';
+import { ScrollView, View, Linking, Text, BackHandler } from 'react-native';
+import { FAB } from 'react-native-paper';
 import CatagoryImage from '../components/CategoryImage';
 import Header from '../components/Header';
 import Lable from '../components/Lable';
 import styles from '../styles/Home';
-import {img123} from '../utils/Imgdata';
-import {useFocusEffect, useRoute} from '@react-navigation/native';
+import { img123 } from '../utils/Imgdata';
+import { useFocusEffect, useRoute } from '@react-navigation/native';
 import HomeSlider from '../components/HomeSlider';
-import {homeapidata} from '../redux/action/Home.action';
-import {useDispatch} from 'react-redux';
+import { homeapidata } from '../redux/action/Home.action';
+import { useDispatch, useSelector } from 'react-redux';
 import Toast from 'react-native-simple-toast';
 
 const Home = props => {
   const route = useRoute();
   const [backPressedCount, setBackPressedCount] = useState(0);
   const dispatch = useDispatch();
+
+  const homedata = useSelector(state => state?.homeReducer?.homeData)
 
   useFocusEffect(
     useCallback(() => {

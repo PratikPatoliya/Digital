@@ -110,7 +110,7 @@ const Account = ({navigation}) => {
               User Name
             </Text>
             <Text style={{color: colors.white, fontSize: 15, marginTop: 0}}>
-              {'9999999999'}
+              9999999999
             </Text>
           </View>
           <View style={{margin: 10, marginTop: 30}}>
