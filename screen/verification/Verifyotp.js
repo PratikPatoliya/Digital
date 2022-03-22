@@ -21,22 +21,20 @@ const Verify = ({ navigation }) => {
 
   const variftOtp = useSelector(state => state?.loginReducer?.userData?.code);
 
-  // const loader = useSelector(state => state.loginReducer.isLoader);
   const loader2 = useSelector(state => state.loginReducer.isLoader) || false
-  // console.log("loader verification",loader2)
   useEffect(() => {
     if (loader2) {
       setSetLoader(true)
     } else {
       setSetLoader(false)
     }
-    console.log("loader2", loader2);
   }, [loader2])
 
-  const number = useSelector(state => state.loginReducer.userData.data[0]['mobile_number']);
 
-  console.log("number", number);
-  // const xyz = useSelector(value => console.log("value",value))
+
+  const number = useSelector(state => state?.loginReducer?.userData?.data[0]['mobile_number']);
+
+  // const xyz = useSelector(state => console.log("state",state&&state))
 
   const validationotp = () => {
     if (otp1.length === 0) {
@@ -47,14 +45,11 @@ const Verify = ({ navigation }) => {
         setTimeout(() => {
           navigation.navigate('AppStack');
           dispatch(stopLoader())
-        }, 1500);
+        }, 1000);
       } else {
         setErrorMessage('Your OTP is 1 2 3 4 5 6');
       }
     }
-    // dispatch(stopLoader())
-    /* setTimeout(() => {
-    }, 2000); */
   };
   return (
     <View style={styles.view1}>
@@ -143,7 +138,7 @@ const Verify = ({ navigation }) => {
         }>
         <TouchableOpacity style={styles.tochable} onPress={validationotp}>
           {setLoader ?
-            <ActivityIndicator size="large" color="red" />
+            <ActivityIndicator size="large" />
             :
             <Text style={styles.tochabletext}>Verify</Text>
           }

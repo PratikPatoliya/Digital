@@ -16,8 +16,7 @@ const Home = props => {
   const route = useRoute();
   const [backPressedCount, setBackPressedCount] = useState(0);
 
-  const homedata = useSelector(state => state.homeReducer?.homeData)
-
+  // const homedata = useSelector(state => state.homeReducer?.homeData)
   // console.log("homedata", homedata);
   const dispatch = useDispatch()
 
@@ -28,7 +27,7 @@ const Home = props => {
         return true;
       });
       return () =>
-        BackHandler.removeEventListener('hardwareBackPress', () => false);
+        BackHandler.removeEventListener('hardwareBackPress', () => true);
     }, []),
   );
   useEffect(() => {
@@ -39,7 +38,7 @@ const Home = props => {
       BackHandler.exitApp();
     }
   }, [dispatch,backPressedCount])
-
+/* whattsapp  function */
   const openWhatsApp = () => {
     let msg = 'demo';
     let mobile = 6352432738;
