@@ -4,7 +4,7 @@ import colors from '../utils/colors';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const AccountModule = props => {
-  const {onClick, iconName, title} = props;
+  const {title, onClick, iconName} = props;
   return (
     <TouchableOpacity
       onPress={onClick}
