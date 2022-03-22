@@ -1,7 +1,7 @@
 import BASE_URL from '../../config/baseUrl';
 import axios from 'axios';
-import {GET_HOME, GET_HOME_ERROR} from '../types/Home.types';
-const HomeData = `${BASE_URL}/homepage`;
+import { GET_HOME, GET_HOME_ERROR } from "../types/Home.types";
+const HomeData = `${BASE_URL}/homedata`;
 
 const setHomeData = homeData => {
   return {

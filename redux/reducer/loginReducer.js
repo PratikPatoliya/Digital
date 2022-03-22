@@ -4,7 +4,7 @@ const initialState = {
   userToken: '',
   setUserError: '',
   isLoader: false,
-  userData:[]
+  userData:null
 };
 
 export const loginReducer = (state = initialState, action) => {
