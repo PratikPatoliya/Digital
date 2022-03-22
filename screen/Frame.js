@@ -42,9 +42,7 @@ const Frame = ({route, navigation}) => {
     };
     try {
       const ShareResponse = await Share.open(shareOption);
-      console.log(JSON.stringify(ShareResponse));
     } catch (error) {
-      console.log('Error => ', error);
     }
   };
 

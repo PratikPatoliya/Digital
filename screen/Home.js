@@ -1,29 +1,26 @@
-import React, { useCallback, useEffect, useState } from 'react';
-import { ScrollView, View, Linking, Text, BackHandler } from 'react-native';
-import { FAB } from 'react-native-paper';
+import React, {useCallback, useEffect, useState} from 'react';
+import {ScrollView, View, Linking, Text, BackHandler} from 'react-native';
+import {FAB} from 'react-native-paper';
 import CatagoryImage from '../components/CategoryImage';
 import Header from '../components/Header';
 import Lable from '../components/Lable';
 import styles from '../styles/Home';
-import { img123 } from '../utils/Imgdata';
-import { useFocusEffect, useRoute } from '@react-navigation/native';
+import {img123} from '../utils/Imgdata';
+import {useFocusEffect, useRoute} from '@react-navigation/native';
 import HomeSlider from '../components/HomeSlider';
-import { homeapidata } from '../redux/action/Home.action';
-import { useDispatch, useSelector } from 'react-redux';
+import {homeapidata} from '../redux/action/Home.action';
+import {useDispatch} from 'react-redux';
 import Toast from 'react-native-simple-toast';
 
 const Home = props => {
   const route = useRoute();
   const [backPressedCount, setBackPressedCount] = useState(0);
-
-  // const homedata = useSelector(state => state.homeReducer?.homeData)
-  // console.log("homedata", homedata);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   useFocusEffect(
     useCallback(() => {
       BackHandler.addEventListener('hardwareBackPress', () => {
-        setBackPressedCount((backPressedCount) => backPressedCount + 1);
+        setBackPressedCount(backPressedCount => backPressedCount + 1);
         return true;
       });
       return () =>
@@ -31,14 +28,14 @@ const Home = props => {
     }, []),
   );
   useEffect(() => {
-    dispatch(homeapidata())
+    dispatch(homeapidata());
     if (backPressedCount === 1) {
       Toast.show('Double tap to exit!');
     } else if (backPressedCount === 2) {
       BackHandler.exitApp();
     }
-  }, [dispatch,backPressedCount])
-/* whattsapp  function */
+  }, [dispatch, backPressedCount]);
+  /* whattsapp  function */
   const openWhatsApp = () => {
     let msg = 'Welcome to Your App';
     let mobile = 6352432738;
@@ -65,35 +62,36 @@ const Home = props => {
       <Header title="Home" {...props} />
       <ScrollView>
         <HomeSlider />
-          <View style={styles.homeview}>
-            {img123 && img123.map(item => {
-                return (
-                  <>
-                    <Lable
-                      title={item.header}
-                      view="View All"
-                      onPress={() =>
-                        props.navigation.navigate('Viewall', {
-                          itemdata: item.image,
-                          headername: item,
-                          screenName: route.name,
-                        })
-                      }
-                    />
-                    <CatagoryImage
-                      data={item.image}
-                      onPress={() =>
-                        props.navigation.navigate('Frame', {
-                          id: item.image,
-                          img: item.image,
-                          routeName: route.name,
-                        })
-                      }
-                    />
-                  </>
-                );
-              })}
-          </View>
+        <View style={styles.homeview}>
+          {img123 &&
+            img123.map(item => {
+              return (
+                <>
+                  <Lable
+                    title={item.header}
+                    view="View All"
+                    onPress={() =>
+                      props.navigation.navigate('Viewall', {
+                        itemdata: item.image,
+                        headername: item,
+                        screenName: route.name,
+                      })
+                    }
+                  />
+                  <CatagoryImage
+                    data={item.image}
+                    onPress={() =>
+                      props.navigation.navigate('Frame', {
+                        id: item.image,
+                        img: item.image,
+                        routeName: route.name,
+                      })
+                    }
+                  />
+                </>
+              );
+            })}
+        </View>
       </ScrollView>
       <FAB
         style={styles.homefdb}

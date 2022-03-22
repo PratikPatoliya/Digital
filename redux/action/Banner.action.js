@@ -1,6 +1,6 @@
-import BASE_URL from "../../config/baseUrl";
+import BASE_URL from '../../config/baseUrl';
 import axios from 'axios';
-import { GET_BANNER, GET_BANNER_ERROR } from "../types/Banner.types";
+import {GET_BANNER, GET_BANNER_ERROR} from '../types/Banner.types';
 const HomeSlider = `${BASE_URL}/banner`;
 
 const setBannerSlider = bannerData => {
@@ -18,12 +18,13 @@ const setBannerSliderError = bannerDataError => {
 
 export const bannerslider = () => {
   return dispatch => {
-    return axios.get(HomeSlider)
-      .then((res) => {
-        // console.log("res", res);
+    return axios
+      .get(HomeSlider)
+      .then(res => {
         dispatch(setBannerSlider(res.data));
-      }).catch((err) =>{
-        dispatch(setBannerSliderError(err.data))
       })
-  }
-}
+      .catch(err => {
+        dispatch(setBannerSliderError(err.data));
+      });
+  };
+};

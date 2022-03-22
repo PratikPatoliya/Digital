@@ -1,27 +1,32 @@
-import React, { useState } from 'react';
-import { Text, TextInput, View, Image, TouchableOpacity, ActivityIndicator } from 'react-native';
+import React, {useState} from 'react';
+import {
+  Text,
+  TextInput,
+  View,
+  Image,
+  TouchableOpacity,
+  ActivityIndicator,
+} from 'react-native';
 import styles from '../../styles/Login';
 import image from '../../utils/image';
-import { useDispatch, useSelector } from 'react-redux';
-import { login } from '../../redux/action/Login.action';
+import {useDispatch, useSelector} from 'react-redux';
+import {login} from '../../redux/action/Login.action';
 
-
-const Login = ({ navigation }) => {
+const Login = ({navigation}) => {
   const [number, setNumber] = useState('');
   const [validuser, setValiduser] = useState(true);
   const dispatch = useDispatch();
-  const validation =  () => {
+  const validation = () => {
     if (number.length < 10) {
       setValiduser(false);
     } else {
       setValiduser(true);
-       dispatch(login({ mobile_number: number }));
+      dispatch(login({mobile_number: number}));
       navigation.navigate('verify');
     }
   };
 
   const loader = useSelector(state => state.loginReducer.isLoader) || false;
-  // console.log("loader login",loader)
 
   return (
     <>
@@ -30,9 +35,7 @@ const Login = ({ navigation }) => {
           <Image source={image.mobile} style={styles.imghei_wid} />
         </View>
         <Text style={styles.verifytext}>Verify Your Number</Text>
-        <Text style={styles.numbertext}>
-          Please Enter Your Mobile Number
-        </Text>
+        <Text style={styles.numbertext}>Please Enter Your Mobile Number</Text>
         <View style={styles.inputview}>
           <Text style={styles.viewtext}>+91</Text>
           <View style={styles.textinput}>
@@ -48,23 +51,21 @@ const Login = ({ navigation }) => {
           </View>
         </View>
 
-
         {validuser ? null : (
-          <Text style={{ left: 25, top: 40, color: 'red' }}>
+          <Text style={{left: 25, top: 40, color: 'red'}}>
             *Enter your valid 10 digit number
           </Text>
         )}
         <TouchableOpacity style={styles.buttonview} onPress={validation}>
-          {
-            loader? <ActivityIndicator size="large" color="" />:
-          <Text style={styles.tochabletext}>Send</Text>
-          }
+          {loader ? (
+            <ActivityIndicator size="large" color="" />
+          ) : (
+            <Text style={styles.tochabletext}>Send</Text>
+          )}
         </TouchableOpacity>
       </View>
-
     </>
   );
 };
 
 export default Login;
-

@@ -38,7 +38,6 @@ export const stopLoader = () => {
 
 
 export const login = (loginInput) => {
-  console.log("loginInput",loginInput);
   return dispatch => {
     dispatch(startLoader())
     return axios
@@ -49,14 +48,11 @@ export const login = (loginInput) => {
       },
     })
     .then(async (res) => {
-      console.log("res",res);
       dispatch(setLoginState(res.data));
       dispatch(setUserLoginState(res?.data?.data[0]?.token));
-      console.log("res?.data?.data[0]?.token",res?.data?.data[0]?.token);
       await AsyncStorage.setItem('userToken', res?.data?.data[0]?.token);
     })
     .catch(err => {
-      // console.log(err);
       dispatch(setUserError(err.data));
     });
   };
