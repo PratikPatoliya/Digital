@@ -32,10 +32,11 @@ const Verify = ({ navigation }) => {
 
 
 
-  const number = useSelector(state => state?.loginReducer?.userData?.data[0]['mobile_number']);
+  // const number = useSelector(state => state?.loginReducer?.userData?.data[0]['mobile_number']);
+  const number = useSelector(state => state?.loginReducer?.userData[0]?.mobile_number);
 
 
-  const xyz = useSelector(state => console.log("state",state&&state))
+  // const xyz = useSelector(state => console.log("state",state&&state))
 
   const validationotp = () => {
     if (otp1.length === 0) {

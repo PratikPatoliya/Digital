@@ -22,18 +22,18 @@ const Account = ({navigation}) => {
   const [model, setModel] = useState(false);
   const [imageSource, setImageSource] = useState(image.userImage);
 
-  const number = useSelector(
-    state =>
-      state &&
-      state.loginReducer &&
-      state.loginReducer.userData &&
-      state.loginReducer.userData.length > 0 &&
-      state.loginReducer.userData.data[0].mobile_number,
-      );
+  // const number = useSelector(
+  //   state =>
+  //     state &&
+  //     state.loginReducer &&
+  //     state.loginReducer.userData &&
+  //     state.loginReducer.userData.length > 0 &&
+  //     state.loginReducer.userData.data[0].mobile_number,
+  //     );
       // console.log("state.loginReducer.userData.data",state.loginReducer)
 
   // const number = useSelector(state => state.loginReducer.userData.data[0]['mobile_number']);
-  console.log("number",number);
+  // console.log("number",number);
   
   function selectImage() {
     ImagePicker.openPicker({
@@ -123,7 +123,7 @@ const Account = ({navigation}) => {
               User Name
             </Text>
             <Text style={{color: colors.white, fontSize: 15, marginTop: 0}}>
-              {number}
+              {/* {number} */}
             </Text>
           </View>
           <View style={{margin: 10, marginTop: 30}}>

@@ -4,7 +4,7 @@ const initialState = {
   userToken: '',
   setUserError: '',
   isLoader: false,
-  userData:[]
+  userData:null
 };
 
 export const loginReducer = (state = initialState, action) => {
@@ -22,7 +22,7 @@ export const loginReducer = (state = initialState, action) => {
     case SET_LOGIN_STATE:
       return {
         ...state,
-        userData:action.payload,
+        userData:action.payload.data,
         isLoader: false,
       };
     case SET_USER_TOKEN:
