@@ -28,7 +28,7 @@ export const homeapidata = () => {
     return axios
       .get(HomeData)
       .then(res => {
-        console.log("response", res)
+        // console.log("response", res)
         dispatch(setHomeData(res.data));
       })
       .catch(err => {
@@ -41,7 +41,7 @@ export const homeapidataimg = () => {
     return axios
       .get(HomeDataimage)
       .then(res => {
-        console.log("response", res)
+        // console.log("response", res)
         dispatch(setHomeDataImage(res.data));
       })
       .catch(err => {
