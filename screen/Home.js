@@ -8,16 +8,17 @@ import styles from '../styles/Home';
 import { img123 } from '../utils/Imgdata';
 import { useFocusEffect, useRoute } from '@react-navigation/native';
 import HomeSlider from '../components/HomeSlider';
-import { homeapidata } from '../redux/action/Home.action';
+import { homeapidata, homeapidataimg } from '../redux/action/Home.action';
 import { useDispatch, useSelector } from 'react-redux';
 import Toast from 'react-native-simple-toast';
 
 const Home = props => {
   const route = useRoute();
   const [backPressedCount, setBackPressedCount] = useState(0);
+  const [images, setImages] = useState([]);
   const dispatch = useDispatch();
-
-  const homedata = useSelector(state => state?.homeReducer?.homeData)
+  const homeData = useSelector(state => state?.homeReducer?.homeData)
+  const homeDataImage = useSelector(state => state?.homeReducer?.homeDataImage)
 
   useFocusEffect(
     useCallback(() => {
@@ -29,14 +30,31 @@ const Home = props => {
         BackHandler.removeEventListener('hardwareBackPress', () => true);
     }, []),
   );
+  const changeHandler = () => {
+    if (homeDataImage && homeDataImage.length >= 0 && homeData && homeDataImage.length >= 0) {
+      const dummyData = homeData?.map(element => {
+        const data = homeDataImage?.filter((item) => item.header_id == element._id)
+        element.image.push(data)
+        return element
+      });
+      setImages(dummyData)
+    }
+  }
   useEffect(() => {
     dispatch(homeapidata());
+    dispatch(homeapidataimg())
     if (backPressedCount === 1) {
       Toast.show('Double tap to exit!');
     } else if (backPressedCount === 2) {
       BackHandler.exitApp();
     }
   }, [dispatch, backPressedCount]);
+  useEffect(() => {
+    if (homeData && homeData.length > 0 && homeDataImage && homeDataImage.length > 0) {
+      changeHandler()
+    }
+  }, [homeData, homeDataImage])
+
   /* whattsapp  function */
   const openWhatsApp = () => {
     let msg = 'Welcome to Your App';
@@ -58,34 +76,33 @@ const Home = props => {
       alert('Please enter mobile no');
     }
   };
-
   return (
     <View style={styles.homeBackground}>
       <Header title="Home" {...props} />
       <ScrollView>
         <HomeSlider />
         <View style={styles.homeview}>
-          {img123 &&
-            img123.map(item => {
+          {images &&
+            images.map(item => {
               return (
                 <>
                   <Lable
-                    title={item.header}
+                    title={item && item.header}
                     view="View All"
                     onPress={() =>
                       props.navigation.navigate('Viewall', {
-                        itemdata: item.image,
+                        itemdata: item?.image[0],
                         headername: item,
                         screenName: route.name,
                       })
                     }
                   />
                   <CatagoryImage
-                    data={item.image}
+                    data={item?.image && item?.image[0]}
                     onPress={() =>
                       props.navigation.navigate('Frame', {
-                        id: item.image,
-                        img: item.image,
+                        id: item.image[0],
+                        img: item.image[0],
                         routeName: route.name,
                       })
                     }
