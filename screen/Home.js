@@ -11,14 +11,17 @@ import HomeSlider from '../components/HomeSlider';
 import { homeapidata, homeapidataimg } from '../redux/action/Home.action';
 import { useDispatch, useSelector } from 'react-redux';
 import Toast from 'react-native-simple-toast';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Home = props => {
   const route = useRoute();
+  const dispatch = useDispatch();
   const [backPressedCount, setBackPressedCount] = useState(0);
   const [images, setImages] = useState([]);
-  const dispatch = useDispatch();
   const homeData = useSelector(state => state?.homeReducer?.homeData)
   const homeDataImage = useSelector(state => state?.homeReducer?.homeDataImage)
+  // const token = useSelector(state =>console.log("token",state.loginReducer))
+  // console.log("1234",AsyncStorage.getItem('userToken'));
 
   useFocusEffect(
     useCallback(() => {

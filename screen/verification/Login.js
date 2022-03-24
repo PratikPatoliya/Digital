@@ -16,12 +16,12 @@ const Login = ({navigation}) => {
   const [number, setNumber] = useState('');
   const [validuser, setValiduser] = useState(true);
   const dispatch = useDispatch();
-  const validation = () => {
+  const validation = async () => {
     if (number.length < 10) {
       setValiduser(false);
     } else {
       setValiduser(true);
-      dispatch(login({mobile_number: number}));
+      await dispatch(login({mobile_number: number}));
       navigation.navigate('verify');
     }
   };

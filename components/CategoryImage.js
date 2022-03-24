@@ -1,8 +1,8 @@
 import React from 'react';
 import {FlatList, Image, TouchableOpacity, View} from 'react-native';
 import styles from '../styles/CategoryImage';
-const CatagoryImage = props => {
-  const {data, onPress} = props;
+const CatagoryImage = (props) => {
+  const { data, onPress } = props;
   const renderItem = ({item}) => {
     return (
       <View style={styles.Grig}>
@@ -12,7 +12,7 @@ const CatagoryImage = props => {
       </View>
     );
   };
-  return (
+  return (<>
     <View style={styles.container}>
       <FlatList
         data={data}
@@ -22,6 +22,7 @@ const CatagoryImage = props => {
         style={styles.item}
       />
     </View>
+    </>
   );
 };
 

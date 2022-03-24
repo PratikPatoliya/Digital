@@ -11,6 +11,7 @@ import styles from '../../styles/Verifyotp';
 import image from '../../utils/image';
 import {useDispatch, useSelector} from 'react-redux';
 import {startLoader, stopLoader} from '../../redux/action/Login.action';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Verify = ({navigation}) => {
   const dispatch = useDispatch();
@@ -26,8 +27,9 @@ const Verify = ({navigation}) => {
 
   let otp1 = Object.values(otp).join('');
 
-  const variftOtp = useSelector(state => state?.loginReducer?.userData?.code);
-
+  const variftOtp = useSelector(state => state?.loginReducer?.userData?.data[0]?.password);
+  // const variftOtplog = useSelector(state => console.log("123",state?.loginReducer?.userData?.data[0]?.password));
+  
   const loader2 = useSelector(state => state.loginReducer.isLoader) || false;
   useEffect(() => {
     if (loader2) {
@@ -36,24 +38,19 @@ const Verify = ({navigation}) => {
       setSetLoader(false);
     }
   }, [loader2]);
-  const number = useSelector(
-    state =>
-      state &&
-      state.loginReducer &&
-      state.loginReducer.userData &&
-      state.loginReducer.userData.data &&
-      state.loginReducer.userData?.data[0]?.mobile_number,
-  );
-  const validationotp = () => {
+  const number = useSelector(state =>state?.loginReducer?.userData?.data[0]?.mobile_number);
+    const token = useSelector(state => state?.loginReducer?.userData?.data[0]?.token);
+  const validationotp = async () => {
     if (otp1.length === 0) {
       setErrorMessage('Enter OTP');
     } else {
-      if (otp1.length === 6 && variftOtp === otp1) {
+      if (variftOtp == otp1) {
         dispatch(startLoader());
         setTimeout(() => {
           navigation.navigate('AppStack');
           dispatch(stopLoader());
         }, 1000);
+        await AsyncStorage.setItem('userToken', token);
       } else {
         setErrorMessage('Your OTP is 1 2 3 4 5 6');
       }

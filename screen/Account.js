@@ -16,6 +16,7 @@ import AccountModule from '../components/AccountModule';
 import styles from '../styles/Account';
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Account = ({navigation}) => {
   const [model, setModel] = useState(false);
@@ -64,6 +65,11 @@ const Account = ({navigation}) => {
       console.log('Error => ', error);
     }
   };
+
+  const logout = async () =>{
+    AsyncStorage.clear();
+    navigation.navigate('login')
+  }
 
   return (
     <View>
@@ -137,7 +143,7 @@ const Account = ({navigation}) => {
             <AccountModule
               title="Logout"
               iconName="logout"
-              onClick={() => navigation.navigate('login')}
+              onClick={logout}
             />
           </View>
           <View style={{alignItems: 'center'}}>

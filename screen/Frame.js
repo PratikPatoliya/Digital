@@ -16,9 +16,14 @@ import RNFetchBlob from 'rn-fetch-blob';
 import Editior from '../components/Editior';
 
 const Frame = ({route, navigation}) => {
+  console.log("route.params",route.params);
   const [imageSource, setImageSource] = useState(null);
   const categoryImage = route.params.img;
+  const categoryId = route.params.id;
   const screenName = route.params.routeName;
+  console.log("screenNamescreenNamescreenName",screenName);
+  console.log("categoryImagecategoryImagecategoryImage",categoryImage);
+  console.log("categoryIdcategoryIdcategoryId",categoryId);
 
   useEffect(() => {
     Platform.OS === 'android' ? request_storage_runtime_permission() : null;
