@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   Text,
   TextInput,
@@ -16,20 +16,32 @@ const Login = ({navigation}) => {
   const [number, setNumber] = useState('');
   const [validuser, setValiduser] = useState(true);
   const dispatch = useDispatch();
-  const validation = async () => {
+
+  const validation =  () => {
+     dispatch(login({mobile_number: number}));
+     setValiduser(false);
     if (number.length < 10) {
       setValiduser(false);
     } else {
       setValiduser(true);
-      await dispatch(login({mobile_number: number}));
-      navigation.navigate('verify');
+      navigation.navigate('verify',{number:number,setNumber:setNumber});
     }
   };
 
+  const errorLogin = useSelector(state => state?.loginReducer?.userData?.data?.message)
+  // console.log("errorLogin",errorLogin);
+  // const errorLoginlog = useSelector(state => console.log("state",state?.loginReducer?.userData?.data?.message))
   const loader = useSelector(state => state.loginReducer.isLoader) || false;
+  console.log("loader",loader);
+  
 
   return (
     <>
+    {loader ? (
+      <View style={{justifyContent:'center'}}>
+            <ActivityIndicator size="large" color="" />
+      </View>
+          ) :
       <View style={styles.topview}>
         <View>
           <Image source={image.mobile} style={styles.imghei_wid} />
@@ -53,17 +65,19 @@ const Login = ({navigation}) => {
 
         {validuser ? null : (
           <Text style={{left: 25, top: 40, color: 'red'}}>
-            *Enter your valid 10 digit number
+            {errorLogin}
           </Text>
         )}
         <TouchableOpacity style={styles.buttonview} onPress={validation}>
-          {loader ? (
+          <Text style={styles.tochabletext}>Send</Text>
+          {/* {loader ? (
             <ActivityIndicator size="large" color="" />
           ) : (
             <Text style={styles.tochabletext}>Send</Text>
-          )}
+          )} */}
         </TouchableOpacity>
       </View>
+}
     </>
   );
 };

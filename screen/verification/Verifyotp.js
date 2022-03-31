@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {
   Text,
   TextInput,
@@ -9,11 +9,16 @@ import {
 } from 'react-native';
 import styles from '../../styles/Verifyotp';
 import image from '../../utils/image';
-import {useDispatch, useSelector} from 'react-redux';
-import {startLoader, stopLoader} from '../../redux/action/Login.action';
+import { useDispatch, useSelector } from 'react-redux';
+import { login, startLoader, stopLoader } from '../../redux/action/Login.action';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { verify } from '../../redux/action/Verifyotp.action';
+import { SET_USER_TOKEN } from '../../redux/types/Verifyotp.type';
 
-const Verify = ({navigation}) => {
+const Verify = ({ route, navigation }) => {
+  // console.log("route",route.params.number);
+  const number = route.params.number;
+  const setNumber = route.params.setNumber;
   const dispatch = useDispatch();
   const firstInput = useRef();
   const secondInput = useRef();
@@ -21,47 +26,62 @@ const Verify = ({navigation}) => {
   const fourInput = useRef();
   const fiveInput = useRef();
   const sixInput = useRef();
-  const [otp, setOtp] = useState({1: '', 2: '', 3: '', 4: '', 5: '', 6: ''});
-  const [errorMessage, setErrorMessage] = useState('');
-  const [setLoader, setSetLoader] = useState(false);
+  const [otp, setOtp] = useState({ 1: '', 2: '', 3: '', 4: '', 5: '', 6: '' });
+  const [errorMessage, setErrorMessage] = useState(true);
+  // const [setLoader, setSetLoader] = useState(false);
+  // const [userToken, setUserToken] = useState(null);
+
 
   let otp1 = Object.values(otp).join('');
 
-  const variftOtp = useSelector(state => state?.loginReducer?.userData?.data[0]?.password);
-  // const variftOtplog = useSelector(state => console.log("123",state?.loginReducer?.userData?.data[0]?.password));
-  
-  const loader2 = useSelector(state => state.loginReducer.isLoader) || false;
-  useEffect(() => {
-    if (loader2) {
-      setSetLoader(true);
-    } else {
-      setSetLoader(false);
-    }
-  }, [loader2]);
-  const number = useSelector(state =>state?.loginReducer?.userData?.data[0]?.mobile_number);
-    const token = useSelector(state => state?.loginReducer?.userData?.data[0]?.token);
+  // const variftOtp = useSelector(state => state?.loginReducer?.userData?.data[0]?.password);
+
+  // const varif1 = useSelector(state => state?.verifyotpReducer?.userData?.data[0]?.token);
+  // const variftOtplog = useSelector(state => console.log("123",state?.loginReducer?.userData?.data));
+  // console.log("varif1varif1varif1varif1varif1", varif1);
+
+  const loader2 = useSelector(state => state.verifyotpReducer.isLoader) || false;
+  console.log("loader2",loader2);
+
+  // useEffect(() => {
+  //   if (loader2) {
+  //     setSetLoader(true);
+  //   } else {
+  //     setSetLoader(false);
+  //   }
+  // }, [loader2]);
+  // const fetchToken = async () => {
+  //   let response = await AsyncStorage.getItem('userToken')
+  //   // console.log("resssssss", response);
+  //   return response
+  //   // setUserToken(response)
+  // }
+  // useEffect(() => {
+  //   const value = fetchToken();
+  // }, [varif1])
+
+  const errorLogin = useSelector(state => state?.verifyotpReducer?.setUserError?.message)
   const validationotp = async () => {
-    if (otp1.length === 0) {
-      setErrorMessage('Enter OTP');
-    } else {
-      if (variftOtp == otp1) {
-        dispatch(startLoader());
-        setTimeout(() => {
-          navigation.navigate('AppStack');
-          dispatch(stopLoader());
-        }, 1000);
-        await AsyncStorage.setItem('userToken', token);
-      } else {
-        setErrorMessage('Your OTP is 1 2 3 4 5 6');
-      }
-    }
+    dispatch(verify({ mobile_number: number, password: otp1 }));
+    setErrorMessage(true)
+    setTimeout(async() => {
+      const token = await AsyncStorage.getItem('userToken');
+      if (token) { 
+        setNumber('')
+        navigation.navigate('AppStack');
+      } 
+    }, 1000);
   };
   return (
+    <>
+    {loader2 ? (
+      <ActivityIndicator size="large" />
+    ) :
     <View style={styles.view1}>
       <Image source={image.otp} style={styles.img} />
       <Text style={styles.textheader}>Verification Code</Text>
       <Text style={styles.texttitle}>
-        Verification code sent {'\n'} to{' '}
+        Verification code sent {'\n'}      to{' '}
         <Text style={styles.textnumber}>{number}</Text>
       </Text>
       <View style={styles.textinputview}>
@@ -69,10 +89,10 @@ const Verify = ({navigation}) => {
           keyboardType="number-pad"
           ref={firstInput}
           onChangeText={text => {
-            setOtp({...otp, 1: text});
+            setOtp({ ...otp, 1: text });
             text && secondInput.current.focus();
           }}
-          onChange={() => setErrorMessage('')}
+          onChange={() => setErrorMessage(false)}
           maxLength={1}
           style={styles.inputContainer}
         />
@@ -80,10 +100,10 @@ const Verify = ({navigation}) => {
           keyboardType="number-pad"
           ref={secondInput}
           onChangeText={text => {
-            setOtp({...otp, 2: text});
+            setOtp({ ...otp, 2: text });
             text ? thirdInput.current.focus() : firstInput.current.focus();
           }}
-          onChange={() => setErrorMessage('')}
+          onChange={() => setErrorMessage(false)}
           maxLength={1}
           style={styles.inputContainer2}
         />
@@ -91,10 +111,10 @@ const Verify = ({navigation}) => {
           keyboardType="number-pad"
           ref={thirdInput}
           onChangeText={text => {
-            setOtp({...otp, 3: text});
+            setOtp({ ...otp, 3: text });
             text ? fourInput.current.focus() : secondInput.current.focus();
           }}
-          onChange={() => setErrorMessage('')}
+          onChange={() => setErrorMessage(false)}
           maxLength={1}
           style={styles.inputContainer3}
         />
@@ -102,10 +122,10 @@ const Verify = ({navigation}) => {
           keyboardType="number-pad"
           ref={fourInput}
           onChangeText={text => {
-            setOtp({...otp, 4: text});
+            setOtp({ ...otp, 4: text });
             text ? fiveInput.current.focus() : thirdInput.current.focus();
           }}
-          onChange={() => setErrorMessage('')}
+          onChange={() => setErrorMessage(false)}
           maxLength={1}
           style={styles.inputContainer4}
         />
@@ -113,10 +133,10 @@ const Verify = ({navigation}) => {
           keyboardType="number-pad"
           ref={fiveInput}
           onChangeText={text => {
-            setOtp({...otp, 5: text});
+            setOtp({ ...otp, 5: text });
             text ? sixInput.current.focus() : fourInput.current.focus();
           }}
-          onChange={() => setErrorMessage('')}
+          onChange={() => setErrorMessage(false)}
           maxLength={1}
           style={styles.inputContainer5}
         />
@@ -124,37 +144,45 @@ const Verify = ({navigation}) => {
           keyboardType="number-pad"
           ref={sixInput}
           onChangeText={text => {
-            setOtp({...otp, 6: text});
+            setOtp({ ...otp, 6: text });
             !text && fiveInput.current.focus();
           }}
-          onChange={() => setErrorMessage('')}
+          onChange={() => setErrorMessage(false)}
           maxLength={1}
           style={styles.inputContainer6}
         />
       </View>
-      {errorMessage !== '' && (
-        <Text style={{color: 'red', top: 25}}>{errorMessage}</Text>
+      {errorMessage && (
+        <Text style={{ color: 'red', top: 25 }}>
+          {errorLogin && errorLogin}
+        </Text>
       )}
+      {/* {errorMessage !== '' && (
+        <Text style={{ color: 'red', top: 25 }}>{errorMessage}</Text>
+      )} */}
       <View
         style={
-          errorMessage && errorMessage !== ''
+          errorMessage && errorMessage !== false
             ? styles.buttonContainer
             : styles.buttonContainer1
         }>
         <TouchableOpacity style={styles.tochable} onPress={validationotp}>
-          {setLoader ? (
+          <Text style={styles.tochabletext}>Verify</Text>
+          {/* {setLoader ? (
             <ActivityIndicator size="large" />
           ) : (
             <Text style={styles.tochabletext}>Verify</Text>
-          )}
+          )} */}
         </TouchableOpacity>
         <TouchableOpacity
-          style={{alignItems: 'center', marginTop: 8}}
+          style={{ alignItems: 'center', marginTop: 8 }}
           onPress={() => navigation.navigate('login')}>
-          <Text style={{color: 'green', fontSize: 15}}>Resend code</Text>
+          <Text style={{ color: 'green', fontSize: 15 }}>Resend code</Text>
         </TouchableOpacity>
       </View>
     </View>
+}
+</>
   );
 };
 

@@ -115,7 +115,7 @@ const styles = StyleSheet.create({
   buttonContainer: {
     marginBottom: height / 3,
     width: width / 1.7,
-    marginTop: height / 12,
+    marginTop: height / 24,
   },
   buttonContainer1: {
     marginBottom: height / 3,

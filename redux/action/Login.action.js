@@ -10,12 +10,12 @@ const setLoginState = loginData => {
     payload: loginData,
   };
 };
-const setUserLoginState = userToken => {
-  return {
-    type: SET_USER_TOKEN,
-    payload: userToken,
-  };
-};
+// const setUserLoginState = userToken => {
+//   return {
+//     type: SET_USER_TOKEN,
+//     payload: userToken,
+//   };
+// };
 const setUserError = userError => {
   return {
     type: SET_USER_ERROR,
@@ -34,6 +34,7 @@ export const stopLoader = () => {
 }
 
 export const login = (loginInput) => {
+  // console.log("loginInput",loginInput);
   return dispatch => {
     dispatch(startLoader())
     return axios
@@ -43,14 +44,18 @@ export const login = (loginInput) => {
         'Content-Type': 'application/json',
       },
     })
-    .then(async (res) => {
+    .then(/* async */ (res) => {
       // console.log("resresres login",res);
-      dispatch(setLoginState(res.data));
-      dispatch(setUserLoginState(res?.data?.data[0]?.token));
+      dispatch(setLoginState(res));
+      
+      // dispatch(setUserLoginState(res?.data?.data[0]?.token));
       // await AsyncStorage.setItem('userToken', res?.data?.data[0]?.token);
+      dispatch(stopLoader())
     })
     .catch(err => {
-      dispatch(setUserError(err.data));
+      // console.log("resresres errrr",err);
+      dispatch(setUserError(err));
+      dispatch(stopLoader())
     });
   };
 };

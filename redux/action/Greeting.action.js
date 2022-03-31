@@ -29,11 +29,11 @@ export const greetingApiData = () => {
         return axios
             .get(GreetingData)
             .then(res => {
-                console.log("res greeting", res);
+                // console.log("res greeting", res);
                 dispatch(setGreetingData(res.data))
             })
             .catch(err => {
-                console.log("errrrrrr",err);
+                // console.log("errrrrrr",err);
                 dispatch(setGreetingDataError(err.data))
             })
     }

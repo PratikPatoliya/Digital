@@ -1,7 +1,7 @@
 import { SET_LOGIN_STATE, SET_LOADER_START, SET_USER_ERROR, SET_USER_TOKEN, SET_LOADER_STOP } from '../types/Login.types';
 
 const initialState = {
-  userToken: '',
+  // userToken: '',
   setUserError: '',
   isLoader: false,
   userData:null
@@ -25,12 +25,12 @@ export const loginReducer = (state = initialState, action) => {
         userData:action.payload,
         isLoader: false,
       };
-    case SET_USER_TOKEN:
-      return {
-        ...state,
-        userToken: action.payload,
-        isLoader: false,
-      };
+    // case SET_USER_TOKEN:
+    //   return {
+    //     ...state,
+    //     userToken: action.payload,
+    //     isLoader: false,
+    //   };
     case SET_USER_ERROR:
       return {
         ...state,
