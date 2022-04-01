@@ -36,7 +36,7 @@ export const stopLoader = () => {
 export const login = (loginInput) => {
   // console.log("loginInput",loginInput);
   return dispatch => {
-    dispatch(startLoader())
+    dispatch(stopLoader())
     return axios
     .post(LoginUrl, loginInput, {
       headers: {
@@ -56,6 +56,6 @@ export const login = (loginInput) => {
       // console.log("resresres errrr",err);
       dispatch(setUserError(err));
       dispatch(stopLoader())
-    });
+    })
   };
 };

@@ -38,19 +38,20 @@ export const verify = (verifyInput) => {
     return dispatch => {
         dispatch(startLoader())
         return axios
-            .post(LoginUrl, verifyInput, {
-                headers: {
-                    Accept: 'application/json',
-                    'Content-Type': 'application/json',
-                },
-            })
-            .then(async (res) => {
-                console.log("resresres veri", res);
-                if (res?.data?.message) {
-                    dispatch(setErrorState(res?.data))
-                }
-
-                if (res?.data?.status) {
+        .post(LoginUrl, verifyInput, {
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            },
+        })
+        .then(async (res) => {
+            console.log("resresres veri", res);
+            if (res?.data?.message) {
+                dispatch(stopLoader())
+                dispatch(setErrorState(res?.data))
+            }
+            
+            if (res?.data?.status) {
                     dispatch(setVerifyState(res?.data))
                     // console.log("token", res?.data?.data[0]?.token);
                     // console.log("userId", res?.data?.data[0]?.mobile_number);                   
@@ -59,12 +60,12 @@ export const verify = (verifyInput) => {
                     await AsyncStorage.setItem('phoneNumber', res?.data?.data[0]?.mobile_number);
                 }
                 dispatch(setUserVerifyState(res?.data?.data[0]?.token))
-                dispatch(stopLoader())
+                // dispatch(stopLoader())
             })
             .catch(err => {
                 // console.log("resresres errrr", err);
                 dispatch(setErrorState(res?.data))
-                dispatch(stopLoader())
+                // dispatch(stopLoader())
             });
         };
     }
