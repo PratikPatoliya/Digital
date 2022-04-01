@@ -15,6 +15,8 @@ import {login} from '../../redux/action/Login.action';
 const Login = ({navigation}) => {
   const [number, setNumber] = useState('');
   const [validuser, setValiduser] = useState(true);
+  const [setLoader, setSetLoader] = useState(false);
+
   const dispatch = useDispatch();
 
   const validation =  () => {
@@ -37,11 +39,6 @@ const Login = ({navigation}) => {
 
   return (
     <>
-    {loader ? (
-      <View style={{justifyContent:'center'}}>
-            <ActivityIndicator size="large" color="" />
-      </View>
-          ) :
       <View style={styles.topview}>
         <View>
           <Image source={image.mobile} style={styles.imghei_wid} />
@@ -69,15 +66,15 @@ const Login = ({navigation}) => {
           </Text>
         )}
         <TouchableOpacity style={styles.buttonview} onPress={validation}>
-          <Text style={styles.tochabletext}>Send</Text>
-          {/* {loader ? (
+          {/* <Text style={styles.tochabletext}>Send</Text> */}
+          {loader ? (
             <ActivityIndicator size="large" color="" />
           ) : (
             <Text style={styles.tochabletext}>Send</Text>
-          )} */}
+          )}
         </TouchableOpacity>
       </View>
-}
+
     </>
   );
 };

@@ -28,7 +28,7 @@ const Verify = ({ route, navigation }) => {
   const sixInput = useRef();
   const [otp, setOtp] = useState({ 1: '', 2: '', 3: '', 4: '', 5: '', 6: '' });
   const [errorMessage, setErrorMessage] = useState(true);
-  // const [setLoader, setSetLoader] = useState(false);
+  const [setLoader, setSetLoader] = useState(false);
   // const [userToken, setUserToken] = useState(null);
 
 
@@ -43,13 +43,13 @@ const Verify = ({ route, navigation }) => {
   const loader2 = useSelector(state => state.verifyotpReducer.isLoader) || false;
   console.log("loader2",loader2);
 
-  // useEffect(() => {
-  //   if (loader2) {
-  //     setSetLoader(true);
-  //   } else {
-  //     setSetLoader(false);
-  //   }
-  // }, [loader2]);
+  useEffect(() => {
+    if (loader2) {
+      setSetLoader(true);
+    } else {
+      setSetLoader(false);
+    }
+  }, [loader2]);
   // const fetchToken = async () => {
   //   let response = await AsyncStorage.getItem('userToken')
   //   // console.log("resssssss", response);
@@ -74,9 +74,7 @@ const Verify = ({ route, navigation }) => {
   };
   return (
     <>
-    {loader2 ? (
-      <ActivityIndicator size="large" />
-    ) :
+    
     <View style={styles.view1}>
       <Image source={image.otp} style={styles.img} />
       <Text style={styles.textheader}>Verification Code</Text>
@@ -167,12 +165,12 @@ const Verify = ({ route, navigation }) => {
             : styles.buttonContainer1
         }>
         <TouchableOpacity style={styles.tochable} onPress={validationotp}>
-          <Text style={styles.tochabletext}>Verify</Text>
-          {/* {setLoader ? (
+          {/* <Text style={styles.tochabletext}>Verify</Text> */}
+          {setLoader ? (
             <ActivityIndicator size="large" />
           ) : (
             <Text style={styles.tochabletext}>Verify</Text>
-          )} */}
+          )}
         </TouchableOpacity>
         <TouchableOpacity
           style={{ alignItems: 'center', marginTop: 8 }}
@@ -181,7 +179,6 @@ const Verify = ({ route, navigation }) => {
         </TouchableOpacity>
       </View>
     </View>
-}
 </>
   );
 };
