@@ -19,6 +19,8 @@ import {getFocusedRouteNameFromRoute} from '@react-navigation/native';
 import Privacy_Policy from '../screen/Privacy_Policy';
 import Terms_conditions from '../screen/Terms_conditions';
 import EditBusiness from '../screen/EditBusiness';
+import CreateBusinesscategory from '../screen/CreateBusinesscategory';
+import Demo from '../screen/Demo';
 
 const Stack = createNativeStackNavigator();
 
@@ -88,6 +90,11 @@ function BusinessStackScreen() {
         component={EditBusiness}
         options={{headerShown: false}}
       />
+      <Stack.Screen
+        name="CreateBusinesscategory"
+        component={CreateBusinesscategory}
+        options={{headerShown: false}}
+      />
     </Stack.Navigator>
   );
 }
@@ -117,6 +124,11 @@ function AccountStackScreen() {
       <Stack.Screen
         name="Editprofile"
         component={EditProfile}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Demo"
+        component={Demo}
         options={{headerShown: false}}
       />
     </Stack.Navigator>
@@ -228,7 +240,12 @@ const AppStack = () => {
       <Tab.Screen
         name="Business"
         component={BusinessStackScreen}
-        options={{
+        options={({route}) => ({
+          tabBarStyle: {
+            display: getTabBarVisibilityBusiness(route),
+            height: Platform.OS === 'ios' ? 100 : 65,
+          },
+          tabBarVisible: true,
           headerShown: false,
           tabBarIcon: ({color, focused}) =>
             focused ? (
@@ -236,7 +253,7 @@ const AppStack = () => {
             ) : (
               <Icon name="briefcase-outline" size={20} style={{color: color}} />
             ),
-        }}
+        })}
       />
       <Tab.Screen
         name="Account"
@@ -274,6 +291,13 @@ const getTabBarVisibilityGreeting = route => {
   if (routeName == 'Frame') {
     return 'none';
   } else if (routeName == 'Viewall') {
+    return 'none';
+  }
+  return 'flex';
+};
+const getTabBarVisibilityBusiness = route => {
+  const routeName = getFocusedRouteNameFromRoute(route) ?? 'Business';
+  if (routeName == 'EditBusiness') {
     return 'none';
   }
   return 'flex';

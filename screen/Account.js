@@ -19,122 +19,89 @@ const height = Dimensions.get('window').height;
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Toast from 'react-native-simple-toast';
 import BASE_URL from '../config/baseUrl';
-import axios from 'axios';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { launchImageLibrary, launchCamera } from 'react-native-image-picker';
+import { setUserData, setVerifyState } from '../redux/action/Verifyotp.action';
 
 const Account = ({ navigation }) => {
   const [model, setModel] = useState(false);
   const [imageSource, setImageSource] = useState(image.userImage);
   const [userPath, setUserPath] = useState('')
   const [mobileNumber, setMobileNumber] = useState('')
-
-  console.log("userPath", userPath);
-  // const user_Idlog = useSelector(state => console.log("state",(state?.verifyotpReducer?.userData?.data[0]?.userId)));
+  const dispatch = useDispatch()
+  const userData = useSelector(state => state?.verifyotpReducer?.userData);
+  // console.log("userData",userData)
+  // useEffect(() => {
+  //   if (userData?.displayImage) {
+  //     setImageSource(userData.displayImage)
+  //   } else {
+  //     setImageSource(image.userImage)
+  //   }
+  // }, [userData])
   useEffect(() => {
     idcall()
   }, [])
+
   const idcall = async () => {
     const ID = await AsyncStorage.getItem('userId')
-    // console.log("ID", ID);
+    //  console.log("IDconsole.logconsole.logconsole.logconsole.log", ID);
     const phoneNumber = await AsyncStorage.getItem('phoneNumber');
     setMobileNumber(phoneNumber)
     accountUrl = `${BASE_URL}/profile/${ID}`;
+    //  console.log("accountUrlaccountUrlaccountUrlaccountUrl", accountUrl);
     setUserPath(accountUrl)
-    console.log("accountUrlaccountUrlaccountUrl", accountUrl);
   }
 
-  // let accountUrl = `${BASE_URL}/profile/${ID}`;
-  function selectImage() {
-    ImagePicker.openPicker({
-      compressImageMaxWidth: 300,
-      compressImageMaxHeight: 400,
-      compressImageQuality: 0.7,
-      cropping: true,
-      cropperCircleOverlay: true,
-      freeStyleCropEnabled: true,
-      avoidEmptySpaceAroundImage: true,
-      includeBase64: true,
-      mediaType: 'photo',
-    }).then(image => {
-      // setImageSource(image.path);
-      console.log("image.path++++++++++++++++++", image);
-      imageUpload(image)
-      // Toast.show('Successfully change image');
-    });
-    setModel(false);
-  }
-  function selectCamera() {
-    ImagePicker.openCamera({
-      cropping: true,
-      compressImageMaxWidth: 300,
-      compressImageMaxHeight: 400,
-      compressImageQuality: 0.7,
-      cropperCircleOverlay: true,
-      freeStyleCropEnabled: true,
-      includeBase64: true,
-      mediaType: 'photo',
-    }).then(image => {
-      // setImageSource(image.path);
-      console.log("image.path", image);
-      imageUpload(image)
-      // Toast.show('Successfully change image');
-    });
-    setModel(false);
-  }
 
-  const imageUpload = async (imagePath) => {
+  // const options = { mediaType: 'photo', quality: 1, includeBase64: false };
+  // const selectImage = async () => {
+  //   const result = await launchImageLibrary(options);
+  //   console.log('result: ', result);
+  //   imageUpload(result)
+  // }
 
-    // var formdata = new FormData();
-    // formdata.append("type", 1);
-    // formdata.append("image", imagePath);
-    // console.log("123", formdata._parts[0][1]);
-    // console.log("123", formdata._parts[1][1]);
-    // let obg = {
-    //   type: formdata._parts[0][1],
-    //   image: formdata._parts[1][1]
-    // }
-    // console.log("+++++obg", obg);
-    // console.log("formdataformdataformdata", obg);
-    // //     var requestOptions = {
-    // //       method: 'POST',
-    // //       body: formdata,
-    // //       redirect: 'follow'
-    // //     };
+  // const selectCamera = async () => {
+  //   const result = await launchCamera(options);
+  //   console.log('result: ', result);
+  //   imageUpload(result)
+  // }
 
-    // const res = axios.post(userPath, obg)
-    // response.JSON()
-    //   .then(response => console.log("++++++++++++response", response)
-    //   )
-    //   .then(result => console.log(result))
-    //   .catch(error => console.log('error', error));
-    // console.log("resresresresres", res);
+  // const imageUpload = async (imagePath) => {
+  //   console.log("imagePath", imagePath)
+  //   const formData = new FormData();
+  //   formData.append('type', 1);
+  //   formData.append('image', {
+  //     uri: imagePath.assets[0].uri,
+  //     type: imagePath.assets[0].type,
+  //     name: imagePath.assets[0].fileName,
+  //   });
+  //   try {
+  //     const res = await fetch(userPath, {
+  //       method: 'POST',
+  //       body: formData,
+  //       headers: {
+  //         'Content-Type': 'multipart/form-data',
+  //       },
+  //     });
 
-    console.log("imagePathimagePath", imagePath);
-    var formdata = new FormData();
-    formdata.append("type", 1);
-    formdata.append("image",imagePath);
-    // formdata.append("image", {
-    //   uri: imagePath.data,
-    //   name: imagePath.modificationDate,
-    //   fileName: 'image',
-    //   type: imagePath.mime,
-    // });
-    console.log("formdataformdata", formdata);
+  //     const resJson = await res.json();
+  //     if (resJson) {
 
-    // var requestOptions = {
-    //   method: 'POST',
-    //   body: formdata,
-    //   redirect: 'follow'
-    // };
+  //       console.log('api res: ', resJson);
+  //       setImageSource(resJson.image);
+  //       const userDataObject = { ...userData, displayImage: resJson.image }
+  //       AsyncStorage.setItem('userData', JSON.stringify(userDataObject));
+  //       console.log("userDataObject", userDataObject);
+  //       console.log("userDataObject", typeof(userDataObject));
+  //       dispatch(setVerifyState(userDataObject))
+  //     }
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  //   setModel(false);
 
-    axios.post(userPath, formdata, {
-      headers: {
-        "Content-Type": "multipart/form-data; boundary=someRandomString",
-        "Accept": "application/json"
-      }
-    }).then((res) => console.log("res", res)).catch((e) => console.log('e', e))
+  // }
 
-  }
 
   const myCustomerShare = async () => {
     const shareOption = {
@@ -155,19 +122,19 @@ const Account = ({ navigation }) => {
 
   return (
     <View>
-      <Modal transparent={true} visible={model}>
+      {/* <Modal transparent={true} visible={model}>
         <View style={styles.topContainer}>
           <View style={styles.modelContainer}>
             <Text style={{ fontSize: 17, color: colors.black }}>
               Select File from
             </Text>
             <TouchableOpacity
-              onPress={selectImage}
+              onPress={async () => await selectImage()}
               style={{ backgroundColor: colors.white, justifyContent: 'center' }}>
               <Text style={styles.titleTxt}>Choose Image</Text>
             </TouchableOpacity>
             <TouchableOpacity
-              onPress={selectCamera}
+              onPress={async () => await selectCamera()}
               style={{ backgroundColor: colors.white, justifyContent: 'center' }}>
               <Text style={styles.titleTxt}>Capture Image</Text>
             </TouchableOpacity>
@@ -178,7 +145,7 @@ const Account = ({ navigation }) => {
             </TouchableOpacity>
           </View>
         </View>
-      </Modal>
+      </Modal> */}
 
       <View style={{ backgroundColor: colors.black, height, width }}>
         <View style={styles.title}>
@@ -188,12 +155,10 @@ const Account = ({ navigation }) => {
         </View>
         <ScrollView>
           <View style={{ alignItems: 'center', marginTop: 50 }}>
-            <TouchableOpacity onPress={() => setModel(true)}>
-              <Image
-                source={{ uri: imageSource }}
-                style={{ height: 120, width: 120, borderRadius: 100 }}
-              />
-            </TouchableOpacity>
+            <Image
+              source={{ uri: imageSource }}
+              style={{ height: 120, width: 120, borderRadius: 100 }}
+            />
             <Text style={{ color: colors.white, fontSize: 25, marginTop: 5 }}>
               User Name
             </Text>
@@ -228,10 +193,12 @@ const Account = ({ navigation }) => {
               onClick={logout}
             />
           </View>
-          <View style={{ alignItems: 'center' }}>
-            <Text style={styles.descriptionTxt}>
-              Designed by Bluesoft Infotech
-            </Text>
+          <View style={styles.descriptionTxtview}>
+            <TouchableOpacity onPress={() => navigation.navigate('Demo')}>
+              <Text style={styles.descriptionTxt}>
+                Designed by Bluesoft Infotech
+              </Text>
+            </TouchableOpacity>
           </View>
         </ScrollView>
       </View>

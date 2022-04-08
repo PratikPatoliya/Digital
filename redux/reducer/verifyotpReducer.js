@@ -2,12 +2,13 @@ import { SET_LOADER_START, SET_LOADER_STOP, SET_USER_ERROR, SET_USER_TOKEN, SET_
 
 const initialState ={
     userToken: '',
-    setUserError: '',
+    setUserError: null,
     userData:null,
     isLoader: false,
 }
 
 export const verifyotpReducer =(state = initialState ,action) => {
+   // console.log('action.payload', action.payload)
     switch (action.type) {
         case SET_LOADER_START:
       return {

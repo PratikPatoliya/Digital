@@ -12,6 +12,7 @@ import { homeapidata, homeapidataimg } from '../redux/action/Home.action';
 import { useDispatch, useSelector } from 'react-redux';
 import Toast from 'react-native-simple-toast';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { setVerifyState } from '../redux/action/Verifyotp.action';
 
 const Home = props => {
   const route = useRoute();
@@ -20,6 +21,20 @@ const Home = props => {
   const [images, setImages] = useState([]);
   const homeData = useSelector(state => state?.homeReducer?.homeData)
   const homeDataImage = useSelector(state => state?.homeReducer?.homeDataImage)
+
+  const getUserData = async () => {
+    let userData = await AsyncStorage.getItem('userData')
+    let userData1 = JSON.parse(userData)
+    if (!token) {
+      dispatch(setVerifyState(userData1))
+    }
+  }
+  const token = useSelector(state => state?.verifyotpReducer?.userData)
+  useEffect(() => {
+    getUserData()
+  }, [token])
+
+
   // const token = useSelector(state =>console.log("token",state.loginReducer))
   // console.log("1234",AsyncStorage.getItem('userToken'));
 
@@ -33,16 +48,6 @@ const Home = props => {
         BackHandler.removeEventListener('hardwareBackPress', () => true);
     }, []),
   );
-  const changeHandler = () => {
-    if (homeDataImage && homeDataImage.length >= 0 && homeData && homeDataImage.length >= 0) {
-      const dummyData = homeData?.map(element => {
-        const data = homeDataImage?.filter((item) => item.header_id == element._id)
-        element.image.push(data)
-        return element
-      });
-      setImages(dummyData)
-    }
-  }
   useEffect(() => {
     dispatch(homeapidata());
     dispatch(homeapidataimg())
@@ -57,7 +62,18 @@ const Home = props => {
       changeHandler()
     }
   }, [homeData, homeDataImage])
-
+  
+  const changeHandler = () => {
+    if (homeDataImage && homeDataImage.length >= 0 && homeData && homeDataImage.length >= 0) {
+      const dummyData = homeData?.map(element => {
+        const data = homeDataImage?.filter((item) => item.header_id == element._id)
+        element.image.push(data)
+        return element
+      });
+      setImages(dummyData)
+    }
+  }
+  
   /* whattsapp  function */
   const openWhatsApp = () => {
     let msg = 'Welcome to Your App';

@@ -34,6 +34,7 @@ const Verify = ({ route, navigation }) => {
 
   let otp1 = Object.values(otp).join('');
 
+  console.log("errorMessageerrorMessageerrorMessage",errorMessage);
   // const variftOtp = useSelector(state => state?.loginReducer?.userData?.data[0]?.password);
 
   // const varif1 = useSelector(state => state?.verifyotpReducer?.userData?.data[0]?.token);
@@ -41,7 +42,9 @@ const Verify = ({ route, navigation }) => {
   // console.log("varif1varif1varif1varif1varif1", varif1);
 
   const loader2 = useSelector(state => state.verifyotpReducer.isLoader) || false;
-  console.log("loader2",loader2);
+  const errorLogin = useSelector(state => state?.verifyotpReducer?.setUserError)
+  console.log("errorLoginerrorLogin",errorLogin);
+  const errorLogin2 = useSelector(state => state?.verifyotpReducer)
 
   useEffect(() => {
     if (loader2) {
@@ -59,13 +62,13 @@ const Verify = ({ route, navigation }) => {
   // useEffect(() => {
   //   const value = fetchToken();
   // }, [varif1])
-
-  const errorLogin = useSelector(state => state?.verifyotpReducer?.setUserError?.message)
+  
   const validationotp = async () => {
     dispatch(verify({ mobile_number: number, password: otp1 }));
     setErrorMessage(true)
     setTimeout(async() => {
       const token = await AsyncStorage.getItem('userToken');
+      console.log("datatoken",token);
       if (token) { 
         setNumber('')
         navigation.navigate('AppStack');
@@ -86,6 +89,7 @@ const Verify = ({ route, navigation }) => {
         <TextInput
           keyboardType="number-pad"
           ref={firstInput}
+          autoFocus={true}
           onChangeText={text => {
             setOtp({ ...otp, 1: text });
             text && secondInput.current.focus();
@@ -152,7 +156,7 @@ const Verify = ({ route, navigation }) => {
       </View>
       {errorMessage && (
         <Text style={{ color: 'red', top: 25 }}>
-          {errorLogin && errorLogin}
+          {errorLogin}
         </Text>
       )}
       {/* {errorMessage !== '' && (

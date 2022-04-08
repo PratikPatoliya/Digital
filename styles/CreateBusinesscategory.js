@@ -4,6 +4,9 @@ const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
 
 const styles = StyleSheet.create({
+  backgroung:{
+    backgroundColor:colors.black,
+  },
   commonColor: {
     color: colors.white,
   },
@@ -33,14 +36,6 @@ const styles = StyleSheet.create({
     width: '8%',
     top: 5,
   },
-  Businessfdb: {
-    position: 'absolute',
-    margin: 10,
-    marginBottom: Platform.OS === 'ios' ? 120 : 50,
-    right: 0,
-    bottom: height *0.08,
-    backgroundColor: colors.yellow,
-    fontSize:100
-  },
+
 });
 export default styles;

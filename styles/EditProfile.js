@@ -54,5 +54,18 @@ const styles = StyleSheet.create({
     backgroundColor: 'black',
     color: '#fff',
   },
+  topContainer :{
+    flex: 1, 
+    alignItems: 'center', 
+    justifyContent: 'center',
+  },
+  modelContainer :{
+    backgroundColor: '#fff',
+    padding: 15,
+    width: width * 0.8,
+    height: height * 0.24,
+    borderRadius: 4,
+    justifyContent: 'space-between',
+  },
 });
 export default styles;

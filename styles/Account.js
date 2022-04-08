@@ -16,10 +16,14 @@ const styles = StyleSheet.create({
       fontWeight: '800',
       color: colors.yellow,
     },
+    descriptionTxtview:{
+      alignSelf:'center',
+      marginTop:height * 0.08,
+    },
     descriptionTxt: {
       color: colors.yellow,
-      marginTop: height * 0.15,
       fontWeight: '200',
+      // marginTop: height * 0.08,
       fontSize: 20,
     },
     modelContainer :{
