@@ -9,20 +9,21 @@ import {
 import styles from '../styles/Viewall';
 import Header2 from './Header2';
 
-const Viewall = ({route, navigation}) => {
+const Viewall = ({ route, navigation }) => {
   const viewAllData = route.params.itemdata;
-  const renderItem = ({item}) => {
+  const renderItem = ({ item }) => {
     return (
       <View style={styles.container}>
         <TouchableOpacity
           style={styles.Grig}
-          onPress={() =>
+         /*  onPress={(index) =>
             navigation.navigate('Frame', {
-              id: item.img,
+              id: item._id,
               img: item.img,
               routeName: route.params.screenName,
+              selIndex: index,
             })
-          }>
+          } */>
           <Image
             style={styles.tinyLogo}
             source={{

@@ -7,6 +7,7 @@ import {
   FlatList,
   PermissionsAndroid,
   Platform,
+  Dimensions,
 } from 'react-native';
 import Header2 from '../components/Header2';
 import Eflatlist from '../components/Eflatlist';
@@ -18,8 +19,10 @@ import Editior from '../components/Editior';
 const Frame = ({route, navigation}) => {
   console.log("route.params",route.params);
   const [imageSource, setImageSource] = useState(null);
-  const categoryImage = route.params.img;
+  const [refFlatList, setRefFlatList] = useState();
   const categoryId = route.params.id;
+  const selIndex = route.params.selIndex;
+  const categoryImage = route.params.img;
   const screenName = route.params.routeName;
   console.log("screenNamescreenNamescreenName",screenName);
   console.log("categoryImagecategoryImagecategoryImage",categoryImage);
@@ -100,6 +103,11 @@ const Frame = ({route, navigation}) => {
     }
   };
 
+  const onScrollToItemSelected = (selIndex) => {
+    console.log('selIndex: ', selIndex);
+    refFlatList.scrollToIndex({ animated: true, index: selIndex });
+}
+
   return (
     <View style={styles.fview}>
       <Header2
@@ -120,6 +128,12 @@ const Frame = ({route, navigation}) => {
               renderItem={renderItem}
               horizontal={true}
               showsHorizontalScrollIndicator={false}
+              ref={(ref) => setRefFlatList(ref)}
+              onContentSizeChange={() => onScrollToItemSelected(selIndex)}
+              keyExtractor={(item) => item.id}
+              snapToAlignment="start"
+              decelerationRate={"fast"}
+              snapToInterval={Dimensions.get('window').width}
             />
           </View>
           <View style={{top: imageSource ? -22 : 43}}>

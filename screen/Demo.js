@@ -10,7 +10,7 @@ const Demo = ({ navigation }) => {
     const [isLoading, setIsLoading] = useState(true)
     const [data, setData] = useState([]);
     const [currentIndex, setCurrentIndex] = useState();
-const [refFlatList, setRefFlatList] = useState()
+    const [refFlatList, setRefFlatList] = useState();
     // const data1 = data.data;
     useEffect(() => {
         getListPhoto();
@@ -23,39 +23,39 @@ const [refFlatList, setRefFlatList] = useState()
         axios.get(api).then(res => setData(res.data)).catch(err => console.log("errDemo", err)).finally(() => setIsLoading(false))
     }
 
-    const onClickItem = (item , index) =>{
+    const onClickItem = (item, index) => {
         setCurrentIndex(index)
-        const newArrData = data&&data.map((e,index) =>{
+        const newArrData = data && data.map((e, index) => {
             if (item.id == e.id) {
-                return{
+                return {
                     ...e,
-                    selected:true
+                    selected: true
                 }
             }
-            return{
+            return {
                 ...e,
-                selected:false
+                selected: false
             }
         })
         setData(newArrData);
     }
 
-    const renderItem = ({ item ,index }) => {
+    const renderItem = ({ item, index }) => {
         return (
             <View style={{ height: 160 }}>
-                <TouchableOpacity onPress={() =>onClickItem(item ,index)} style={[styles.item, { marginTop: 11, height: 150, backgroundColor: item.selected ? colors.yellow: colors.white }]}>
+                <TouchableOpacity onPress={() => onClickItem(item, index)} style={[styles.item, { marginTop: 11, height: 150, backgroundColor: item.selected ? colors.yellow : colors.white }]}>
                     <Image style={styles.image} source={{ uri: item.url }} resizeMode="contain" />
                 </TouchableOpacity>
             </View>
         )
     }
 
-    const onScrollToItemSelected = () =>{
-refFlatList.scrollToIndex({animated:true ,index : currentIndex});
+    const onScrollToItemSelected = () => {
+        refFlatList.scrollToIndex({ animated: true, index: currentIndex });
     }
 
-    const getItemLayout = (data , index) => {
-       return {length: 160, offset: 160 * index, index}
+    const getItemLayout = (data, index) => {
+        return { length: 160, offset: 160 * index, index }
     }
 
     return (
@@ -71,13 +71,13 @@ refFlatList.scrollToIndex({animated:true ,index : currentIndex});
                 {isLoading ? null : (
 
                     <View style={{ height: 550 }}>
-                        <FlatList 
-                        data={data}
-                        renderItem={renderItem}
-                        style={{ height: 90, marginLeft: 8, marginRight: 8 }}
-                        getItemLayout={getItemLayout}
-                        keyExtractor={item => `key-${item.id}`}
-                        ref={(ref) => setRefFlatList(ref)}
+                        <FlatList
+                            data={data}
+                            renderItem={renderItem}
+                            style={{ height: 90, marginLeft: 8, marginRight: 8 }}
+                            getItemLayout={getItemLayout}
+                            keyExtractor={item => `key-${item.id}`}
+                            ref={(ref) => setRefFlatList(ref)}
                         />
                     </View>
                 )}

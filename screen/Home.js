@@ -108,21 +108,23 @@ const Home = props => {
                   <Lable
                     title={item && item.header}
                     view="View All"
-                    onPress={() =>
+                    onPress={(index) =>
                       props.navigation.navigate('Viewall', {
                         itemdata: item?.image[0],
                         headername: item,
                         screenName: route.name,
+                        selIndex: index
                       })
                     }
                   />
                   <CatagoryImage
                     data={item?.image && item?.image[0]}
-                    onPress={() =>
+                    onPress={(index) =>
                       props.navigation.navigate('Frame', {
                         id: item.image[0],
                         img: item.image[0],
                         routeName: route.name,
+                        selIndex: index
                       })
                     }
                   />

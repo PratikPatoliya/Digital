@@ -14,7 +14,7 @@ const Greeting = props => {
   const [images, setImages] = useState([]);
   const greetingData = useSelector(state => state?.greetingReducer?.greetingData);
   const greetingDataImage = useSelector(state => state?.greetingReducer?.greetingDataImage);
-  
+
   const changeHandler = () => {
     if (greetingDataImage && greetingDataImage.length >= 0 && greetingData && greetingData.length >= 0) {
       const dummyData = greetingData?.map(element => {
@@ -46,19 +46,20 @@ const Greeting = props => {
                   <Lable
                     title={item.header}
                     view='View All'
-                  onPress={() =>
-                    props.navigation.navigate('Viewall', {
-                      itemdata: item.image[0],
-                      headername: item,
-                    })
-                  }
+                    onPress={() =>
+                      props.navigation.navigate('Viewall', {
+                        itemdata: item.image[0],
+                        headername: item,
+                      })
+                    }
                   />
                   <CatagoryImage
                     data={item.image && item.image[0]}
-                    onPress={() =>
+                    onPress={(index) =>
                       props.navigation.navigate('Frame', {
                         id: item.image[0],
                         img: item.image[0],
+                        selIndex: index
                       })
                     }
                   />
