@@ -1,6 +1,6 @@
 import React from 'react';
-import { View } from 'react-native';
-import Header from '../components/Header';
+import { ScrollView, View } from 'react-native';
+import Header2 from '../components/Header2';
 import styles from '../styles/Business';
 import { FAB } from 'react-native-paper';
 import CreateBusinesscategory from './CreateBusinesscategory';
@@ -8,8 +8,10 @@ import CreateBusinesscategory from './CreateBusinesscategory';
 const Business = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <Header title=" My Business" />
-      {/* <CreateBusinesscategory /> */}
+      <Header2 title=" My Business" />
+      <ScrollView>
+      <CreateBusinesscategory />
+      </ScrollView>
         <FAB
           style={styles.Businessfdb}
           color={'#fff'}

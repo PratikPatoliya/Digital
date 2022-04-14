@@ -171,7 +171,7 @@ const Verify = ({ route, navigation }) => {
         <TouchableOpacity style={styles.tochable} onPress={validationotp}>
           {/* <Text style={styles.tochabletext}>Verify</Text> */}
           {setLoader ? (
-            <ActivityIndicator size="large" />
+            <ActivityIndicator size="small" />
           ) : (
             <Text style={styles.tochabletext}>Verify</Text>
           )}

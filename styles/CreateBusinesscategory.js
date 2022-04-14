@@ -12,13 +12,15 @@ const styles = StyleSheet.create({
   },
   container: {
     backgroundColor: colors.black,
-    height: height,
+    alignSelf:'center',
+    width:width*0.95,
+    // height: height,
   },
   wrap: {
-    margin: 15,
+    margin: 8,
     flexDirection: 'row',
     alignSelf: 'center',
-    backgroundColor: colors.yellow,
+    // backgroundColor: colors.yellow,
     borderRadius:9,
   },
   firstWidth: {

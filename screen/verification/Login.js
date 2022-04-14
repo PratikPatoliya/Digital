@@ -80,7 +80,7 @@ const Login = ({ navigation }) => {
           <TouchableOpacity style={styles.buttonview} onPress={validation}>
             {/* <Text style={styles.tochabletext}>Send</Text> */}
             {loader ? (
-              <ActivityIndicator size="large" color="" />
+              <ActivityIndicator size="small" color="" />
             ) : (
               <Text style={styles.tochabletext}>Send</Text>
             )}

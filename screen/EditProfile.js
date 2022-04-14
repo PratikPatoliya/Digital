@@ -9,13 +9,23 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import BASE_URL from '../config/baseUrl';
 import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
 import { setVerifyState } from '../redux/action/Verifyotp.action';
+import axios from 'axios';
+import { EditProfileData } from '../redux/action/EditProfile.action';
 
 const EditProfile = ({ route, navigation }) => {
   // const imageSource = route.params.imageSource;
+  // const setImageSource = route.params.setImageSource;
+  // console.log("imageSource",imageSource);
+  // console.log("setImageSource",setImageSource);
   const [model, setModel] = useState(false);
   const [nonestyle, setNonestyle] = useState(false);
   const [userPath, setUserPath] = useState('')
-  const [imageSource, setImageSource] = useState('');
+  const [userUpdatePath, setUserUpdatePath] = useState('')
+  const [imageSource, setImageSource] = useState(image.userImage);
+  const [userName, setUserName] = useState('');
+  const [setId, setSetId] = useState('')
+  console.log("userName",userName);
+  console.log("setId",setId);
 
   const dispatch = useDispatch()
   const userData = useSelector(state => state?.verifyotpReducer?.userData);
@@ -33,8 +43,11 @@ const EditProfile = ({ route, navigation }) => {
 
   const idcall = async () => {
     const ID = await AsyncStorage.getItem('userId')
-    accountUrl = `${BASE_URL}/profile/${ID}`;
-  //  console.log("accountUrlaccountUrlaccountUrlaccountUrl", accountUrl);
+    setSetId(ID)
+    accountUpdateUrl = `${BASE_URL}/register/${ID}`;
+    accountUrl = `${BASE_URL}/profile`;
+    //  console.log("accountUrlaccountUrlaccountUrlaccountUrl", accountUrl);
+    setUserUpdatePath(accountUpdateUrl)
     setUserPath(accountUrl)
   }
 
@@ -79,7 +92,7 @@ const EditProfile = ({ route, navigation }) => {
         const userDataObject = { ...userData, displayImage: resJson.image }
         AsyncStorage.setItem('userData', JSON.stringify(userDataObject));
         console.log("userDataObject", userDataObject);
-        console.log("userDataObject", typeof(userDataObject));
+        // console.log("userDataObject", typeof(userDataObject));
         dispatch(setVerifyState(userDataObject))
       }
     } catch (error) {
@@ -88,6 +101,30 @@ const EditProfile = ({ route, navigation }) => {
     setModel(false);
 
   }
+  const onSubmitEditData = async () => {
+    // if (imageSource.trim() && userName =="") {
+    //   alert('data Enter')
+    // } else {
+    //   alert('no')
+    // }
+    try {
+      // let data ={
+      //   displayImage:imageSource,
+      //   username:userName
+      // }
+      // console.log("+++++++++data",data);
+      dispatch(EditProfileData({
+        id:setId,
+        displayImage:imageSource,
+        username:userName,
+      }))
+      // const responseapi = await axios.put(userUpdatePath,data)
+      // console.log("responseapi",responseapi); 
+      navigation.navigate('Account1')
+    } catch (error) {
+     console.log("errorerrorerror",error); 
+    }
+  } 
 
   const changeStyle = () => {
     setNonestyle(true);
@@ -124,7 +161,7 @@ const EditProfile = ({ route, navigation }) => {
           title="Edit Profile"
           isBack={() => navigation.goBack()}
           rightname="Save"
-          isRightPress={() => navigation.navigate('Account1')}
+          isRightPress={onSubmitEditData}
         />
         <View style={styles.wrap}>
           <TouchableOpacity onPress={() => setModel(true)}>
@@ -136,7 +173,7 @@ const EditProfile = ({ route, navigation }) => {
                 {' '}
                 Enter Your Name{' '}
               </Text>
-              <TextInput onFocus={changeStyle} style={styles.inputContainer} />
+              <TextInput onFocus={changeStyle} style={styles.inputContainer} value={userName} onChangeText={value => setUserName(value)}  />
             </View>
           </View>
         </View>

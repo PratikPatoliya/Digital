@@ -38,24 +38,24 @@ export const login = (loginInput) => {
   return dispatch => {
     dispatch(stopLoader())
     return axios
-    .post(LoginUrl, loginInput, {
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-    })
-    .then(/* async */ (res) => {
-      // console.log("resresres login",res);
-      dispatch(setLoginState(res));
-      
-      // dispatch(setUserLoginState(res?.data?.data[0]?.token));
-      // await AsyncStorage.setItem('userToken', res?.data?.data[0]?.token);
-      dispatch(stopLoader())
-    })
-    .catch(err => {
-      // console.log("resresres errrr",err);
-      dispatch(setUserError(err));
-      dispatch(stopLoader())
-    })
+      .post(LoginUrl, loginInput, {
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+      })
+      .then(/* async */(res) => {
+        // console.log("resresres login",res);
+        dispatch(setLoginState(res));
+
+        // dispatch(setUserLoginState(res?.data?.data[0]?.token));
+        // await AsyncStorage.setItem('userToken', res?.data?.data[0]?.token);
+        dispatch(stopLoader())
+      })
+      .catch(err => {
+        // console.log("resresres errrr",err);
+        dispatch(setUserError(err));
+        dispatch(stopLoader())
+      })
   };
 };

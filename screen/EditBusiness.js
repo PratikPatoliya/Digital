@@ -19,6 +19,8 @@ import DropDownPicker from 'react-native-dropdown-picker';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import BASE_URL from '../config/baseUrl';
 import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { Bussiness } from '../redux/action/BusinessData.action';
 
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
@@ -71,12 +73,16 @@ const EditBusiness = ({navigation}) => {
   const [value, setValue] = useState(null);
   const [userPath, setUserPath] = useState('');
   const [companyName, setCompanyName] = useState('');
+  const [dropDownData, setDropDownData] = useState('');
+  const [id, setId] = useState('');
+  const [finalDropDownData, setFinalDropDownData] = useState([]);
   // const [mobileNumber, setMobileNumber] = useState('');
   // const [email, setEmail] = useState('');
   // const [website, setWebsite] = useState('');
   // const [address, setAddress] = useState('');
   // const [description, setDescription] = useState('');
   // const [condition, setCondition] = useState(false);
+  const dispatch = useDispatch();
 
   const [items, setItems] = useState([
     {label: 'Apple', value: 'apple'},
@@ -100,13 +106,25 @@ const EditBusiness = ({navigation}) => {
   // });
   useEffect(() => {
     idcall();
+    getDataDropDown();
   }, []);
   const idcall = async () => {
     const ID = await AsyncStorage.getItem('userId');
-    accountUrl = `${BASE_URL}/business/${ID}`;
-    console.log('formformformform', accountUrl);
-    setUserPath(accountUrl);
+    setId(ID)
+    // accountUrl = `${BASE_URL}/business`;
+    // console.log('formformformform', accountUrl);
+    // setUserPath(accountUrl);
+    Dropdown = `${BASE_URL}/category`;
+    console.log("DropdownDropdown",Dropdown);
+    setDropDownData(Dropdown)
   };
+
+  const getDataDropDown =() =>{
+    axios.get(dropDownData).then(res => setFinalDropDownData(res.data) /* console.log("resresresresresresresres",res.data) */).catch(err => console.log("errDemo", err))
+  }
+  console.log("finelDropDownDatafinelDropDownDatafinalDropDownData",finalDropDownData);
+
+
   const [obj, setObj] = useState({
     companyName: '',
     mobileNumber: '',
@@ -127,7 +145,7 @@ const EditBusiness = ({navigation}) => {
 
   // console.log("businessCategorybusinessCategory", businessCategory);
   const onChangeFormData = e => {
-    console.log('value', e);
+    // console.log('value', e);
     const {name, values} = e;
     setObj({...obj, [name]: values});
     setErrorMsg({...errorMsg, [name]: ''});
@@ -186,21 +204,22 @@ const EditBusiness = ({navigation}) => {
   };
 
   const onSubmitFormData = async () => {
-    if (
-      companyName.trim() &&
-      mobileNumber.trim() &&
-      companyEmailAddress.trim() &&
-      companyWebsiteOptional.trim() &&
-      companyAddress.trim() &&
-      companyDescription.trim()
-    ) {
-      alert('data null');
-    } else {
+    // if (
+    //   companyName.trim() &&
+    //   mobileNumber.trim() &&
+    //   companyEmailAddress.trim() &&
+    //   companyWebsiteOptional.trim() &&
+    //   companyAddress.trim() &&
+    //   companyDescription.trim()
+    // ) {
+    //   alert('data null');
+    // } else {
       const status = await checkValidation();
-      console.log('status', status);
-    }
-    try {
-      let datapost = {
+    //   console.log('status', status);
+    // }
+    // try {
+      dispatch(Bussiness({
+        userId: id,
         mobile_Number: obj.mobileNumber,
         company_Name: obj.companyName,
         company_Email_Address: obj.companyEmailAddress,
@@ -209,15 +228,19 @@ const EditBusiness = ({navigation}) => {
         select_Bussiness_Category: obj.selectBussinessCategory,
         company_Description: obj.companyDescription,
         second_Mobile_Number:""
-      }
-      datapost = JSON.stringify(datapost)
-      console.log("datapostdatapostdatapostdatapostdatapost",datapost);
-      const response = await axios.post(userPath ,datapost)
-      console.log("responseresponseresponse",response);
-    } catch (error) {
-      alert('alert')
-      console.log("error",error);
-    }
+      }))
+      navigation.navigate('Business')
+      // let datapost = {
+      // }
+      // // datapost = JSON.stringify(datapost)
+      // console.log("datapostdatapostdatapostdatapostdatapost",datapost);
+      // console.log("userPathuserPath++++",userPath);
+      // const response = await axios.post(userPath,datapost)
+      // console.log("responseresponseresponse",response);
+    // } catch (error) {
+    //   alert('alert')
+    //   console.log("error",error);
+    // }
   };
 
   function selectImage() {
@@ -551,7 +574,7 @@ const EditBusiness = ({navigation}) => {
               }}>
               Company Follow Us
               <Text style={{fontSize: 14, color: colors.darkWhite}}>
-                (optional)
+                (optional) 
               </Text>
             </Text>
             <View style={{flexDirection: 'row', right: 10}}>
@@ -655,7 +678,7 @@ const EditBusiness = ({navigation}) => {
           </View>
           <View style={styles.button}>
             <TouchableOpacity style={styles.click} onPress={onSubmitFormData}>
-              <Text style={styles.buttontext}>Update</Text>
+              <Text style={styles.buttontext}>Create</Text>
             </TouchableOpacity>
           </View>
         </View>

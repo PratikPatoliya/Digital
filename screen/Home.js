@@ -64,7 +64,7 @@ const Home = props => {
   }, [homeData, homeDataImage])
   
   const changeHandler = () => {
-    if (homeDataImage && homeDataImage.length >= 0 && homeData && homeDataImage.length >= 0) {
+    if (homeDataImage && homeDataImage.length >= 0 && homeData && homeData.length >= 0) {
       const dummyData = homeData?.map(element => {
         const data = homeDataImage?.filter((item) => item.header_id == element._id)
         element.image.push(data)
