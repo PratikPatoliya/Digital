@@ -24,8 +24,8 @@ const EditProfile = ({ route, navigation }) => {
   const [imageSource, setImageSource] = useState(image.userImage);
   const [userName, setUserName] = useState('');
   const [setId, setSetId] = useState('')
-  console.log("userName",userName);
-  console.log("setId",setId);
+  console.log("userName", userName);
+  console.log("setId", setId);
 
   const dispatch = useDispatch()
   const userData = useSelector(state => state?.verifyotpReducer?.userData);
@@ -52,17 +52,18 @@ const EditProfile = ({ route, navigation }) => {
   }
 
   const options = { mediaType: 'photo', quality: 1, includeBase64: false };
+  const CameraOption = { cameraType: 'front', mediaType: 'photo', quality: 1,saveToPhotos:1 };
   const selectImage = async () => {
     const result = await launchImageLibrary(options);
     console.log('result: ', result);
     imageUpload(result)
     // setImageSource(() => imageSource)
   }
-  
+
   const selectCamera = async () => {
-    const result = await launchCamera(options);
+    const result = await launchCamera(CameraOption);
     console.log('result: ', result);
-    imageUpload(result)
+    // imageUpload(result)
     // setImageSource(() => imageSource)
   }
 
@@ -114,17 +115,17 @@ const EditProfile = ({ route, navigation }) => {
       // }
       // console.log("+++++++++data",data);
       dispatch(EditProfileData({
-        id:setId,
-        displayImage:imageSource,
-        username:userName,
+        id: setId,
+        displayImage: imageSource,
+        username: userName,
       }))
       // const responseapi = await axios.put(userUpdatePath,data)
       // console.log("responseapi",responseapi); 
       navigation.navigate('Account1')
     } catch (error) {
-     console.log("errorerrorerror",error); 
+      console.log("errorerrorerror", error);
     }
-  } 
+  }
 
   const changeStyle = () => {
     setNonestyle(true);
@@ -173,7 +174,7 @@ const EditProfile = ({ route, navigation }) => {
                 {' '}
                 Enter Your Name{' '}
               </Text>
-              <TextInput onFocus={changeStyle} style={styles.inputContainer} value={userName} onChangeText={value => setUserName(value)}  />
+              <TextInput onFocus={changeStyle} style={styles.inputContainer} value={userName} onChangeText={value => setUserName(value)} />
             </View>
           </View>
         </View>

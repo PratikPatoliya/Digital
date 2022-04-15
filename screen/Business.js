@@ -10,16 +10,16 @@ const Business = ({ navigation }) => {
     <View style={styles.container}>
       <Header2 title=" My Business" />
       <ScrollView>
-      <CreateBusinesscategory />
+        <CreateBusinesscategory />
       </ScrollView>
-        <FAB
-          style={styles.Businessfdb}
-          color={'#fff'}
-          onPress={() => navigation.navigate('EditBusiness')}
-          visible={true}
-          size={40}
-          icon="plus"
-        />
+      <FAB
+        style={styles.Businessfdb}
+        color={'#fff'}
+        onPress={() => navigation.navigate('EditBusiness')}
+        visible={true}
+        size={40}
+        icon="plus"
+      />
     </View>
   );
 };

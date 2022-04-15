@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux';
 const LoginUrl = `${BASE_URL}/register`;
 
 export const setVerifyState = passworddata => {
+    console.log("passworddata",passworddata);
     return {
         type: SET_VERIFY_STATE,
         payload: passworddata

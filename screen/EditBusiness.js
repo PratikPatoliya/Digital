@@ -193,7 +193,7 @@ const EditBusiness = ({navigation}) => {
     if (obj.selectBussinessCategory === '') {
       selectBussinessCategoryMsg = 'Company Bussiness Category is Required!';
     }
-
+    
     setErrorMsg({
       companyName: companyNameMsg,
       mobileNumber: mobileNumberMsg,
@@ -205,7 +205,7 @@ const EditBusiness = ({navigation}) => {
 
   const onSubmitFormData = async () => {
     // if (
-    //   companyName.trim() &&
+    //     companyName.trim() &&
     //   mobileNumber.trim() &&
     //   companyEmailAddress.trim() &&
     //   companyWebsiteOptional.trim() &&
@@ -214,10 +214,17 @@ const EditBusiness = ({navigation}) => {
     // ) {
     //   alert('data null');
     // } else {
-      const status = await checkValidation();
+    //   const status = await checkValidation();
     //   console.log('status', status);
     // }
-    // try {
+    if (errorMsg) {
+      checkValidation();
+      
+    } else {
+      navigation.navigate('Business')
+      
+    }
+    try {
       dispatch(Bussiness({
         userId: id,
         mobile_Number: obj.mobileNumber,
@@ -229,7 +236,7 @@ const EditBusiness = ({navigation}) => {
         company_Description: obj.companyDescription,
         second_Mobile_Number:""
       }))
-      navigation.navigate('Business')
+      // navigation.navigate('Business')
       // let datapost = {
       // }
       // // datapost = JSON.stringify(datapost)
@@ -237,10 +244,10 @@ const EditBusiness = ({navigation}) => {
       // console.log("userPathuserPath++++",userPath);
       // const response = await axios.post(userPath,datapost)
       // console.log("responseresponseresponse",response);
-    // } catch (error) {
-    //   alert('alert')
-    //   console.log("error",error);
-    // }
+    } catch (error) {
+      alert('alert')
+      console.log("error",error);
+    }
   };
 
   function selectImage() {

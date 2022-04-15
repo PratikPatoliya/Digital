@@ -23,7 +23,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { launchImageLibrary, launchCamera } from 'react-native-image-picker';
 import { setUserData, setVerifyState } from '../redux/action/Verifyotp.action';
 
-const Account = ({route, navigation }) => {
+const Account = ({ route, navigation }) => {
   // console.log("imageSource1imageSource1",route.params.imageSource1.displayImage);
   const [model, setModel] = useState(false);
   const [imageSource, setImageSource] = useState(image.userImage);
@@ -33,12 +33,12 @@ const Account = ({route, navigation }) => {
   console.log("idididididididid", id);
 
   const dispatch = useDispatch()
-  const userData = useSelector(state => console.log("++++++++++++++++++++",state));
+  const userData = useSelector(state => console.log("++++++++++++++++++++", state));
 
-  const imageSource1 = useSelector(state => state?.EditProfileReducer?.userData?.displayImage);
+  const imageSource1 = useSelector(state => state?.verifyotpReducer?.userData?.displayImage);
   // console.log("imageSource1imageSource1",imageSource);
 
-  const userName = useSelector(state => state?.EditProfileReducer?.userData?.username);
+  const userName = useSelector(state => state?.verifyotpReducer?.userData?.username);
   // console.log("unameunameunameunameunameuname",userName);
 
 
@@ -170,11 +170,11 @@ const Account = ({route, navigation }) => {
         <ScrollView>
           <View style={{ alignItems: 'center', marginTop: 50 }}>
             <Image
-              source={{ uri: imageSource1 == "" && image.userImage ? imageSource : imageSource1}}
+              source={{ uri: imageSource1 == null ? imageSource : imageSource1 }}
               style={{ height: 120, width: 120, borderRadius: 100 }}
             />
             <Text style={{ color: colors.white, fontSize: 25, marginTop: 5 }}>
-               {userName == '' || null ?'User Name': userName}
+              {userName == null ? 'User Name' : userName}
             </Text>
             <Text style={{ color: colors.white, fontSize: 15, marginTop: 0 }}>
               {mobileNumber}

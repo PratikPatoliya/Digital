@@ -1,6 +1,8 @@
 import axios from "axios"
 import { GET_USER_ERROR, GET_USER_PROFILE, SET_EPOST_STATE, SET_USER_ERROR } from "../types/EditProfile.types"
 import BASE_URL from "../../config/baseUrl";
+import { setVerifyState } from "./Verifyotp.action";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 const api = `${BASE_URL}/register`;
 
 const EditData = editData => {
@@ -37,9 +39,11 @@ export const EditProfileData = (editData) => {
                     Accept: 'application/json',
                     'Content-Type': 'application/json',
                 },
-            }).then(res => {
+            }).then(async(res) => {
                 console.log("EditProfileData",res);
-                dispatch(EditData(res.data))
+                await AsyncStorage.setItem('userData', JSON.stringify(res.data));
+                dispatch(EditData(res.data)) 
+                dispatch(setVerifyState(res.data))
             }).catch(err => {
                 dispatch(EditDataError(err))
             })
