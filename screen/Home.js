@@ -24,7 +24,7 @@ const Home = props => {
 
   const getUserData = async () => {
     let userData = await AsyncStorage.getItem('userData')
-    console.log("+++++++userData++++++++++++",userData);
+    // console.log("+++++++userData++++++++++++",userData);
     let userData1 = JSON.parse(userData)
     if (!token) {
       dispatch(setVerifyState(userData1))

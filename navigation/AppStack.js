@@ -21,6 +21,7 @@ import Terms_conditions from '../screen/Terms_conditions';
 import EditBusiness from '../screen/EditBusiness';
 import CreateBusinesscategory from '../screen/CreateBusinesscategory';
 import Demo from '../screen/Demo';
+import UpdateBusiness from '../screen/UpdateBusiness';
 
 const Stack = createNativeStackNavigator();
 
@@ -93,6 +94,11 @@ function BusinessStackScreen() {
       <Stack.Screen
         name="CreateBusinesscategory"
         component={CreateBusinesscategory}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="UpdateBusiness"
+        component={UpdateBusiness}
         options={{headerShown: false}}
       />
     </Stack.Navigator>
@@ -298,6 +304,12 @@ const getTabBarVisibilityGreeting = route => {
 const getTabBarVisibilityBusiness = route => {
   const routeName = getFocusedRouteNameFromRoute(route) ?? 'Business';
   if (routeName == 'EditBusiness') {
+    return 'none';
+  }
+  else if (routeName == 'CreateBusinesscategory') {
+    return 'none';
+  }
+  else if (routeName =='UpdateBusiness') {
     return 'none';
   }
   return 'flex';

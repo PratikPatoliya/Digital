@@ -13,6 +13,7 @@ import axios from 'axios';
 import { EditProfileData } from '../redux/action/EditProfile.action';
 
 const EditProfile = ({ route, navigation }) => {
+  console.log("navigationnavigationnavigationnavigationnavigationnavigationnavigation",navigation);
   // const imageSource = route.params.imageSource;
   // const setImageSource = route.params.setImageSource;
   // console.log("imageSource",imageSource);
@@ -24,8 +25,8 @@ const EditProfile = ({ route, navigation }) => {
   const [imageSource, setImageSource] = useState(image.userImage);
   const [userName, setUserName] = useState('');
   const [setId, setSetId] = useState('')
-  console.log("userName", userName);
-  console.log("setId", setId);
+  // console.log("userName", userName);
+  // console.log("setId", setId);
 
   const dispatch = useDispatch()
   const userData = useSelector(state => state?.verifyotpReducer?.userData);
@@ -63,7 +64,7 @@ const EditProfile = ({ route, navigation }) => {
   const selectCamera = async () => {
     const result = await launchCamera(CameraOption);
     console.log('result: ', result);
-    // imageUpload(result)
+    imageUpload(result)
     // setImageSource(() => imageSource)
   }
 
@@ -92,9 +93,9 @@ const EditProfile = ({ route, navigation }) => {
         setImageSource(resJson.image);
         const userDataObject = { ...userData, displayImage: resJson.image }
         AsyncStorage.setItem('userData', JSON.stringify(userDataObject));
-        console.log("userDataObject", userDataObject);
+        // console.log("userDataObject", userDataObject);
         // console.log("userDataObject", typeof(userDataObject));
-        dispatch(setVerifyState(userDataObject))
+        // dispatch(setVerifyState(userDataObject))
       }
     } catch (error) {
       console.error(error);

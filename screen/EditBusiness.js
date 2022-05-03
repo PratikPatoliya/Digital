@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   StyleSheet,
   Text,
@@ -14,7 +14,7 @@ import Header2 from '../components/Header2';
 import colors from '../utils/colors';
 import image from '../utils/image';
 import ImagePicker from 'react-native-image-crop-picker';
-import {CheckBox} from 'react-native-elements';
+import { CheckBox } from 'react-native-elements';
 import DropDownPicker from 'react-native-dropdown-picker';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import BASE_URL from '../config/baseUrl';
@@ -40,7 +40,7 @@ export const MyTextInput = props => {
     return (
       <TextInput
         value={value}
-        onChangeText={values => onChange({name, values})}
+        onChangeText={values => onChange({ name, values })}
         keyboardType={keyboardType}
         multiline={true}
         numberOfLines={2}
@@ -52,7 +52,7 @@ export const MyTextInput = props => {
   return (
     <TextInput
       value={value}
-      onChangeText={values => onChange({name, values})}
+      onChangeText={values => onChange({ name, values })}
       keyboardType={keyboardType}
       style={style}
       dataDetectorTypes={dataDetectorTypes}
@@ -60,7 +60,7 @@ export const MyTextInput = props => {
     />
   );
 };
-const EditBusiness = ({navigation}) => {
+const EditBusiness = ({ navigation }) => {
   const [model, setModel] = useState(false);
   const [imageSource, setImageSource] = useState(image.yourlogohere);
   const [check1, setCheck1] = useState(false);
@@ -85,14 +85,14 @@ const EditBusiness = ({navigation}) => {
   const dispatch = useDispatch();
 
   const [items, setItems] = useState([
-    {label: 'Apple', value: 'apple'},
-    {label: 'Banana', value: 'banana'},
-    {label: 'Apple', value: 'apple'},
-    {label: 'Banana', value: 'banana'},
-    {label: 'Apple', value: 'apple'},
-    {label: 'Banana', value: 'banana'},
-    {label: 'Apple', value: 'apple'},
-    {label: 'Banana', value: 'banana'},
+    { label: 'Apple', value: 'apple' },
+    { label: 'Banana', value: 'banana' },
+    { label: 'Apple', value: 'apple' },
+    { label: 'Banana', value: 'banana' },
+    { label: 'Apple', value: 'apple' },
+    { label: 'Banana', value: 'banana' },
+    { label: 'Apple', value: 'apple' },
+    { label: 'Banana', value: 'banana' },
   ]);
   // const [businessCategory, setBusinessCategory] = useState({
   //   mobileNumber: '',
@@ -115,14 +115,14 @@ const EditBusiness = ({navigation}) => {
     // console.log('formformformform', accountUrl);
     // setUserPath(accountUrl);
     Dropdown = `${BASE_URL}/category`;
-    console.log("DropdownDropdown",Dropdown);
+    console.log("DropdownDropdown", Dropdown);
     setDropDownData(Dropdown)
   };
 
-  const getDataDropDown =() =>{
+  const getDataDropDown = () => {
     axios.get(dropDownData).then(res => setFinalDropDownData(res.data) /* console.log("resresresresresresresres",res.data) */).catch(err => console.log("errDemo", err))
   }
-  console.log("finelDropDownDatafinelDropDownDatafinalDropDownData",finalDropDownData);
+  console.log("finelDropDownDatafinelDropDownDatafinalDropDownData", finalDropDownData);
 
 
   const [obj, setObj] = useState({
@@ -134,7 +134,6 @@ const EditBusiness = ({navigation}) => {
     companyDescription: '',
     selectBussinessCategory: '',
   });
-  console.log('obj', obj);
   const [errorMsg, setErrorMsg] = useState({
     companyName: '',
     mobileNumber: '',
@@ -146,9 +145,9 @@ const EditBusiness = ({navigation}) => {
   // console.log("businessCategorybusinessCategory", businessCategory);
   const onChangeFormData = e => {
     // console.log('value', e);
-    const {name, values} = e;
-    setObj({...obj, [name]: values});
-    setErrorMsg({...errorMsg, [name]: ''});
+    const { name, values } = e;
+    setObj({ ...obj, [name]: values });
+    setErrorMsg({ ...errorMsg, [name]: '' });
     /* console.log("value", value);
     setCompanyName(value);
     setBusinessCategory({ ...businessCategory, company_Name: value }) */
@@ -193,7 +192,7 @@ const EditBusiness = ({navigation}) => {
     if (obj.selectBussinessCategory === '') {
       selectBussinessCategoryMsg = 'Company Bussiness Category is Required!';
     }
-    
+
     setErrorMsg({
       companyName: companyNameMsg,
       mobileNumber: mobileNumberMsg,
@@ -201,31 +200,15 @@ const EditBusiness = ({navigation}) => {
       companyAddress: companyAddressMsg,
       selectBussinessCategory: selectBussinessCategoryMsg,
     });
+    return error;
   };
 
   const onSubmitFormData = async () => {
-    // if (
-    //     companyName.trim() &&
-    //   mobileNumber.trim() &&
-    //   companyEmailAddress.trim() &&
-    //   companyWebsiteOptional.trim() &&
-    //   companyAddress.trim() &&
-    //   companyDescription.trim()
-    // ) {
-    //   alert('data null');
-    // } else {
-    //   const status = await checkValidation();
-    //   console.log('status', status);
-    // }
-    if (errorMsg) {
-      checkValidation();
-      
-    } else {
-      navigation.navigate('Business')
-      
-    }
+    let status = await checkValidation();
+    // console.log("statusstatus",status);
+    if (status) {
     try {
-      dispatch(Bussiness({
+      await dispatch(Bussiness({
         userId: id,
         mobile_Number: obj.mobileNumber,
         company_Name: obj.companyName,
@@ -234,20 +217,17 @@ const EditBusiness = ({navigation}) => {
         company_Address: obj.companyAddress,
         select_Bussiness_Category: obj.selectBussinessCategory,
         company_Description: obj.companyDescription,
-        second_Mobile_Number:""
+        second_Mobile_Number: "",
+        logoImage: ""
       }))
-      // navigation.navigate('Business')
-      // let datapost = {
-      // }
-      // // datapost = JSON.stringify(datapost)
-      // console.log("datapostdatapostdatapostdatapostdatapost",datapost);
-      // console.log("userPathuserPath++++",userPath);
-      // const response = await axios.post(userPath,datapost)
-      // console.log("responseresponseresponse",response);
+      setTimeout(() => {
+        navigation.navigate('Business')  
+    }, 1000);
     } catch (error) {
       alert('alert')
-      console.log("error",error);
+      console.log("error", error);
     }
+  }
   };
 
   function selectImage() {
@@ -286,22 +266,22 @@ const EditBusiness = ({navigation}) => {
       <Modal transparent={true} visible={model}>
         <View style={styles.topContainer}>
           <View style={styles.modelContainer}>
-            <Text style={{fontSize: 17, color: colors.black}}>
+            <Text style={{ fontSize: 17, color: colors.black }}>
               Select File from
             </Text>
             <TouchableOpacity
               onPress={selectImage}
-              style={{backgroundColor: colors.white, justifyContent: 'center'}}>
+              style={{ backgroundColor: colors.white, justifyContent: 'center' }}>
               <Text style={styles.titleTxt}>Choose Image</Text>
             </TouchableOpacity>
             <TouchableOpacity
               onPress={selectCamera}
-              style={{backgroundColor: colors.white, justifyContent: 'center'}}>
+              style={{ backgroundColor: colors.white, justifyContent: 'center' }}>
               <Text style={styles.titleTxt}>Capture Image</Text>
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => setModel(!model)}
-              style={{backgroundColor: colors.white, justifyContent: 'center'}}>
+              style={{ backgroundColor: colors.white, justifyContent: 'center' }}>
               <Text style={styles.titleTxt}>Cancel</Text>
             </TouchableOpacity>
           </View>
@@ -327,7 +307,7 @@ const EditBusiness = ({navigation}) => {
               width: width * 0.85,
               alignSelf: 'center',
             }}>
-            <View style={{flex: 1}}>
+            <View style={{ flex: 1 }}>
               <View
                 style={{
                   backgroundColor: colors.white,
@@ -338,7 +318,7 @@ const EditBusiness = ({navigation}) => {
                 }}>
                 <TouchableOpacity onPress={() => setModel(true)}>
                   <Image
-                    source={{uri: imageSource}}
+                    source={{ uri: imageSource }}
                     style={{
                       height: height / 12,
                       width: width / 5.5,
@@ -358,10 +338,10 @@ const EditBusiness = ({navigation}) => {
                 </Text>
               </View>
             </View>
-            <View style={{flex: 1, justifyContent: 'center'}}>
+            <View style={{ flex: 1, justifyContent: 'center' }}>
               <Image
-                source={{uri: image.growyourbusiness}}
-                style={{height: 70, width: 160, alignSelf: 'flex-end'}}
+                source={{ uri: image.growyourbusiness }}
+                style={{ height: 70, width: 160, alignSelf: 'flex-end' }}
               />
             </View>
           </View>
@@ -383,7 +363,7 @@ const EditBusiness = ({navigation}) => {
             />
           </View>
           <View style={styles.condition2}>
-            {errorMsg.companyName !== '' && (
+            { .companyName !== '' && (
               <Text style={styles.condition}>{errorMsg.companyName}</Text>
             )}
           </View>
@@ -572,7 +552,7 @@ const EditBusiness = ({navigation}) => {
            </View>  */}
 
           <View
-            style={{width: width * 0.85, marginTop: 10, alignSelf: 'center'}}>
+            style={{ width: width * 0.85, marginTop: 10, alignSelf: 'center' }}>
             <Text
               style={{
                 color: colors.white,
@@ -580,87 +560,87 @@ const EditBusiness = ({navigation}) => {
                 justifyContent: 'center',
               }}>
               Company Follow Us
-              <Text style={{fontSize: 14, color: colors.darkWhite}}>
-                (optional) 
+              <Text style={{ fontSize: 14, color: colors.darkWhite }}>
+                (optional)
               </Text>
             </Text>
-            <View style={{flexDirection: 'row', right: 10}}>
-              <View style={{flexDirection: 'row', flex: 1}}>
+            <View style={{ flexDirection: 'row', right: 10 }}>
+              <View style={{ flexDirection: 'row', flex: 1 }}>
                 <CheckBox
                   checked={check1}
                   onPress={() => setCheck1(!check1)}
-                  style={{borderColor: colors.black}}
+                  style={{ borderColor: colors.black }}
                   // onChangeText={onChangeItems}
                   // checked={true}
                   checkedColor={colors.yellow}
                 />
                 <Text
-                  style={{color: colors.white, alignSelf: 'center', right: 10}}>
+                  style={{ color: colors.white, alignSelf: 'center', right: 10 }}>
                   f
                 </Text>
               </View>
-              <View style={{flexDirection: 'row', flex: 1}}>
+              <View style={{ flexDirection: 'row', flex: 1 }}>
                 <CheckBox
                   checked={check2}
                   onPress={() => setCheck2(!check2)}
-                  style={{borderColor: colors.black}}
+                  style={{ borderColor: colors.black }}
                   checkedColor={colors.yellow}
-                  // right={true}
+                // right={true}
                 />
                 <Text
-                  style={{color: colors.white, alignSelf: 'center', right: 10}}>
+                  style={{ color: colors.white, alignSelf: 'center', right: 10 }}>
                   i
                 </Text>
               </View>
-              <View style={{flexDirection: 'row', flex: 1}}>
+              <View style={{ flexDirection: 'row', flex: 1 }}>
                 <CheckBox
                   checked={check3}
                   onPress={() => setCheck3(!check3)}
-                  style={{borderColor: colors.black}}
+                  style={{ borderColor: colors.black }}
                   checkedColor={colors.yellow}
                   right={true}
                 />
                 <Text
-                  style={{color: colors.white, alignSelf: 'center', right: 10}}>
+                  style={{ color: colors.white, alignSelf: 'center', right: 10 }}>
                   w
                 </Text>
               </View>
-              <View style={{flexDirection: 'row', flex: 1}}>
+              <View style={{ flexDirection: 'row', flex: 1 }}>
                 <CheckBox
                   checked={check4}
                   onPress={() => setCheck4(!check4)}
-                  style={{borderColor: colors.black}}
+                  style={{ borderColor: colors.black }}
                   checkedColor={colors.yellow}
                   right={true}
                 />
                 <Text
-                  style={{color: colors.white, alignSelf: 'center', right: 10}}>
+                  style={{ color: colors.white, alignSelf: 'center', right: 10 }}>
                   t
                 </Text>
               </View>
-              <View style={{flexDirection: 'row', flex: 1}}>
+              <View style={{ flexDirection: 'row', flex: 1 }}>
                 <CheckBox
                   checked={check5}
                   onPress={() => setCheck5(!check5)}
-                  style={{borderColor: colors.black}}
+                  style={{ borderColor: colors.black }}
                   checkedColor={colors.yellow}
                   right={true}
                 />
                 <Text
-                  style={{color: colors.white, alignSelf: 'center', right: 10}}>
+                  style={{ color: colors.white, alignSelf: 'center', right: 10 }}>
                   y
                 </Text>
               </View>
-              <View style={{flexDirection: 'row', flex: 1}}>
+              <View style={{ flexDirection: 'row', flex: 1 }}>
                 <CheckBox
                   checked={check6}
                   onPress={() => setCheck6(!check6)}
-                  style={{borderColor: colors.black}}
+                  style={{ borderColor: colors.black }}
                   checkedColor={colors.yellow}
                   right={true}
                 />
                 <Text
-                  style={{color: colors.white, alignSelf: 'center', right: 10}}>
+                  style={{ color: colors.white, alignSelf: 'center', right: 10 }}>
                   p
                 </Text>
               </View>
@@ -757,7 +737,7 @@ const styles = StyleSheet.create({
     height: height * 0.1,
     marginLeft: 15,
     fontSize: 16,
-    textAlignVertical:'top',
+    textAlignVertical: 'top',
   },
   viewtext: {
     flex: 0.15,

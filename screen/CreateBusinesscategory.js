@@ -8,20 +8,43 @@ import { GetBussinessData } from '../redux/action/BusinessData.action';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
-const CreateBusinesscategory = ({ navigation }) => {
+const CreateBusinesscategory = ({status,navigation}) => {
+
+    // console.log("++++++++++navigation",navigation);
+    const [businessData, setBusinessData] = useState([])
+    const [renderStatus, setRenderStatus] = useState(false);
     const dispatch = useDispatch();
+    console.log("--------status-------",status);
     useEffect(() => {
+        console.log("useEffectuseEffect----------");
         idcall()
     }, [])
     const idcall = async () => {
         const ID = await AsyncStorage.getItem('userId')
         dispatch(GetBussinessData(ID))
+        // const user = await AsyncStorage.getItem('businessData');
+        // setBusinessData(user);
+        console.log("TRUE=========");
+        console.log("useruseruseruseruser++++++++++++++",ID);
     }
+    if (status) {
+        // idcall()
+        status = false
+    }
+    useEffect(() => {
+     console.log("maniiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii");
+    }, [])
+    
+    
     const state = useSelector(state => state?.BusinessDataReducer?.userGetData)
-    console.log("statestatestate", state);
+    const state1 = useSelector(state => state)
+    console.log("statestatestate+++++++++++++++++++", state);
+    console.log("statestatestate+++++++++++++++++++------------------", state1);
+    // console.log("businessDatabusinessDatabusinessData", businessData);
 
     return (
         <View>
+            {console.log("RENDER++++++++++++++++",navigation)}
             {state && state.map(data =>
                 <View style={styles.container}>
                     <View style={styles.wrap}>
@@ -36,7 +59,7 @@ const CreateBusinesscategory = ({ navigation }) => {
                             </Text>
                         </View>
                         <View style={styles.thirdWidth}>
-                            <TouchableOpacity /* onPress={() => navigation.navigate('EditBusiness')} */>
+                            <TouchableOpacity onPress={() => navigation.navigate('UpdateBusiness',{data:data})}>
                                 <Text style={styles.commonColor}>
                                     <Icon name="edit" size={22} />
                                 </Text>
@@ -50,4 +73,4 @@ const CreateBusinesscategory = ({ navigation }) => {
     )
 }
 
-export default CreateBusinesscategory
+export default CreateBusinesscategory;
