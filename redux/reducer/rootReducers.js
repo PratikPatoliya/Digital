@@ -17,4 +17,4 @@ const rootReducers = combineReducers({
   EditProfileReducer:EditProfileReducer,
 });
 
-export default rootReducers;
+  export default rootReducers;

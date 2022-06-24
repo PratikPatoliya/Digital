@@ -363,7 +363,7 @@ const EditBusiness = ({ navigation }) => {
             />
           </View>
           <View style={styles.condition2}>
-            { .companyName !== '' && (
+            { errorMsg.companyName !== '' && (
               <Text style={styles.condition}>{errorMsg.companyName}</Text>
             )}
           </View>
